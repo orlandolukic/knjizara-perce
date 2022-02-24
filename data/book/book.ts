@@ -13,5 +13,6 @@ export interface Book {
     pages: number;
     onPromotion: boolean;
     a: number;
+    b: number;
 
 }
