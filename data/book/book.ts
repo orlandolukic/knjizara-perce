@@ -12,5 +12,6 @@ export interface Book {
     yearIssued: number;
     pages: number;
     onPromotion: boolean;
+    a: number;
 
 }
