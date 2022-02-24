@@ -14,5 +14,6 @@ export interface Book {
     onPromotion: boolean;
     
     b: number;
+    x: number;
 
 }
