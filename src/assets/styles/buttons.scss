@@ -1,0 +1,76 @@
+
+@import "variables.scss";
+
+.theme-button {
+
+    // Alignment
+    &.theme-button-text-center {
+        .mat-button-wrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;               
+            width: 100%;  
+        }
+    }
+
+    // Paddings
+    &.theme-button-xs {
+        padding: 0px 15px;
+    }
+
+    &.theme-button-sm {
+        padding: 3px 20px;
+    }
+
+    &.theme-button-md {
+        padding: 7px 25px;
+    }
+
+    &.theme-button-lg {
+        padding: 10px 30px;
+    }
+
+    &.theme-button-xlg {
+        padding: 12px 35px;
+    }
+
+    // Colors
+    &.theme-button-primary {
+        background-color: $color-primary;
+        color: white;
+    }
+    
+    &.theme-button-danger {
+        background-color: $color-danger;
+        color: white;
+    }
+    
+    &.theme-button-success {
+        background-color: $color-success;
+        color: white;
+    }
+
+    &.theme-button-starcolor {
+        background-color: $color-star;
+        color: white;
+    }
+
+    &.button-with-icon {
+        display: flex;
+        flex-direction: row;
+    
+        & > div {
+            display: flex;        
+        }
+    
+        .text {
+            padding-left: 10px;
+        }
+    
+        .mat-button-wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+}

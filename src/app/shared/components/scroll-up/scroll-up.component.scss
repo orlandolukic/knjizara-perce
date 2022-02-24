@@ -1,0 +1,33 @@
+
+@import "variables";
+
+.scroll-up-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    transition: 0.2s;
+
+    background: $color-primary;
+    color: white;
+    border-radius: 2px;
+    padding: 15px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+
+    -webkit-box-shadow: 0px 2px 35px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 35px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 35px -9px rgba(0,0,0,0.75);
+
+    &:hover {
+        background: lighten($color-primary, 10%);        
+    }
+
+    &:active {
+        transform: scale3d(0.8,0.8,0.8);
+    }  
+    
+    &.not-visible {
+        transform: translateX(250px);
+    }
+}

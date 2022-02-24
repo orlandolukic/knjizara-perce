@@ -1,0 +1,19 @@
+<app-loader-for-books [show]="showBooks"></app-loader-for-books>
+<div class="all-books-placeholder row">
+    <ng-template #bookHost></ng-template>
+</div>
+
+<div *ngIf="!loadedEverything" class="row margin-t-20 margin-b-30">   
+    <div class="col-12 flex-center">
+        <div class="preview-more-placeholder">
+            <div *ngIf="loading" class="preview-more-loading-icon">
+                <fa-icon [icon]="faSpinner" [spin]="true" size="2x" class="color-primary"></fa-icon>
+            </div>
+            <div class="preview-more-button">
+                <app-button [disabled]="loading" (buttonClick)="onPreviewMore($event)" [icon]="faEllipsis" size="sm" color="primary">        
+                    <div text>Učitajte još knjiga</div>
+                </app-button>
+            </div>
+        </div>        
+    </div>
+</div>

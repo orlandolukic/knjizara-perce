@@ -1,0 +1,76 @@
+
+<div class="dashboard-main-menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-12">
+                <div class="logo-placeholder">
+                    <a routerLink="/{{link}}">
+                        <div class="logo">
+                            <img src="/assets/images/logo.png" />
+                        </div>
+                    </a>
+                    <div class="text">
+                        <div class="font-s-20 text-italic">Knjižara</div>
+                        <div class="font-s-36 text-bold">PERCE</div>
+                        <div class="font-s-16 text-italic">Zajedno možemo sve!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 col-12 text-right user-data-display-column">
+                <div class="user-data-display">
+                    <div class="image">
+                        <img src="/assets/images/user-images/{{ profileImage }}" />
+                    </div>
+                    <div class="name-placeholder">
+                        <div class="name">{{ nameOfTheUser }}</div>
+                        <div class="account-type">{{ accountType }}</div>
+                    </div>
+                    <div class="submenu-caret">
+                        <div class="caret">
+                            <fa-icon [icon]="faCaretDown" size="2x"></fa-icon>
+                        </div>
+                        <div class="submenu">
+                            <a routerLink="my-recommendations">
+                                <div class="submenu-item">
+                                    <div class="icon">
+                                        <fa-icon [icon]="faFileAlt"></fa-icon>
+                                    </div>
+                                    <div class="content">
+                                        Moje preporuke
+                                    </div>
+                                </div>
+                            </a>
+                            <a routerLink="settings">
+                                <div class="submenu-item">
+                                    <div class="icon">
+                                        <fa-icon [icon]="faConfig"></fa-icon>
+                                    </div>
+                                    <div class="content">
+                                        Podešavanja naloga 
+                                    </div>
+                                </div>
+                            </a>
+                            <a routerLink="/logout">
+                                <div class="submenu-item">
+                                    <div class="icon">
+                                        <fa-icon [icon]="faSignOut"></fa-icon>
+                                    </div>
+                                    <div class="content">
+                                        Odjavite se
+                                    </div>
+                                </div>                            
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>
+
+<app-footer></app-footer>
+
+<app-scroll-up></app-scroll-up>

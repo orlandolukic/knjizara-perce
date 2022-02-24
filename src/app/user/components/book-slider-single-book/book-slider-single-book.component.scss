@@ -1,0 +1,111 @@
+
+@import "global";
+@import "bootstrap";
+
+:host {
+    display: flex;    
+
+    &.full-width {
+        width: 100%;
+    }
+
+    &.in-list {
+        opacity: 0;        
+        transition: 1.6s;
+        transition-delay: 0.2s;
+
+        &.in-list-loaded {
+            opacity: 1;            
+        }
+    }
+}
+
+.single-book {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+    
+    a {
+        display: flex;
+        align-items: flex-start;
+        max-width: 180px;    
+        
+        @include media-breakpoint-only(xs) {
+            align-items: center;
+        }
+            
+        .image-content {
+            display: flex;
+            align-items: flex-start;
+            max-width: 100%;
+
+            img {
+                width: 100%;
+
+                @include media-breakpoint-only(xs) {
+                    width: 200px;
+                }
+            }
+        }
+    }
+
+    .text-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: {
+            left: 20px;
+            top: 7px;
+        }
+
+        @include media-breakpoint-only(xs) {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: auto;
+            padding-left: 100px;
+
+            background: rgb(255,255,255);
+            background: -moz-linear-gradient(-90deg, rgba(255,255,255,1) 53%, rgba(255,255,255,0) 100%);
+            background: -webkit-linear-gradient(-90deg, rgba(255,255,255,1) 53%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(-90deg, rgba(255,255,255,1) 53%, rgba(255,255,255,0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+        }
+
+        > div {
+            display: flex;
+        }
+
+        a {
+
+            transition: 0.2s;
+
+            .title {
+                font-size: 22px;
+                font-weight: bold;
+            }
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
+
+        .recommend-content {
+            align-items: flex-start;
+            justify-content: flex-end;
+            height: 100%;
+            flex-direction: column;
+
+            .button-content {
+                margin-top: 10px;
+                width: 100%;                
+
+                button {
+                    width: 100%;           
+                }
+            }
+        }
+    }
+}

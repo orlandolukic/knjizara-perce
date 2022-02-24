@@ -1,0 +1,66 @@
+<div class="container margin-t-20">
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div class="recommendations-placeholder">
+                <div class="font-s-26 text-bold">STATISTIKA</div>
+                <div class="recommendations">
+                    <div class="number">{{myRecommendationsNumber}}</div>
+                    <div class="text">NOVE PREPORUKE</div>
+                </div>
+                <div class="button">
+                    <a routerLink="my-recommendations">
+                        <button mat-flat-button class="button-with-icon theme-button theme-button-success theme-button-sm">
+                            <div class="icon"><fa-icon [icon]="faFileAlt"></fa-icon></div>
+                            <div class="text">Pogledajte preporuke</div>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>        
+        <div class="col-md-6 col-12 text-right all-books-column">    
+            <a routerLink="all-books">        
+                <button mat-flat-button class="button-with-icon theme-button theme-button-primary theme-button-sm">                
+                    <div class="icon"><fa-icon [icon]="faBook"></fa-icon></div>
+                    <div class="text">Sve knjige</div>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <div class="row margin-t-30">
+        <div class="col-12">            
+            <div class="font-s-26 text-bold">
+                <fa-icon class="color-primary" [icon]="faFaceGrinStars"></fa-icon>
+                Na promociji
+            </div>
+            <div class="font-s-20 color-faded">Ne propustite popularne naslove...</div>
+        </div>
+    </div>
+
+    <div class="row margin-t-20">
+        <app-book-slider></app-book-slider>
+    </div>
+
+    <div class="row margin-t-30 align-items-center">
+        <div class="col-12 col-sm-6 col-lg-6">
+            <div class="font-s-26 text-bold">
+                <fa-icon class="color-primary" [icon]="faBook"></fa-icon>
+                Sve knjige
+            </div>
+            <div class="font-s-20 color-faded">Pogledajte našu ponudu knjiga</div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-6">
+            <div class="search-placeholder">
+                <div class="search-icon">
+                    <fa-icon [icon]="faSearch" size="2x"></fa-icon>
+                </div>
+                <div class="search-input">
+                    <input #searchbox (keyup)="search($event)" class="theme-input full-width searchbox" type="text" placeholder="Pretražite knjigu ili autora">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-t-20">
+        <app-all-books-listing></app-all-books-listing>
+    </div>
+</div>

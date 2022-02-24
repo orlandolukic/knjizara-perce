@@ -1,0 +1,118 @@
+<div class="container margin-t-30">
+    <div class="row">
+        <div class="col-12 col-sm-6 d-flex flex-column align-items-start justify-content-center">
+            <div class="title-section">
+                <div class="icon">
+                    <a routerLink="/user">
+                        <fa-icon class="color-primary" [icon]="faHome" size="2x"></fa-icon>
+                    </a>
+                </div>
+                <div class="icon">
+                    <fa-icon [icon]="faChevronRight" class="color-faded" size="sm"></fa-icon>
+                </div>
+                <div class="title">
+                    Moje preporuke
+                </div>                
+            </div>
+            <div class="font-s-20 color-faded mt-2">Pogledajte preporuke koje su Vam drugi korisnici uputili...</div>            
+        </div>
+
+        <div class="col-12 col-sm-6 d-flex justify-content-sm-end align-items-sm-center mt-4">
+            <div class="total-recommendations">
+                <div class="total-recommendations-text color-faded">Ukupno preporuka</div>
+                <div class="total-recommendations-number">
+                    {{ numberOfAllRecommendations }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2 mb-0 mt-sm-4 mb-sm-1">
+        <div class="col-12 col-sm-6 d-flex align-items-center">
+            <app-button color="success" size="xs" [icon]="faPaperPlane">                
+                <div text>
+                    Pošaljite preporuku
+                </div>
+            </app-button>
+        </div>
+
+        <div class="col-12 col-sm-6 d-flex align-items-center justify-content-start justify-content-sm-end mt-2 mt-sm-0">
+            <app-button (buttonClick)="deleteAllRecommendations()" color="danger" size="xs" [icon]="faTrashCanList" [disabled]="numberOfAllRecommendations === 0">                
+                <div text>
+                    Obrišite sve preporuke
+                </div>
+            </app-button>
+        </div>
+    </div>
+
+    <div class="row mt-3 mb-4">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="recommendations-placeholder">
+                
+                <div class="recommendations-content">
+                    <div class="container-fluid header">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-1">
+                                R.br.
+                            </div>
+                            <div class="col-sm-12 col-md-5">
+                                Knjiga / Autor
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-md-4">Datum preporuke</div>
+                                    <div class="col-md-8">Ko mi je preporucio ovu knjigu?</div>
+                                </div>
+                            </div>                            
+                        </div>                                                
+                    </div> 
+                    <div *ngIf="hasRecommendations" class="container-fluid body">                        
+                        <div #singleRecommendationElem *ngFor="let recommendation of recommendations; let i = index"
+                            class="row" 
+                            app-single-recommendation
+                            [class.odd]="(i % 2) === 1"
+                            [recommendation]="recommendation"
+                            [number]="i+1"
+                            (delete)="onDelete(recommendation, i, $event)"
+                            ></div>                        
+                    </div>                                       
+                </div>
+
+                <div *ngIf="!hasRecommendations" class="recommendations-empty-placeholder">                    
+                    <div class="recommendations-empty-content">
+                        <div class="icon">
+                            <fa-icon [icon]="faHourglass" size="8x"></fa-icon>
+                        </div>
+                        <div class="title mt-4">
+                            Drugi korisnici i dalje čitaju knjige
+                        </div>
+                        <div class="subtitle mt-2">
+                            <span>Molimo Vas za strpljenje...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-loader-delete 
+    #loaderDelete
+    [textToDisplay]="deleteText"
+    confirmButtonText="Potvrdite brisanje"
+    declineButtonText="Odustanite"
+
+    (confirm)="confirmDeleteRecommendation()"
+    (decline)="declineDeleteRecommendation()"    
+></app-loader-delete>
+
+
+<app-loader-successful
+    #loaderSuccessful
+    textToDisplay="Uspešno ste obrisali preporuku"
+    [timeToWait]="3"    
+
+    (dismiss)="dismissSuccessfulMessage()"
+    (overlayClick)="dismissSuccessfulMessage()"
+></app-loader-successful>

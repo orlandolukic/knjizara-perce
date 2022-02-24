@@ -1,0 +1,39 @@
+<div class="single-book">
+    <a routerLink="book/{{book.slug}}">
+        <div class="image-content">
+            <img src="assets/images/books/{{ book.image }}">
+        </div>
+    </a>
+    <div class="text-content">
+        <div *ngIf="book.onPromotion" class="sponsored-placeholder">
+          <span class="icon">
+              <fa-icon [icon]="faStar"></fa-icon>
+          </span>  
+          <span class="text">SPONZORISANO</span>
+        </div>
+        
+        <a routerLink="book/{{book.slug}}">
+            <div class="title margin-t-10">
+                {{ book.title }}
+            </div>
+        </a>
+
+        <div class="author margin-t-10 color-primary">
+            {{ book.author }}
+        </div>
+
+        <div class="recommend-content">
+           <app-recommend-numbers-content [recommendations]="recommendationNumber"></app-recommend-numbers-content>
+            <div class="button-content">
+                <button mat-raised-button (click)="goRecommendBook()" class="theme-button theme-button-starcolor button-with-icon theme-button-text-center">
+                    <div class="icon">
+                        <fa-icon [icon]="faBookmark"></fa-icon>
+                    </div>
+                    <div class="text">
+                        PREPORUČITE
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

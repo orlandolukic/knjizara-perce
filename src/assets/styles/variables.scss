@@ -1,0 +1,22 @@
+
+$color-faded: rgb(61, 61, 61);
+$color-primary: rgb(144, 11, 197);
+$color-danger: rgb(207, 24, 24);
+$color-success: rgb(30, 139, 30);
+$color-star: rgb(189, 155, 5);
+
+$colors: (
+    "faded": rgb(61, 61, 61),
+    "primary": rgb(144, 11, 197),
+    "danger": rgb(207, 24, 24),
+    "success": rgb(30, 139, 30),
+    "star": $color-star
+);
+
+$color-primary-border: lighten($color-primary, 52%);
+
+@each $name, $color in $colors {
+    .color-#{$name} {
+        color: $color;
+    }
+}

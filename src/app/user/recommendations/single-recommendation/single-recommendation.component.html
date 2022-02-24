@@ -1,0 +1,49 @@
+<div class="col-12 col-sm-12 col-md-1 number">
+    {{number}}
+</div>
+<div class="col-12 col-sm-12 col-md-5 book-section-placeholder">
+    <div class="book-section">
+        <div class="book-image">
+            <a [routerLink]="getPathForBook(recommendation.book)">
+                <img [src]="getUrl(recommendation.book!.image)" />
+            </a>
+        </div>
+        <div class="book-data">
+            <div *ngIf="recommendation.book!.onPromotion" class="sponsored">
+                <app-sponsored-star></app-sponsored-star>
+            </div>
+            <div class="book-data-title" [class.mt-2]="recommendation.book!.onPromotion">
+                <a [routerLink]="getPathForBook(recommendation.book)">
+                    {{recommendation.book!.title}}
+                </a>            
+            </div>
+            <div class="book-data-subtitle mt-1 color-primary">
+                {{ recommendation.book!.author }}
+            </div>
+            <div class="book-data-recommendations mt-2">
+                <app-recommend-numbers-content [recommendations]="recommendationNumber"></app-recommend-numbers-content>
+            </div>
+        </div>
+    </div>    
+</div>
+<div class="col-12 d-flex d-sm-none align-items-center mt-3 mb-2">
+    <div class="ps-3 color-faded text-bold">
+        PREPORUKE <span class="recommendation-number ms-2">{{recommendation.recommendations.length}}</span>
+    </div>
+</div>
+<div #recommendationsPlaceholder class="col-12 col-sm-12 col-md-6 single-recommendations-placeholder">
+    <div #singleRecommendation *ngFor="let eachRec of recommendation.recommendations; let i = index" class="row single-recommendation">
+        <div class="col-12 col-sm-3 col-md-4 date-section">
+            <div class="date">{{ printDate(eachRec.date) }}</div>
+            <div class="time">{{ printTime(eachRec.date) }}</div>
+        </div>
+        <div class="col-12 col-sm-9 col-md-8 user-section mt-2 mt-sm-0">
+            <app-user-details [user]="eachRec.user!" [lightenUsername]="0.6"></app-user-details>
+        </div>
+        <div class="delete-recommendation-placeholder">
+            <div (click)="deleteRecommendation(i, eachRec)" class="delete-icon" matTooltip="Obrišite preporuku" matTooltipPosition="below" matTooltipClass="font-s-14">
+                <fa-icon [icon]="faTrash"></fa-icon>
+            </div>
+        </div>
+    </div>
+</div>

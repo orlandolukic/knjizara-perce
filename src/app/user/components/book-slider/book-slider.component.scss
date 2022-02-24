@@ -1,0 +1,98 @@
+
+@import "global";
+@import "bootstrap";
+
+:host {
+    @include media-breakpoint-only(xs) {
+        width: calc(100% - 20px);
+    }
+
+    @include media-breakpoint-only(sm) {
+        width: 100%;
+    }
+}
+
+.book-slider-placeholder {
+    background-color: white;
+    border: 1px solid lighten($color-primary, 50%);
+    padding: 10px 60px;
+    position: relative; 
+    -webkit-box-shadow: 5px 5px 18px -10px rgba(0,0,0,0.51); 
+    box-shadow: 5px 5px 18px -10px rgba(0,0,0,0.51);   
+    
+    @include media-breakpoint-only(xs) {
+        padding: 10px 10px;
+    }
+
+    .scroll-button {        
+        position: absolute;
+        top: 0;
+        bottom: 0;              
+        margin: {
+            top: auto;
+            bottom: auto;
+        };
+        height: 50px;  
+        z-index: 10; 
+        
+        &.scroll-left-button {
+            left: -30px; 
+            @include media-breakpoint-only(xs) {
+                left: 5px;
+            }     
+        }
+
+        &.scroll-right-button {
+            right: -30px;      
+            @include media-breakpoint-only(xs) {
+                right: 5px;
+            }
+        }
+        
+        .icon {
+            padding: 10px 20px;
+            background-color: white;
+            -webkit-box-shadow: 5px 5px 15px -10px #000000; 
+            box-shadow: 5px 5px 15px -10px #000000;
+            border: 1px solid rgba(47, 47, 47, 0.233);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: $color-primary;
+
+            &:hover {
+                background-color: lighten($color-primary, 52%);
+            }
+            
+            &:active {
+                transform: scale3d(0.8,0.8,0.8);                
+            }
+
+            @include media-breakpoint-only(xs) {
+                padding: 5px 15px;
+            }
+            
+        }
+    }
+
+    .book-slider-wrapper {
+        overflow: hidden;
+        position: relative;        
+
+        ul.book-slider {
+            list-style: none;
+            margin: 0;
+            padding: 0;                
+            display: flex; 
+            transition: 1s;                     
+    
+            li.book-placeholder {                
+                padding: {
+                    left: 0;
+                    right: 30px;
+                };
+                display: flex;
+            }
+        }
+    }    
+}

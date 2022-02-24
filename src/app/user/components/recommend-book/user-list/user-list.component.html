@@ -1,0 +1,10 @@
+<div class="list-container">
+    <app-user-list-single-element 
+        *ngFor="let singleUserObj of users"
+        [book]="bookInstance"
+        [class.visible]="shouldPreviewElement(singleUserObj)"             
+        class="single-list-element"         
+        [user]="singleUserObj"
+        (clicked)="onUserListClicked($event)"        
+    ></app-user-list-single-element>
+</div>

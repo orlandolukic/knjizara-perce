@@ -1,0 +1,31 @@
+@import "variables";
+@import "bootstrap";
+
+.recommend-numbers-content {
+    font-size: 16px;                  
+    @include media-breakpoint-between(xs,xl) {
+        font-size: 14px;
+    }                
+   
+    .icon {
+        color: $color-star;
+    }
+
+    .text {
+        padding-left: 5px;
+        text-transform: uppercase;
+    }
+
+    .number {
+        padding-left: 10px;
+        font-size: 1.3em;
+        position: relative;
+        top: 2px;
+        color: $color-star;
+        font-weight: bold;
+        
+        @include media-breakpoint-between(xs,xl) {
+            top: 1px;
+        }  
+    }
+}

@@ -1,0 +1,26 @@
+
+.book-slider-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    transition: 1.2s;
+    transition-timing-function: cubic-bezier(0,.98,.91,1.01);
+
+    &.in-hiding {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .loader-ellipsis-wrapper {
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+}

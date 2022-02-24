@@ -1,0 +1,362 @@
+
+@import "variables";
+@import "bootstrap";
+
+.recommend-book-placeholder {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 2s;
+    display: none;
+    opacity: 0;
+
+    &.in-showing {
+        display: flex;    
+        animation-name: showModal;
+        animation-duration: 0.2s;
+        animation-fill-mode: forwards;           
+    }
+
+    &.show {
+        display: flex;   
+        opacity: 1;
+    }
+
+    &.in-hiding {
+        display: flex;
+        animation-name: hideModal;
+        animation-duration: 0.2s;
+        animation-fill-mode: forwards;     
+    }
+
+    .recommend-book-overlay {
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.7);
+        display: flex;  
+        z-index: 1;      
+
+        .recommend-book-loader {        
+            background: white;
+            margin: auto;
+            padding: 20px;
+            border-radius: 3px;
+        }
+    }
+
+    .recommend-book-column {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        &.recommend-book-column-statistics {
+
+            @include media-breakpoint-only(xs) {
+                justify-content: flex-start;
+            }
+
+            .statistics-placeholder {
+                @include media-breakpoint-only(xs) {
+                    justify-content: flex-start;
+                }
+
+                .statistics-number {
+                    @include media-breakpoint-only(xs) {
+                        width: 70%
+                    }   
+                }
+            }
+        }
+    }
+
+    .recommend-book-content {
+        position: absolute;
+        display: flex; 
+        flex-direction: column;       
+        background: white;
+        width: 700px;        
+        margin: auto;
+        transition: 0.2s;
+        opacity: 0;
+        visibility: hidden;
+        transform: scale3d(0.8,0.8,0.8);
+        z-index: 2;
+        border-radius: 3px;
+        -webkit-box-shadow: 5px 5px 17px -8px #000000; 
+        box-shadow: 5px 5px 17px -8px #000000;
+
+        // Add media query rulesets ...
+        @include media-breakpoint-only(xs) {
+            width: calc(100% - 20px);
+        }
+
+        &.show {
+            visibility: visible;
+            opacity: 1;
+            transform: scale3d(1,1,1);
+        }
+        
+        .statistics-placeholder {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .statistics-text {
+                text-transform: uppercase;
+                font-size: 0.95em;
+                letter-spacing: 0.4px;
+            }
+            .statistics-number {
+                padding-left: 10px;
+                color: $color-star;
+                font-weight: bold;
+                font-size: 1.5em;
+            }
+        }
+
+        .successful-message {
+            position: absolute;
+            margin: auto;
+            width: 320px;               
+            cursor: pointer;  
+            background-color: white;
+            box-shadow: 4px 5px 28px -15px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 4px 5px 28px -15px rgba(0,0,0,0.75);
+            -moz-box-shadow: 4px 5px 28px -15px rgba(0,0,0,0.75);
+
+            .content {
+                padding: {
+                    top: 30px;
+                    bottom: 30px;
+                };
+
+                .title {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+            }
+
+            // Add media queries here...
+            // @MediaQuery
+
+            .dismiss-slider-container {
+                width: 100%;
+                height: 7px;
+                background-color: lighten($color-primary, 40%);
+
+                &.start-transition {
+                    .slider {
+                        animation-name: sliderTimeout;
+                        animation-timing-function: linear;
+                        animation-fill-mode: forwards;
+                        animation-duration: 5s;
+                    }                    
+                }
+
+                .slider {
+                    width: 100%;
+                    height: 100%;                    
+                    background-color: $color-primary;                   
+                }                
+            }           
+            
+        }
+        // successful-message
+
+        .delete-message {
+            width: 450px;
+            background-color: white;
+            padding: {
+                top: 30px;
+                left: 30px;
+                right: 30px;
+                bottom: 15px;
+            };
+            border-radius: 2px;
+            box-shadow: 3px 2px 37px -14px rgba(0,0,0,0.75);
+            -webkit-box-shadow: 3px 2px 37px -14px rgba(0,0,0,0.75);
+            -moz-box-shadow: 3px 2px 37px -14px rgba(0,0,0,0.75);
+
+            @include media-breakpoint-only(xs) {
+                width: 305px;
+                padding: 15px;
+            }
+
+            .delete-message-question-area {
+                display: flex;
+                flex-direction: row;                
+                align-items: center;
+
+                > div:nth-child(2) {
+                    padding-left: 10px;
+                }
+
+                .question {
+                    font-weight: bold;
+                    font-size: 1.1em;
+                }
+            }
+
+            .buttons-placeholder {
+                justify-content: flex-end;
+            }
+        }
+
+        .recommend-book-header {
+
+            border-bottom: 1px solid rgb(218, 218, 218);
+            padding: {
+                top: 30px;
+                left: 30px;
+                right: 30px;
+                bottom: 15px;
+            };
+
+            @include media-breakpoint-only(xs) {
+                padding: {
+                    top: 15px;
+                    left: 15px;
+                    right: 15px;                    
+                }
+                font-size: 14px;
+            }
+
+            .header-title-placeholder {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                > div:nth-child(n+2) {
+                    padding-left: 10px;
+                }
+
+                .header-title-content {
+                    font-size: 1.3em;
+                    //font-weight: bold;
+                }
+            }
+
+            .close-icon {
+                transition: 0.2s;
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.8;
+                }
+
+                &:active {
+                    transform: scale3d(0.8,0.8,0.8);
+                }
+            }
+
+            .book-title {
+                font-size: 2em;
+                font-weight: bold;
+            }
+
+            .book-author {
+                margin-top: 5px;
+                color: $color-primary;
+                font-weight: bold;
+            }
+
+            .search-placeholder {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
+
+                
+
+                .search-input {                    
+                    padding-left: 15px;
+                    min-width: 40%;
+                }
+            }           
+        }
+        // header
+
+        .recommend-book-body {
+            display: flex;
+            min-height: 300px;
+            border-bottom: 1px solid rgb(218, 218, 218);
+
+            @include media-breakpoint-only(xs) {
+                height: 250px;
+                min-height: auto;
+            }
+        }
+
+        .recommend-book-footer {
+            padding: 15px 30px;
+
+            
+            @include media-breakpoint-only(xs) {
+                padding: {
+                    left: 10px;
+                    right: 10px;
+                }
+            }
+        }
+        // footer
+    }
+}
+
+@keyframes showModal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes showModal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hideModal {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes hideModal {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes sliderTimeout {
+    from { width: 100%; }
+    to { width: 0; }
+}
+
+@-webkit-keyframes sliderTimeout {
+    from { width: 100%; }
+    to { width: 0; }
+}

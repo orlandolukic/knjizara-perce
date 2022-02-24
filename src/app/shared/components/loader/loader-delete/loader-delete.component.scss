@@ -1,0 +1,42 @@
+
+@import "variables";
+@import "bootstrap";
+
+.delete-message {
+    width: 450px;
+    background-color: white;
+    padding: {
+        top: 30px;
+        left: 30px;
+        right: 30px;
+        bottom: 15px;
+    };
+    border-radius: 2px;
+    box-shadow: 3px 2px 37px -14px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 3px 2px 37px -14px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 2px 37px -14px rgba(0,0,0,0.75);
+
+    @include media-breakpoint-only(xs) {
+        width: 305px;
+        padding: 15px;
+    }
+
+    .delete-message-question-area {
+        display: flex;
+        flex-direction: row;                
+        align-items: center;
+
+        > div:nth-child(2) {
+            padding-left: 10px;
+        }
+
+        .question {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    }
+
+    .buttons-placeholder {
+        justify-content: flex-end;
+    }
+}

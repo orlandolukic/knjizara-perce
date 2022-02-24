@@ -1,0 +1,83 @@
+
+@import "variables";
+@import "bootstrap";
+
+:host {
+    display: none;
+    &.visible {
+        display: block;
+    }
+}
+
+
+.user-list-single-element-container {
+        
+    display: flex;
+    flex-direction: row;
+    $border-color: lighten( $color-faded, 45% );
+    padding: 7px 20px;
+    border: {        
+        bottom: 1px solid $border-color;
+    };
+    transition: 0.2s;
+    cursor: pointer;
+    justify-content: space-around;
+
+    @include media-breakpoint-only(xs) {
+        padding: {
+            left: 5px;
+            right: 5px;
+        }
+    }
+
+    &:hover {
+        background-color: rgb(250, 250, 250);
+    }
+
+    &:active {
+        background-color: rgb(245, 245, 245);
+    }
+
+    &.selected {
+        background-color: rgb(226, 255, 226);
+    }
+
+    .row {
+        align-items: center;
+    }
+
+    .username {
+        color: $color-primary;
+        opacity: 0.6;
+    }
+
+    &.is-initially-recommended {
+        background-color: rgb(255, 245, 231);
+        cursor: initial;
+    }
+
+    .selection-icon {
+        opacity: 0.3;
+        &.is-selected {
+            opacity: 1;
+            color: green;
+
+            &.is-initially-recommended {
+                opacity: 0.6;
+            }
+        }        
+    }
+
+    .trash-container {
+        padding: 7px 10px;
+        display: inline-flex;
+        cursor: pointer;
+        
+        &:hover {
+            background-color: rgb(255, 219, 219);
+        }
+        &:active {
+            background-color: rgb(255, 197, 197);
+        }
+    }
+}

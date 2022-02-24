@@ -1,0 +1,31 @@
+<div class="user-list-single-element-container" 
+    [class.selected]="user.isRecommended" 
+    (click)="onClick($event)"
+    [class.is-initially-recommended]="isInitiallyRecommended"
+>
+    <div class="row full-width">
+        <div class="col-1 col-sm-1 col-xs-1">
+            <div class="selection-icon" [class.is-initially-recommended]="isInitiallyRecommended" [class.is-selected]="selectionIconChecked">
+                <fa-icon [icon]="user.isRecommended ? faCheckFull : faCheckEmpty" size="lg"></fa-icon>
+            </div>
+        </div>
+        <div class="col-8 col-sm-4 col-xs-1">
+            <app-user-details [user]="user.buyer" [lightenUsername]="0.6"></app-user-details>                
+        </div>
+        <div class="col-sm-5 col-xs-1 d-none d-sm-flex">
+            <div class="username">
+                @{{ user.buyer.getUsername() }}
+            </div>
+        </div>
+        <div class="col-3 col-sm-2 col-xs-1 text-right">
+            <div *ngIf="isInitiallyRecommended" class="trash-container" 
+                matTooltip="Brisanje preporuke" 
+                matTooltipPosition="left"
+                matTooltipClass="font-s-14"
+                (click)="deleteRecommendation($event)"
+                >
+                <fa-icon [icon]="faTrash" size="sm" class="color-danger"></fa-icon>
+            </div>
+        </div>
+    </div>
+</div>

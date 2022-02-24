@@ -1,0 +1,31 @@
+<app-loader 
+    #loader
+    overlayColor="dark" 
+    [overlayOpacity]="overlayOpacity!" 
+    [zIndexPlaceholder]="999"
+
+    (overlayClick)="overlayClicked()"
+    >
+    <div *ngIf="showContent" loader-content class="delete-message">
+        <div class="delete-message-question-area">
+            <div class="icon">
+                <fa-icon [icon]="faQuestionMark" class="color-danger" size="2x"></fa-icon>
+            </div>
+            <div class="question">
+                {{textToDisplay}}
+            </div>
+        </div>
+        <div class="buttons-placeholder margin-t-20">
+            <div class="button-placeholder">
+                <app-button (buttonClick)="confirmDeleteRecommendation($event)" [icon]="faCheck" size="xs" color="success" >
+                    <div text>{{ confirmButtonText }}</div>
+                </app-button>
+            </div>
+            <div class="button-placeholder">
+                <app-button (buttonClick)="declineDeleteRecommendation($event)" [icon]="faTimes" size="xs" color="danger" >
+                    <div text>{{ declineButtonText }}</div>
+                </app-button>
+            </div>
+        </div>
+    </div>
+</app-loader>

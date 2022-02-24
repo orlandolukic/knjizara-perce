@@ -1,0 +1,94 @@
+<div class="login-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 login-column">
+                <div class="content">
+                    <div class="text-center margin-t-20">
+                        <h1 class="title text-italic">Zajedno možemo sve!</h1>
+                    </div>
+                    <div class="logo margin-t-40">
+                        <img src="assets/images/logo.png" />
+                    </div>
+                    <div class="text-center margin-t-20 margin-b-30">
+                        <h1>Knjižara</h1>
+                        <h1 class="logo-sub">
+                            PERCE
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 login-column">
+                <div *ngIf="isLoading" class="loading-spinner">
+                    <fa-icon [icon]="faSpinner" [spin]="true" size="2x"></fa-icon>
+                </div>
+                <div class="content">
+                    <div class="margin-t-20">
+                        <div class="title text-center text-bold">
+                            Prijavljivanje
+                        </div>
+                    </div>
+
+                    <div *ngIf="errorVisible" class="margin-t-20 error-placeholder">
+                        <div class="icon">
+                            <fa-icon [icon]="faTimesCircle" size="lg"></fa-icon>
+                        </div>
+                        <div class="text">
+                            {{ text }}
+                        </div>
+                    </div>
+
+                    <div class="margin-t-20">
+                        <div class="font-s-26">Korisničko ime</div>
+                        <div class="full-width margin-t-10">
+                            <input #username (keyup)="keyup('username', $event)" class="theme-input full-width username" type="text" placeholder="Molimo unesite Vaše korisničko ime">
+                        </div>
+                    </div>
+
+                    <div class="margin-t-20">
+                        <div class="font-s-26">Lozinka</div>
+                        <div class="full-width margin-t-10">
+                            <input #password (keyup)="keyup('password', $event)" class="theme-input full-width password" type="password" placeholder="Molimo unesite Vašu lozinku">
+                        </div>
+                    </div>
+
+                    <div class="margin-t-30 text-center">
+                        <button #loginButton (click)="login()" mat-raised-button color="primary" class="login-button">
+                            <fa-icon [icon]="faSignInAlt" size="lg"></fa-icon>
+                            <span class="text">
+                                Prijava na sistem
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="margin-t-30 text-center">
+                        <div class="row">
+                            <div class="col-6 text-right">
+                                Nemate nalog?
+                            </div>
+                            <div class="col-6 text-left">
+                                <span class="solution">
+                                    <a routerLink="/register">Registrujte se</a>
+                                </span>
+                            </div>          
+                        </div>                                      
+                    </div>
+
+                    <div class="margin-t-10 margin-b-20 text-center">
+                        <div class="row">
+                            <div class="col-6 text-right">
+                                Zaboravili ste lozinku?
+                            </div>
+                            <div class="col-6 text-left">
+                                <span class="solution">
+                                    <a routerLink="/forgot-password">Oporavak lozinke</a>
+                                </span>
+                            </div>          
+                        </div>                           
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

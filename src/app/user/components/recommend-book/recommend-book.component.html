@@ -1,0 +1,143 @@
+<div class="recommend-book-placeholder" [class.in-showing]="inShowing" [class.in-hiding]="inHiding" [class.show]="isShowing">
+    <div (click)="onClick('decline', $event)" class="recommend-book-overlay">
+        <div class="recommend-book-loader">
+            <fa-icon class="color-primary" [icon]="faCircleONotch" [spin]="true" size="3x"></fa-icon>
+        </div>
+    </div>        
+    <div class="recommend-book-content" [class.show]="isContentVisible">
+        <app-loader #loader [show]="showTemporaryLoader" overlayColor="dark" [overlayOpacity]="0.5">
+            <div *ngIf="showSuccessfulMessage" (click)="closeMessage()" class="successful-message" [style.z-index]="loader.zIndexContent+1">
+                <div class="dismiss-slider-container" [class.start-transition]="successfulMessageStartTransition">
+                    <div class="slider"></div>
+                </div>
+                <div class="container-fluid content">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 text-center">
+                                <fa-icon [icon]="faSuccessfulIcon" class="color-success" size="3x"></fa-icon>
+                            </div>
+                        </div>
+                        <div class="row margin-t-20">
+                            <div class="col-12 col-sm-12 text-center">
+                                <div class="title">{{successfulMessage}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-loader>
+
+        <app-loader [show]="showDeleteModal" overlayColor="dark" [overlayOpacity]="0.5" classForContent="delete-message">            
+            <div *ngIf="showDeleteModalContent" loader-content class="delete-message">
+                <div class="delete-message-question-area">
+                    <div class="icon">
+                        <fa-icon [icon]="faQuestionMark" class="color-danger" size="2x"></fa-icon>
+                    </div>
+                    <div class="question">
+                        Da li ste sigurni da želite da obrišete preporuku?
+                    </div>
+                </div>
+                <div class="buttons-placeholder margin-t-20">
+                    <div class="button-placeholder">
+                        <app-button (buttonClick)="confirmDeleteRecommendation($event)" [icon]="faCheck" size="xs" color="success" >
+                            <div text>Potvrdite brisanje</div>
+                        </app-button>
+                    </div>
+                    <div class="button-placeholder">
+                        <app-button (buttonClick)="declineDeleteRecommendation($event)" [icon]="faTimes" size="xs" color="danger" >
+                            <div text>Odustanite</div>
+                        </app-button>
+                    </div>
+                </div>
+            </div>
+        </app-loader>
+
+        <div class="recommend-book-header">
+            <div class="row">
+                <div class="col-8 col-md-5 col-sm-12">
+                    <div class="header-title-placeholder">
+                        <div>
+                            <fa-icon class="color-success" [icon]="faBookmark" size="2x"></fa-icon>
+                        </div>
+                        <div class="header-title-content">Preporučite knjigu</div>
+                    </div>
+                </div>
+                <div class="col-4 recommend-book-column d-flex d-sm-none">
+                    <fa-icon (click)="onClick('decline', $event)" class="close-icon color-faded" [icon]="faTimes" size="2x"></fa-icon>
+                </div>
+                <div class="col-8 col-md-6 col-sm-9 recommend-book-column recommend-book-column-statistics mt-3 mt-md-0">
+                    <div class="statistics-placeholder">
+                        <div class="statistics-text">
+                            Trenutni broj preporuka                            
+                        </div>
+                        <div class="statistics-number">{{ viewRecommendationNumber }}</div>
+                    </div>
+                </div>
+                <div class="col-4 col-md-1 col-sm-3 recommend-book-column mt-3 mt-md-0 d-none d-sm-block">
+                    <fa-icon (click)="onClick('decline', $event)" class="close-icon color-faded" [icon]="faTimes" size="2x"></fa-icon>
+                </div>
+            </div>
+            <div class="row mt-2 mt-md-3">
+                <div class="col-12 col-md-8 col-sm-12">
+                    <div class="book-title">
+                        {{ viewTitle }}
+                    </div>
+                    <div class="book-author">
+                        {{ viewAuthor }}
+                    </div>
+                </div>
+                <div *ngIf="isSponsored" class="col-12 col-md-4 col-sm-12 recommend-book-column">
+                    <app-sponsored-star></app-sponsored-star>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-right">
+                    <div class="search-placeholder mt-2 mt-md-0">
+                        <div class="search-icon">
+                            <fa-icon [icon]="faSearch" size="lg"></fa-icon>
+                        </div>
+                        <div class="search-input">
+                            <input #searchbox (keyup)="search($event)" class="theme-input full-width searchbox" type="text" placeholder="Pretraga korisnika...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="recommend-book-body">
+            <app-user-list  
+                [book]="bookInstance"               
+                [users]="recommendationList"
+                [search]="searchEvent.asObservable()" 
+                (changedNumberOfSelectedRecommendations)="changedRecommendationsNumber($event)"
+            ></app-user-list>
+        </div>
+        <div class="recommend-book-footer">
+            <div class="row">
+                <div class="col-12 col-md-6 col-sm-6">
+                    <div class="statistics-placeholder">
+                        <div class="statistics-text">
+                            Selektovano korisnika              
+                        </div>
+                        <div class="statistics-number">{{ viewSelectedRecommendations }}</div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-sm-6 recommend-book-column">
+                    <div class="buttons-placeholder mt-2 mt-md-0 mt-sm-2">
+                        <div class="button-placeholder">
+                            <app-button [disabled]="confirmButtonDisabled" (buttonClick)="onClick('confirm', $event)" [icon]="faCheck" size="xs" color="success" >
+                                <div text>Potvrdite preporuke</div>
+                            </app-button>
+                        </div>
+                        <div class="button-placeholder">
+                            <app-button [disabled]="false" (buttonClick)="onClick('decline', $event)" [icon]="faTimes" size="xs" color="danger" >
+                                <div text>Odustanite</div>
+                            </app-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

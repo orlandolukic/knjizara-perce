@@ -1,0 +1,30 @@
+<div #bookSliderPlaceholder class="book-slider-placeholder"> 
+    <div (click)="sliderSlidePrevious()" *ngIf="allowSlideshow" class="scroll-button scroll-left-button">
+        <div class="icon">
+            <fa-icon [icon]="faChevronLeft" size="2x"></fa-icon>
+        </div>
+    </div>
+    <div #bookSliderWrapper class="book-slider-wrapper">
+        <app-loader-for-books [classes]="loaderClasses"></app-loader-for-books>
+        <ul (mouseenter)="sliderMouseEntered($event)" 
+            (mouseleave)="sliderMouseLeaved($event)" 
+            #bookslider 
+            class="book-slider" 
+            [style]="{'width': ((width+30) * books.length) + 'px'}" 
+            [ngStyle]="bookSliderStyles"
+            >
+            <li *ngFor="let book of books" class="book-placeholder" [style]="{'width': width + 'px'}">
+                <app-book-slider-single-book 
+                    [book]="book" 
+                    (recommend)="recommendBook($event)"
+                    class="full-width"
+                ></app-book-slider-single-book>                
+            </li>            
+        </ul>
+    </div>
+    <div (click)="sliderSlideNext()" *ngIf="allowSlideshow" class="scroll-button scroll-right-button">
+        <div class="icon">
+            <fa-icon [icon]="faChevronRight" size="2x"></fa-icon>
+        </div>
+    </div>
+</div>

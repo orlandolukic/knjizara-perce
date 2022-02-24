@@ -1,0 +1,24 @@
+<div
+     *ngIf="show" class="loading-placeholder"     
+    [style.z-index]="zIndexPlaceholder"
+    [class.loading-placeholder-dark]="overlayColor === 'dark'"
+    [class.loading-placeholder-light]="overlayColor === 'light'"
+    [class.fixed]="fixed"
+    [class.show-with-transition]="showWithTransition"
+    [class.hide-with-transition]="hideWithTransition"
+    [class.show-regular]="!showWithTransition"
+    [style.animation-duration]="(hideWithTransition ? transitionDelayHide : transitionDelayShow) + 'ms'"
+    >
+    <div class="loading-overlay" 
+        [style.z-index]="zIndexOverlay" 
+        [style.opacity]="overlayOpacity" 
+        (click)="hideLoader()"       
+        ></div>
+    <div class="loading-content" [style.z-index]="zIndexContent">
+        <fa-icon [icon]="faCircleONotch" [spin]="true" size="3x"></fa-icon>
+    </div>
+    <ng-content></ng-content>
+    <div class="loading-user-content">        
+        <ng-content select="[loader-content]"></ng-content>     
+    </div>
+</div>
