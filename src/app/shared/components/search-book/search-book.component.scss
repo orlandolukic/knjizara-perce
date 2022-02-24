@@ -1,0 +1,39 @@
+
+@import "variables";
+@import "bootstrap";
+
+.search-placeholder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    &.full-width {
+        width: 100%;
+        .search-input {
+            width: 100%;
+            input {
+                width: 100%;
+            }
+        }
+    }
+    
+    @include media-breakpoint-only(xs) {
+        margin-top: 10px;
+    }
+
+    .search-icon {
+        color: $color-primary;
+    }
+    
+    .search-input {
+        padding-left: 15px;
+        input {
+            width: 300px;
+            @include media-breakpoint-only(xs) {
+                width: 220px;
+                margin-right: 20px;                
+            }            
+        }
+    }
+}

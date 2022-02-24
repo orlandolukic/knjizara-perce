@@ -1,0 +1,14 @@
+<div class="search-placeholder"
+    [class.full-width]="width === 'full-width'"
+>
+    <div class="search-icon">
+        <fa-icon [icon]="faSearch" size="2x"></fa-icon>
+    </div>
+    <div class="search-input">
+        <input #searchbox (keyup.Enter)="search($event)" 
+        class="theme-input full-width searchbox" type="text" 
+        placeholder="Pretražite knjigu ili autora"
+        [value]="value"
+        >
+    </div>
+</div>

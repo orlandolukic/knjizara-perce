@@ -20,6 +20,7 @@ import { RecommendNumbersContentComponent } from './components/recommend-numbers
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { LoaderDeleteComponent } from './components/loader/loader-delete/loader-delete.component';
 import { LoaderSuccessfulComponent } from './components/loader/loader-successful/loader-successful.component';
+import { SearchBookComponent } from './components/search-book/search-book.component';
 
 
 
@@ -38,7 +39,8 @@ import { LoaderSuccessfulComponent } from './components/loader/loader-successful
     RecommendNumbersContentComponent,
     UserDetailsComponent,
     LoaderDeleteComponent,
-    LoaderSuccessfulComponent
+    LoaderSuccessfulComponent,
+    SearchBookComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ import { LoaderSuccessfulComponent } from './components/loader/loader-successful
     RecommendNumbersContentComponent,
     UserDetailsComponent,
     LoaderDeleteComponent,
-    LoaderSuccessfulComponent
+    LoaderSuccessfulComponent,
+    SearchBookComponent
   ],
   providers: [
     TitleService,    

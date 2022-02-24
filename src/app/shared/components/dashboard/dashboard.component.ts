@@ -1,7 +1,7 @@
 import { AfterViewChecked, AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { User } from 'data/users/user';
 import { UserDataManipulation } from 'data/users/input.data';
-import { faCaretDown, faCaretUp, faCog, faFileAlt, faHome, faSignOutAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faCaretDown, faCaretUp, faCog, faFileAlt, faHome, faSignOutAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { LoadService } from 'src/app/shared/services/load-service';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   faFileAlt: IconDefinition = faFileAlt;
   faConfig: IconDefinition = faCog;
   faSignOut: IconDefinition = faSignOutAlt;
+  faBook: IconDefinition = faBook;
   link: string;
   
   constructor(

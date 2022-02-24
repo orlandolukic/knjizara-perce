@@ -24,6 +24,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { AllBooksListingComponent } from './components/all-books-listing/all-books-listing.component';
 import { RecommendationsResolver } from './recommendations/recommendations-resolver';
 import { SingleRecommendationComponent } from './recommendations/single-recommendation/single-recommendation.component';
+import { AllBooksResolver } from './all-books/all-books-resolver';
 
 
 
@@ -54,7 +55,8 @@ import { SingleRecommendationComponent } from './recommendations/single-recommen
     
   ],
   providers: [
-    RecommendationsResolver
+    RecommendationsResolver,
+    AllBooksResolver
   ]
 })
 export class UserModule { }

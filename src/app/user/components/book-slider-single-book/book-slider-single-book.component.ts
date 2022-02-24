@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { faBookmark, faBookOpen, faStar, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Book } from 'data/book/book';
 import { BookRecommendationController } from 'data/book/recommendation/book-recommendation-controller';
+import { PathResolver } from 'data/path-resolver';
 import { Subscription } from 'rxjs';
 import { RecommendBookService } from 'src/app/shared/services/modals/recommend-book-service';
 
@@ -39,6 +40,10 @@ export class BookSliderSingleBookComponent implements OnInit, OnDestroy {
 
   goRecommendBook(): void {
     this.recommend.emit(this.book);
+  }
+
+  getBookLink(): string {
+    return PathResolver.getPathForBook(this.book);
   }
 
 }

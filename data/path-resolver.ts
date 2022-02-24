@@ -7,6 +7,9 @@ export class PathResolver {
     public static PROFILE_PICTURE_DIRECTORY: string = "assets/images/user-images/";
     public static BOOK_PICTURE_DIRECTORY: string = "assets/images/books/";
 
+    public static getUserURLPrefix(): string { return "/user/"; }
+    public static getAdminURLPrefix(): string { return "/admin/"; }
+
     public static getPathForBook(book: Book): string {
         let s: string = "/";
         let user: User = UserDataManipulation.getLoggedInUser();

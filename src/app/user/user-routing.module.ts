@@ -14,6 +14,7 @@ import { SearchBooksComponent } from './search-books/search-books.component';
 import { AllBooksComponent } from './all-books/all-books.component';
 import { RecommendationsResolver } from './recommendations/recommendations-resolver';
 import { FinalResolver } from '../shared/utilities/final-resolver';
+import { AllBooksResolver } from './all-books/all-books-resolver';
 
 const routes: Routes = [
   {
@@ -38,14 +39,17 @@ const routes: Routes = [
           },
           {
             path: 'all-books',
-            component: AllBooksComponent      
+            component: AllBooksComponent,
+            resolve: {
+              start: AllBooksResolver
+            }    
           },
           {
             path: 'book/:id',
             component: BookComponent        
           },
           {
-            path: 'search-books',
+            path: 'search-books/:searchTerm',
             component: SearchBooksComponent
           },
           {

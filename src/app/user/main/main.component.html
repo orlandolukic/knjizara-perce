@@ -50,14 +50,7 @@
             <div class="font-s-20 color-faded">Pogledajte našu ponudu knjiga</div>
         </div>
         <div class="col-12 col-sm-6 col-lg-6">
-            <div class="search-placeholder">
-                <div class="search-icon">
-                    <fa-icon [icon]="faSearch" size="2x"></fa-icon>
-                </div>
-                <div class="search-input">
-                    <input #searchbox (keyup)="search($event)" class="theme-input full-width searchbox" type="text" placeholder="Pretražite knjigu ili autora">
-                </div>
-            </div>
+            <app-search-book (searched)="search($event)"></app-search-book>
         </div>
     </div>
     <div class="row margin-t-20">

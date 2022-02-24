@@ -1,1 +1,28 @@
-ALL BOOKS WORK
+<div class="container mt-md-4">
+    <div class="row">
+        <div class="col-12 col-sm-6 d-flex flex-column align-items-start justify-content-center">
+            <div class="title-section">
+                <div class="icon">
+                    <a routerLink="/user">
+                        <fa-icon class="color-primary" [icon]="faHome" size="2x"></fa-icon>
+                    </a>
+                </div>
+                <div class="icon">
+                    <fa-icon [icon]="faChevronRight" class="color-faded" size="sm"></fa-icon>
+                </div>
+                <div class="title">
+                    Sve knjige
+                </div>                
+            </div>
+            <div class="font-s-20 color-faded mt-2">Bogat asortiman, knjige po Vašem ukusu</div>            
+        </div>
+
+        <div class="col-12 col-sm-6 d-flex justify-content-sm-end align-items-sm-center mt-4">
+            <app-search-book (searched)="search($event)"></app-search-book>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <app-all-books-listing></app-all-books-listing>
+    </div>
+</div>

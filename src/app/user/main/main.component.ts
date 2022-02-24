@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faBook, faFileAlt, faGrinStars, faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { BookRecommendationController } from 'data/book/recommendation/book-recommendation-controller';
+import { SearchBook } from 'data/interfaces/search-book';
+import { PathResolver } from 'data/path-resolver';
 import { TitleService } from 'src/app/shared/services/title-service';
 
 @Component({
@@ -18,7 +21,8 @@ export class MainComponent implements OnInit {
   myRecommendationsNumber: number;
 
   constructor(
-    private titleService: TitleService
+    private titleService: TitleService,
+    private router: Router
   ) { 
     this.myRecommendationsNumber = 0;
     this.titleService.changeTitle("");
@@ -28,10 +32,8 @@ export class MainComponent implements OnInit {
     this.myRecommendationsNumber = BookRecommendationController.getAllRecommendationsForUser().length;
   }
 
-  search(event: KeyboardEvent): void {    
-    if ( event.key === "Enter" ) {
-      console.log("search");
-    }
+  search(searched: SearchBook): void {        
+    this.router.navigate([PathResolver.getUserURLPrefix() + "search-books/" + searched.searchedValue]);
   }
 
 }
