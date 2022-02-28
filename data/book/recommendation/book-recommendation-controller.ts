@@ -89,16 +89,16 @@ export class BookRecommendationController {
 
     public static removeBookRecommendation(val: {book: Book, forUser: UserBasicData}): void {          
         if ( !val )
-            return;
+            return;             
 
         let x: string|null = localStorage.getItem('bookRecommendations');
         let recommendations: BookRecommendation[];        
         if ( x ) {
             recommendations = JSON.parse(x);
-            recommendations = recommendations.filter((elem: BookRecommendation) => {                
+            recommendations = recommendations.filter((elem: BookRecommendation) => {                                
                 if ( elem.bookID === val.book.id && 
-                    val.forUser.username === elem.usernameSender && 
-                    elem.usernameReceiver === UserDataManipulation.getLoggedInUser().getUsername() ) {                        
+                    val.forUser.username === elem.usernameReceiver && 
+                    elem.usernameSender === UserDataManipulation.getLoggedInUser().getUsername() ) {                                          
                         return false;
                     }
                 return true;

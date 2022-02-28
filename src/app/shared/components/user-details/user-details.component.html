@@ -4,7 +4,10 @@
     </div>
     <div class="user-full-name">
         {{ getFullName() }}
-        <div #username class="username d-block mt-1">
+        <div #insteadUsernameContent>
+            <ng-content select="[insteadUsername]"></ng-content>
+        </div>        
+        <div #username *ngIf="!insteadUsername" class="username d-block mt-1">
             @{{ getUsername() }}
         </div>   
     </div>                

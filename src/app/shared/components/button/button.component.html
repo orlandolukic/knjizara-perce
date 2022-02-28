@@ -1,8 +1,10 @@
 
 <div class="button">
-    <button mat-flat-button (click)="onClick($event)" [disabled]="disabled" class="button-with-icon theme-button" [ngClass]="buttonClasses">
+    <button mat-flat-button (click)="onClick($event)" [disabled]="disabled" class="button-with-icon theme-button" 
+    [class.is-icon-alone]="!hasContent"
+    [ngClass]="buttonClasses">
         <div class="icon"><fa-icon [icon]="icon"></fa-icon></div>
-        <div class="text">
+        <div #textSection *ngIf="hasContent" class="text">
             <ng-content select="[text]"></ng-content>
         </div>
     </button>

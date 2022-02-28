@@ -221,6 +221,19 @@ export class BookDataManipulation {
         return booksArr;
     }
 
+    public static getBookBySlug(slug: string): Book | null {
+        let b: Book|null = null;
+        let books: any = localStorage.getItem('books');
+        books = JSON.parse(books);
+        for( let i = 0; i<books.length; i++ ) {
+            if ( books[i].slug === slug ) {
+                b = books[i] as Book;
+                break;
+            }
+        }
+        return b;
+    }
+
     public static getBookById(id: number): Book|null {
         let b: Book|null = null;
         let books: any = localStorage.getItem('books');

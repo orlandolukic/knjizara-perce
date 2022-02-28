@@ -1,9 +1,9 @@
 <div class="empty-placeholder">                    
     <div class="empty-content">
         <div class="icon">
-            <fa-icon [icon]="icon" size="8x"></fa-icon>
+            <fa-icon [icon]="icon" [class]="iconColor ? 'color-' + iconColor : ''" [size]="iconSize"></fa-icon>
         </div>
-        <div class="title mt-4">
+        <div class="title mt-4" [class]="titleColor ? 'color-' + titleColor : ''">
             {{title}}
         </div>
         <div class="subtitle mt-2">

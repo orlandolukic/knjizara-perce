@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -6,7 +6,7 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   // Inputs from parent.
   @Input() icon: IconDefinition;
@@ -16,12 +16,17 @@ export class ButtonComponent implements OnInit {
 
   // Outputs to parent.
   @Output() buttonClick: EventEmitter<MouseEvent>;
+  @ViewChild('textSection', {static: false, read: ElementRef}) textSection: ElementRef;
 
   buttonClasses: string[];
+  hasContent: boolean;
 
-  constructor() { 
+  constructor(
+    private cdr: ChangeDetectorRef
+  ) { 
     this.buttonClick = new EventEmitter<MouseEvent>();  
     this.disabled = false;  
+    this.hasContent = true;
   }
 
   ngOnInit(): void {
@@ -36,6 +41,15 @@ export class ButtonComponent implements OnInit {
     this.buttonClasses = [];
     this.buttonClasses.push( 'theme-button-' + this.color );
     this.buttonClasses.push( 'theme-button-' + this.size );
+  }
+
+  ngAfterContentInit(): void {
+    
+  }
+
+  ngAfterViewInit(): void {
+    this.hasContent = this.textSection.nativeElement.children.length > 0;
+    this.cdr.detectChanges();
   }
 
   onClick(event: MouseEvent): void {        

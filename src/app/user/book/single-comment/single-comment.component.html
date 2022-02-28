@@ -1,0 +1,41 @@
+<div *ngIf="isMyComment" class="row my-comment">
+    <div class="col-12 col-sm-12 col-md-2">
+        MOJ KOMENTAR
+    </div>
+    <div class="d-none d-md-flex d-sm-flex col-sm-12 col-md-2 offset-md-8">
+        AKCIJE
+    </div>
+</div>
+<div class="row">
+    <div class="comment-creator col-md-2 col-12 col-sm-12">
+        <app-user-details [user]="comment.user">
+            <div insteadUsername>
+                <div class="star-placeholder">
+                    <div class="star-icon">
+                        <fa-icon [icon]="faStar" class="color-star" size="2x"></fa-icon>
+                    </div>
+                    <div class="star-rating">{{comment.rating}}</div>
+                </div>
+            </div>
+        </app-user-details>
+    </div>
+    <div class="comment-text col-md-8 col-12 col-sm-12">
+        {{comment.text}}
+    </div>
+    <div class="comment-date-with-options col-md-2 col-12 col-sm-12">
+        <div class="date">
+            {{getDateForComment()}}
+        </div>
+        <div *ngIf="isMyComment" class="options">
+            <div class="button edit-button">
+                <app-button [icon]="faEdit" color="success" size="xs" 
+                    matTooltip="Izmena komentara" matTooltipPosition="below" matTooltipClass="font-s-14"></app-button>
+            </div>
+            <div class="button delete-button">
+                <app-button [icon]="faTrash" color="danger" size="xs"
+                    matTooltip="Brisanje komentara" matTooltipPosition="below" matTooltipClass="font-s-14"></app-button>
+            </div>
+        </div>
+    </div>
+</div>
+

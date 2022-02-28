@@ -5,6 +5,7 @@ import { BookRecommendationController } from 'data/book/recommendation/book-reco
 import { SingleRecommendation, SingleRecommendationDetails, SingleRecommendationToDelete } from 'data/interfaces/single-recommendation';
 import { PathResolver } from 'data/path-resolver';
 import { UserBasicData } from 'data/users/user-basic-data';
+import { Utilities } from 'data/utilities';
 
 @Component({
   selector: 'div[app-single-recommendation]',
@@ -59,15 +60,7 @@ export class SingleRecommendationComponent implements OnInit {
   }
 
   printDate(d: Date): string {
-    let s: string = "";
-    let date: Date = new Date(d);
-    if ( date.getDate() < 10 )
-      s += "0";
-    s += date.getDate() + ".";
-    if ( date.getMonth() + 1 < 10 ) 
-      s += "0";
-    s += (date.getMonth() + 1) + "." + date.getFullYear() + ".";
-    return s;
+    return Utilities.printDate(d);
   }
 
   printTime(d: Date): string {

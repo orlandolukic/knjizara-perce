@@ -1,0 +1,60 @@
+
+@import "variables";
+@import "bootstrap";
+
+:host {
+    display: flex;   
+    flex-direction: column; 
+    width: 100%;
+    padding: 10px 15px;
+
+    > .row {
+        width: 100%;
+        display: flex;
+    }
+
+    &.even {
+        background-color: white;
+    }
+
+    &:nth-child(n) {
+        border-bottom: 1px solid lighten($color-faded, 60%);
+    }
+
+    .my-comment {
+        font-size: 0.8em;
+        padding: 2px 0;
+        color: $color-star;
+        font-weight: bold;
+    }
+
+    .star-placeholder {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 3px;
+
+        .star-rating {
+            padding-left: 10px;
+            font-size: 1.8em;
+        }
+    }
+
+    .comment-text {
+        line-height: 25px;
+    }
+
+    .comment-date-with-options {
+        font-size: 1.1em;
+
+        .options {
+            display: flex;
+            flex-direction: row;
+            margin-top: 5px;
+
+            .delete-button {
+                margin-left: 10px;
+            }
+        }
+    }
+}

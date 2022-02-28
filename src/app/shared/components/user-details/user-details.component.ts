@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { PathResolver } from 'data/path-resolver';
 import { User } from 'data/users/user';
 import { UserBasicData } from 'data/users/user-basic-data';
@@ -8,7 +8,7 @@ import { UserBasicData } from 'data/users/user-basic-data';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss']
 })
-export class UserDetailsComponent implements OnInit, AfterViewInit {
+export class UserDetailsComponent implements OnInit, AfterViewInit, AfterContentInit {
 
   private static PATH_TO_IMAGES: string = PathResolver.PROFILE_PICTURE_DIRECTORY;
 
@@ -18,17 +18,31 @@ export class UserDetailsComponent implements OnInit, AfterViewInit {
   @Input()
   lightenUsername?: number;
 
-  @ViewChild('username', {static: true}) username: ElementRef;
+  @ViewChild('username', {static: false, read: ElementRef}) username: ElementRef;
+  @ViewChild('insteadUsernameContent', {static: true, read: ElementRef}) insteadUsernameContent: ElementRef;  
+  insteadUsername: boolean;
 
-  constructor() { 
-    this.lightenUsername = 0;
+  constructor(
+    private cdr: ChangeDetectorRef
+  ) { 
+    this.lightenUsername = 0.3;
+    this.insteadUsername = false;
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {        
+    
   }
 
   ngAfterViewInit(): void {
-      this.username.nativeElement.style = "opacity: " + (1 - this.lightenUsername!);
+     
+  }
+
+  ngAfterContentInit(): void {
+    this.insteadUsername = this.insteadUsernameContent.nativeElement.children.length > 0;    
+    if ( !this.insteadUsername ) {      
+      this.cdr.detectChanges();
+      this.username.nativeElement.style = "opacity: " + (1 - this.lightenUsername!);      
+    }
   }
 
   getUserPictureURL(): string {

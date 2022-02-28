@@ -16,6 +16,10 @@
     // Paddings
     &.theme-button-xs {
         padding: 0px 15px;
+
+        &.is-icon-alone {
+            padding: 0px 10px;
+        }
     }
 
     &.theme-button-sm {
@@ -58,6 +62,7 @@
     &.button-with-icon {
         display: flex;
         flex-direction: row;
+        justify-content: center;
     
         & > div {
             display: flex;        
@@ -66,11 +71,12 @@
         .text {
             padding-left: 10px;
         }
-    
+
         .mat-button-wrapper {
             display: flex;
-            flex-direction: row;
-        }
+            flex-direction: row;        
+        } 
+        
     }
 
 }

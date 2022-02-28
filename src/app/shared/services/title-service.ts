@@ -19,7 +19,7 @@ export class TitleService {
         if ( x === "" )             
             this.titleServiceImpl.setTitle(this.titlePrefix);
         else
-            this.titleServiceImpl.setTitle(this.titlePrefix + " - " + x);
+            this.titleServiceImpl.setTitle(x + " | " + this.titlePrefix);
     }
 
 }

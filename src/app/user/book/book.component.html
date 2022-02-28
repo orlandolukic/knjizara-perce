@@ -1,1 +1,191 @@
-<p>book works!</p>
+<div class="container mt-md-4">
+    <div class="row">
+        <div class="col-md-8 col-12">
+            <div class="title-section">
+                <div class="icon">
+                    <a routerLink="/user">
+                        <fa-icon class="color-primary" [icon]="faHome" size="2x"></fa-icon>
+                    </a>
+                </div>
+                <div class="icon">
+                    <fa-icon [icon]="faChevronRight" class="color-faded" size="sm"></fa-icon>
+                </div>
+                <div class="title">
+                    <a [routerLink]="getLinkForAllBooks()">Sve knjige</a>                    
+                </div>  
+                <div class="icon">
+                    <fa-icon [icon]="faChevronRight" class="color-faded" size="sm"></fa-icon>
+                </div>
+                <div class="title">
+                    {{ book.title }}
+                </div>                
+            </div>
+        </div>
+
+        <div class="col-md-4 col-12">
+            <div class="price-placeholder">
+                <div class="price-title">CENA</div>
+                <div class="price-actual">
+                    <div class="main-price">{{ getMainPrice() }}</div>
+                    <div class="penny-with-currency">,{{ getPennies() }} RSD</div>
+                </div>                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-md-3 mb-md-3 mt-3 mb-3">
+        <div class="col-12 col-md-12 col-sm-12">
+            <div class="book-section">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-12">
+                        <div class="image">
+                            <img [src]="getImageForBook()">
+                        </div>
+                    </div>
+                    <div class="center-content col-md-5 col-sm-12 col-12">
+                        <div *ngIf="book.onPromotion" class="mt-3">
+                            <app-sponsored-star></app-sponsored-star>
+                        </div>
+                        <div class="title mt-3">{{ book.title }}</div> 
+                        <div class="description mt-3">
+                            {{ book.description}}
+                        </div>
+
+                        <div class="subtitle">
+                            Godina izdanja
+                        </div> 
+                        <div class="subtitle-value">
+                            {{ book.yearIssued }}
+                        </div>     
+                        
+                        <div class="subtitle">
+                            Broj strana
+                        </div> 
+                        <div class="subtitle-value">
+                            {{ book.pages }}
+                        </div>   
+                        
+                        <div class="subtitle">
+                            Autor(i)
+                        </div> 
+                        <div class="subtitle-value">
+                            {{ book.author }}
+                        </div>   
+                    </div>
+
+                    <div class="right-content col-md-3 col-sm-12 col-12">
+
+                        <div class="mb-2 mt-3">
+                            <app-button (buttonClick)="onRecommend()" [icon]="faBookmark" color="starcolor" size="xs">
+                                <div text>PREPORUČITE</div>
+                            </app-button>
+                        </div>
+                        
+                        <app-trait
+                            class="mt-3"
+                            title="Prosečna ocena"
+                            [value]="4.5"
+                            [icon]="faStar"
+                            iconSize="2x"
+                            iconClass="color-star"
+                        ></app-trait>
+                        
+
+                        
+                        <app-trait
+                            class="mt-4"    
+                            title="Ocene"
+                            [value]="15"
+                            [icon]="faComments"
+                            iconSize="2x"
+                            iconClass="color-primary"
+                        ></app-trait>
+
+                        <app-trait
+                            class="mt-4"    
+                            title="Preporuke"
+                            [value]="63"
+                            [icon]="faBookmark"
+                            iconSize="2x"
+                            iconClass="color-primary"
+                        ></app-trait>
+
+                        <app-trait
+                            class="mt-4"    
+                            title="Trenutno gleda"
+                            [value]="5"
+                            [icon]="faEye"
+                            iconSize="2x"
+                            iconClass="color-primary"
+                        ></app-trait>
+
+                        <app-trait
+                            class="mt-4"    
+                            title="Pregledi"
+                            [value]="5690"
+                            [icon]="faFlag"
+                            iconSize="2x"
+                            iconClass="color-primary"
+                        ></app-trait>                          
+                       
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12 col-md-12">
+                        <div class="splitter"></div>
+                    </div>
+                </div>
+                
+                <div class="row mt-3 d-flex flex-row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <div class="fs-5 text-uppercase">Ocene i komentari</div>
+                    </div>
+                    <div *ngIf="!isPresentMyComment" class="col-12 col-md-6 d-flex flex-column align-items-end">
+                        <div class="font-s-14">Pročitali ste knjigu i želite da nam prenesete utiske?</div>
+                        <app-button class="mt-1" [icon]="faComment" color="success" size="xs">
+                            <div text>Ostavite komentar</div>
+                        </app-button>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12 col-md-12">
+                        <div class="comments-placeholder" [class.has-comments]="numberOfComments > 0">
+                            <div
+                                *ngIf="numberOfComments === 0"
+                                app-big-info
+                                [icon]="faCommentSlash"   
+                                iconSize="7x"                             
+                                iconColor="primary"
+                                title="Hm... svi čitaju knjigu!"
+                                subtitle="Trenutno nema komentara, molimo pokušajte kasnije"                                
+                            ></div>
+
+                            <div
+                                *ngIf="isPresentMyComment"
+                                single-comment                                
+                                [comment]="myComment"
+                                [isMyComment]="true"
+                                [class.even]="true"
+                            ></div>
+                            
+                            <div
+                                single-comment
+                                *ngFor="let comment of comments; let i = index"
+                                [comment]="comment"
+                                [isMyComment]="false"
+                                [class.even]="(!isPresentMyComment ? i : i+1) % 2 === 0"
+                            ></div>
+                            
+                                                   
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

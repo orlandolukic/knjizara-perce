@@ -1,0 +1,125 @@
+
+@import "variables";
+@import "bootstrap";
+
+.price-placeholder {
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    height: 100%;    
+    font-size: 1rem;
+
+    > div {
+        display: flex;
+    }
+
+    .price-title {
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+
+    .price-actual {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        margin-left: 10px;
+
+        .main-price {
+            font-size: 2em;
+        }
+
+        .penny-with-currency {
+            font-size: 1.3em;
+        }
+    }
+    
+}
+
+.book-section {
+    background: white;
+    border-radius: 3px;
+    border: 1px solid $color-primary-border;
+    min-height: 250px;
+    padding: 10px 15px;
+
+    .image {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        img {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+
+    .center-content {        
+        .title {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .description {
+            color: $color-faded;
+            line-height: 1.5em;
+            text-align: justify;
+        }
+
+        .subtitle {
+            margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: bold;            
+            font-size: 1.2em;
+        }
+
+        .subtitle-value {
+            margin-top: 3px;
+            font-size: 1.1em;
+        }
+    }
+    // .center-content
+
+    .right-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;         
+    }
+
+    .splitter {        
+        width: 100%;
+        height: 1px;
+        background-color: $color-primary-border;
+    }
+
+    .comments-placeholder {
+        width: 100%;
+        min-height: 300px;        
+        background-color: rgb(250, 250, 250);
+        border: 1px solid $color-primary-border;
+        overflow-x: hidden;
+
+        &.has-comments {
+            overflow-y: scroll;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        [app-big-info] {
+            display: flex;
+        }
+
+        > [single-comment] {
+            display: flex;
+            width: 100%
+        }
+    }
+}

@@ -25,6 +25,9 @@ import { AllBooksListingComponent } from './components/all-books-listing/all-boo
 import { RecommendationsResolver } from './recommendations/recommendations-resolver';
 import { SingleRecommendationComponent } from './recommendations/single-recommendation/single-recommendation.component';
 import { AllBooksResolver } from './all-books/all-books-resolver';
+import { FindBookResolver } from './book/find-book-resolver';
+import { TraitComponent } from './book/trait/trait.component';
+import { SingleCommentComponent } from './book/single-comment/single-comment.component';
 
 
 
@@ -40,7 +43,7 @@ import { AllBooksResolver } from './all-books/all-books-resolver';
     BookSliderSingleBookComponent,
     BookComponent,
     RecommendBookComponent,    
-    UserListComponent, UserListSingleElementComponent, AllBooksListingComponent, SingleRecommendationComponent
+    UserListComponent, UserListSingleElementComponent, AllBooksListingComponent, SingleRecommendationComponent, TraitComponent, SingleCommentComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +59,8 @@ import { AllBooksResolver } from './all-books/all-books-resolver';
   ],
   providers: [
     RecommendationsResolver,
-    AllBooksResolver
+    AllBooksResolver,
+    FindBookResolver
   ]
 })
 export class UserModule { }
