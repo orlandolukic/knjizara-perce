@@ -12,8 +12,8 @@ export class BookDataManipulation {
         arr = new Array<Book>();
         arr.push({
             id: 1,
-            slug: 'hari-potter-i-dvorana-tajni',
-            title: "Hari Potter i Dvorana tajni",
+            slug: 'hari-poter-i-dvorana-tajni',
+            title: "Hari Poter i Dvorana tajni",
             author: "Dž. K. Rouling",
             description: "Misteriozno pojavljivanje kućnog vilenjaka Dobija, i njegov pokušaj da spreči Harija da se vrati na Hogvorts navode Darslijeve da ga stave u kućni pritvor do daljeg. Spas stiže u vidu letećeg automobila, kojim upravljaju Ron i njegova braća. Posle raspusta provedenog u Jazbini, nesvakidašnjoj kući Vizlijevih, dramatičnim dolaskom na Hogvorts započinje nova školska Godina. ",
             image: "hp.jpg",
@@ -158,6 +158,19 @@ export class BookDataManipulation {
         return books.length;
     }
 
+    public static numberOfAllBooksForGivenSearchTerm(searchTerm: string): number {
+        let booksStr: any = localStorage.getItem('books');
+        let books: Book[];
+        books = JSON.parse(booksStr);    
+        searchTerm = searchTerm.toLocaleLowerCase();
+        let n: number = 0;
+        books.forEach((b: Book) => {
+            if ( b.author.toLocaleLowerCase().indexOf(searchTerm) > -1 || b.title.toLocaleLowerCase().indexOf(searchTerm) > -1 )
+                n++;
+        });
+        return n;
+    }
+
     public static getAllBooks(offset: number = 0, limit: number = 0): Book[] {
         let booksArr: Book[] = new Array<Book>();
         let books: Book[];
@@ -178,6 +191,32 @@ export class BookDataManipulation {
             if ( toLimit ) {
                 limit--;
             }
+        }
+        return booksArr;
+    }
+
+    public static getAllBooksForGivenSearchTerm(searchTerm: string, offset: number = 0, limit: number = 0): Book[] {
+        let booksArr: Book[] = new Array<Book>();
+        let books: Book[];
+        let b: Book;
+        let booksStr: any = localStorage.getItem('books');
+        books = JSON.parse(booksStr);        
+        let toLimit: boolean = limit > 0;        
+        offset = offset < 0 ? 0 : offset;
+        searchTerm = searchTerm.toLocaleLowerCase();
+        
+        for( let i = offset; i<books.length; i++ ) {            
+            if ( toLimit && limit === 0 ) {
+                break;
+            }            
+            
+            b = books[i] as Book;
+            if ( b.author.toLocaleLowerCase().indexOf(searchTerm) > -1 || b.title.toLocaleLowerCase().indexOf(searchTerm) > -1 ) {
+                booksArr.push(b);    
+                if ( toLimit ) {
+                    limit--;
+                }
+            }           
         }
         return booksArr;
     }

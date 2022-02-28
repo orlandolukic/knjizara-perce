@@ -9,6 +9,8 @@
         class="theme-input full-width searchbox" type="text" 
         placeholder="Pretražite knjigu ili autora"
         [value]="value"
+        (keyup)="keyup($event)"
         >
+        <div *ngIf="!allowedToBeEmpty" class="error" [class.shown]="showError">Polje ne može biti prazno</div>
     </div>
 </div>

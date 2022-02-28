@@ -1,0 +1,37 @@
+
+@import "variables";
+@import "bootstrap";
+
+.empty-placeholder {
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    .empty-content {
+        margin: auto;        
+        font-size: 16px;    
+
+        > div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .icon {
+            color: $color-star
+        }
+
+        .title {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: $color-star;
+        }
+
+        .subtitle {
+            font-size: 1em;
+            color: $color-faded;
+            text-align: center;
+        }
+    }
+    // .recommendations-empty-content
+}

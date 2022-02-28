@@ -1,9 +1,10 @@
 <app-loader-for-books [show]="showBooks"></app-loader-for-books>
+
 <div class="all-books-placeholder row">
     <ng-template #bookHost></ng-template>
 </div>
 
-<div *ngIf="!loadedEverything" class="row margin-t-20 margin-b-30">   
+<div *ngIf="!loadedEverything && allowedToFetchMore" class="row margin-t-20 margin-b-30">   
     <div class="col-12 flex-center">
         <div class="preview-more-placeholder">
             <div *ngIf="loading" class="preview-more-loading-icon">
@@ -15,5 +16,25 @@
                 </app-button>
             </div>
         </div>        
+    </div>
+</div>
+
+<div *ngIf="allBooksNumber === 0" class="no-books-placeholder row d-flex flex-row justify-content-center">
+    <div class="col-12 col-md-6">
+        <div 
+            class="mb-5"
+            app-big-info
+            [icon]="faEmptySet"
+            [title]="noBooksFoundTitle"
+            [subtitle]="noBooksFoundSubtitle"
+        >
+            <div after class="d-flex mt-3 justify-content-center">
+                <a [routerLink]="getURLForAllBooks()">
+                    <app-button [icon]="faBooks" color="primary" size="sm">
+                        <div text>Sve knjige</div>
+                    </app-button>
+                </a>
+            </div>
+        </div>
     </div>
 </div>

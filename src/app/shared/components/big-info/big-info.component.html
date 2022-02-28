@@ -1,0 +1,14 @@
+<div class="empty-placeholder">                    
+    <div class="empty-content">
+        <div class="icon">
+            <fa-icon [icon]="icon" size="8x"></fa-icon>
+        </div>
+        <div class="title mt-4">
+            {{title}}
+        </div>
+        <div class="subtitle mt-2">
+           {{subtitle}}
+        </div>
+        <ng-content select="[after]"></ng-content>
+    </div>
+</div>

@@ -21,6 +21,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { LoaderDeleteComponent } from './components/loader/loader-delete/loader-delete.component';
 import { LoaderSuccessfulComponent } from './components/loader/loader-successful/loader-successful.component';
 import { SearchBookComponent } from './components/search-book/search-book.component';
+import { BigInfoComponent } from './components/big-info/big-info.component';
 
 
 
@@ -40,7 +41,8 @@ import { SearchBookComponent } from './components/search-book/search-book.compon
     UserDetailsComponent,
     LoaderDeleteComponent,
     LoaderSuccessfulComponent,
-    SearchBookComponent
+    SearchBookComponent,
+    BigInfoComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import { SearchBookComponent } from './components/search-book/search-book.compon
     UserDetailsComponent,
     LoaderDeleteComponent,
     LoaderSuccessfulComponent,
-    SearchBookComponent
+    SearchBookComponent,
+    BigInfoComponent
   ],
   providers: [
     TitleService,    

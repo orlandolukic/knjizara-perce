@@ -22,4 +22,16 @@ export class PathResolver {
         return s;
     }
 
+    public static getPathForAllBooks(): string {
+        let s: string = "/";
+        let user: User = UserDataManipulation.getLoggedInUser();
+        if ( user.isBuyer() ) {
+            s += "user/";
+        } else {
+            s += "admin/";
+        }
+        s += "all-books";
+        return s;
+    }
+
 }

@@ -19,7 +19,10 @@
         <div class="col-12 col-sm-6 d-flex justify-content-sm-end align-items-sm-center align-items-md-center mt-4 mt-md-0">
             <div class="found-books-placeholder">
                 <div class="found-books-text">Pronađeno rezultata:</div>    
-                <div class="found-books-number">10</div>
+                <div class="found-books-number" [class.in-search]="inSearch">{{resultsFound}}</div>
+                <div class="found-books-waiting" [class.display]="inSearch">
+                    <fa-icon [icon]="faSpinner" [spin]="true"></fa-icon>
+                </div>
             </div>
         </div>
     </div>
@@ -27,6 +30,9 @@
     <div class="row mt-4">
         <div class="col-12 col-sm-12">
             <app-search-book 
+                #searchBook
+                [allowedToBeEmpty]="true"
+                [allowSmoothSearch]="true"
                 [value]="searchedValue" 
                 (searched)="search($event)"
                 width="full-width"
@@ -35,8 +41,9 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-12 col-sm-12">
-            sdsd
-        </div>
+        <app-all-books-listing
+            [searchTerm]="searchedValue"
+            (booksFound)="booksFound($event)"
+        ></app-all-books-listing>
     </div>
 </div>

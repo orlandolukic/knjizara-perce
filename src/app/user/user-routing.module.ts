@@ -49,6 +49,10 @@ const routes: Routes = [
             component: BookComponent        
           },
           {
+            path: 'search-books',
+            component: SearchBooksComponent
+          },
+          {
             path: 'search-books/:searchTerm',
             component: SearchBooksComponent
           },
