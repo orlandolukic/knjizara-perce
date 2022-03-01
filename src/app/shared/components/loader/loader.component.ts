@@ -47,6 +47,9 @@ export class LoaderComponent implements OnInit, OnDestroy {
   @Output()
   overlayClick: EventEmitter<void> = new EventEmitter();
 
+  @Output()
+  onDismiss: EventEmitter<void> = new EventEmitter();
+
   faCircleONotch: IconDefinition = faCircleNotch;
   isHidden: boolean;
   showWithTransition: boolean;
@@ -85,8 +88,8 @@ export class LoaderComponent implements OnInit, OnDestroy {
     this.loaderSubscriberOnShow = this.service.getLoaderListenerOnShow().subscribe((instr: LoaderServiceInstructions) => {        
         this.showWithTransition = false;
         this.hideWithTransition = false;
-        this.transitionDelayShow = instr.transitionDelayShow ? instr.transitionDelayShow : 500;              
-        this.transitionDelayHide = instr.transitionDelayHide ? instr.transitionDelayHide : 500;   
+        this.transitionDelayShow = instr && instr.transitionDelayShow ? instr.transitionDelayShow : 500;              
+        this.transitionDelayHide = instr && instr.transitionDelayHide ? instr.transitionDelayHide : 500;   
         this.show = true;                
     });
 
@@ -119,6 +122,7 @@ export class LoaderComponent implements OnInit, OnDestroy {
     if ( !this.service.isAllowedToDismiss() )
       return;    
     this.overlayClick.emit();
+    this.onDismiss.emit();
   }
 
   setTransitionAndWait(): Promise<void> {

@@ -6,7 +6,7 @@ $color-success: rgb(30, 139, 30);
 $color-star: rgb(189, 155, 5);
 
 $colors: (
-    "faded": rgb(61, 61, 61),
+    "faded": rgb(131, 131, 131),
     "primary": rgb(144, 11, 197),
     "danger": rgb(207, 24, 24),
     "success": rgb(30, 139, 30),
@@ -20,3 +20,5 @@ $color-primary-border: lighten($color-primary, 52%);
         color: $color;
     }
 }
+
+$font-family: 'Roboto';

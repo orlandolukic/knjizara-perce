@@ -1,0 +1,11 @@
+<div class="star-placeholder" (mouseleave)="decline()">
+    <div #stars 
+        *ngFor="let i of [1,2,3,4,5]; let index = index" 
+        class="star" 
+        [class.not-selected]="true" 
+        (mouseenter)="enteredStar(index)"
+        (click)="selectStar(index)"
+        >
+        <fa-icon [icon]="faStar" size="2x" class="color-star"></fa-icon>
+    </div>
+</div>

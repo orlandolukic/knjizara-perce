@@ -22,6 +22,8 @@ import { LoaderDeleteComponent } from './components/loader/loader-delete/loader-
 import { LoaderSuccessfulComponent } from './components/loader/loader-successful/loader-successful.component';
 import { SearchBookComponent } from './components/search-book/search-book.component';
 import { BigInfoComponent } from './components/big-info/big-info.component';
+import { ChooseStarComponent } from './components/choose-star/choose-star.component';
+import { AngularEmojisModule } from 'angular-emojis';
 
 
 
@@ -42,14 +44,17 @@ import { BigInfoComponent } from './components/big-info/big-info.component';
     LoaderDeleteComponent,
     LoaderSuccessfulComponent,
     SearchBookComponent,
-    BigInfoComponent
+    BigInfoComponent,
+    ChooseStarComponent
   ],
   imports: [
     CommonModule,
     MatButtonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AngularEmojisModule    
   ],
   exports: [
+    AngularEmojisModule,
     ButtonComponent,
     LoaderComponent,
     LoaderForBooksComponent,
@@ -61,7 +66,8 @@ import { BigInfoComponent } from './components/big-info/big-info.component';
     LoaderDeleteComponent,
     LoaderSuccessfulComponent,
     SearchBookComponent,
-    BigInfoComponent
+    BigInfoComponent,
+    ChooseStarComponent
   ],
   providers: [
     TitleService,    
