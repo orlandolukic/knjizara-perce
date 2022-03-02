@@ -9,7 +9,7 @@ export interface LoaderServiceInstructions {
     shown?: (service: LoaderService) => void,
     transition?: boolean,
     transitionDelayShow?: number,
-    transitionDelayHide?: number
+    transitionDelayHide?: number    
 }
 
 @Injectable()
@@ -26,6 +26,7 @@ export class LoaderService {
     private isActivated: boolean;
     private allowToDismiss: boolean;
     private withTransition: boolean;
+    private ID: string;
 
     constructor() {
         this.allowToDismiss = true; 
@@ -116,5 +117,16 @@ export class LoaderService {
             this.loaderListenerOnHide.emit();            
             resolve();
         });    
+    }
+
+    
+    public setID(id: string): void {
+        if ( this.ID )
+            return;
+        this.ID = id;
+    }
+
+    public getID(): string {
+        return this.ID;
     }
 }

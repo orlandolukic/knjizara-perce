@@ -60,7 +60,7 @@ export class LoaderComponent implements OnInit, OnDestroy {
   private loaderSubscriberOnShowInit: Subscription;
   private loaderSubscriberOnShow: Subscription;
   private loaderSubscriberOnHide: Subscription;
-  private action: number;
+  private action: number;  
 
   constructor(
     protected service: LoaderService
@@ -90,7 +90,8 @@ export class LoaderComponent implements OnInit, OnDestroy {
         this.hideWithTransition = false;
         this.transitionDelayShow = instr && instr.transitionDelayShow ? instr.transitionDelayShow : 500;              
         this.transitionDelayHide = instr && instr.transitionDelayHide ? instr.transitionDelayHide : 500;   
-        this.show = true;                
+        this.show = true;  
+        this.isHidden = false;                      
     });
 
     this.loaderSubscriberOnHide = this.service.getLoaderListenerOnHide().subscribe(() => {
@@ -112,7 +113,7 @@ export class LoaderComponent implements OnInit, OnDestroy {
   public getLoaderService(): LoaderService { return this.service; }
 
   @HostListener('document:keyup.Escape', ['$event'])
-  onKeyUp(event: KeyboardEvent): void {
+  onKeyUp(event: KeyboardEvent): void {    
     if ( this.isHidden || !this.service.isAllowedToDismiss() )
       return;      
     this.hideLoader();

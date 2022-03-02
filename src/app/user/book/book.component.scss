@@ -128,7 +128,12 @@
     width: 450px;
     min-height: 180px;
     background-color: white;
-    padding: 20px 40px;
+    padding: {
+        top: 30px;
+        right: 40px;
+        bottom: 15px;
+        left: 40px;
+    };
     opacity: 0;
     transform: scale3d(0.8,0.8,0.8);
     transition: 0.1s;
@@ -210,12 +215,19 @@
         box-sizing: border-box;
         outline: none;
         background-color: rgb(248, 248, 248);
+        border: 1px solid darken($color-primary-border, 70%);
 
         padding: 10px 15px;
         border-radius: 3px;
         font-family: $font-family;
         font-size: 1em;
         line-height: 25px;
+        pointer-events: all;
+        overflow-y: auto;
+
+        &.is-placeholder-mode {
+            color: lighten($color-faded, 40%);
+        }
 
         &:focus {
             border: 1px solid darken($color-primary-border, 50%);

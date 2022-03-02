@@ -15,6 +15,12 @@ import { FindBookResolver } from './find-book-resolver';
 import * as confetti from 'canvas-confetti';
 import { AngularEmojisComponent } from 'angular-emojis';
 import { LoaderSuccessfulComponent } from 'src/app/shared/components/loader/loader-successful/loader-successful.component';
+import { UserDataManipulation } from 'data/users/input.data';
+import { BookRecommendationController } from 'data/book/recommendation/book-recommendation-controller';
+import { SelectionService } from 'src/app/shared/service/selection.service';
+import { CommentsDataManipulation } from 'data/comments/comments-data-manipulation';
+import { environment } from 'src/environments/environment';
+import { SingleCommentComponent } from './single-comment/single-comment.component';
 
 @Component({
   selector: 'app-book',
@@ -27,8 +33,9 @@ export class BookComponent implements OnInit, OnDestroy {
   @ViewChild('chooseStar', {static: true, read: ChooseStarComponent}) chooseStar: ChooseStarComponent;
   @ViewChild('myCanvas', {static: true, read: ElementRef}) myCanvasElement: ElementRef;
   @ViewChild('emojiComponent', {read: AngularEmojisComponent, static: true}) emojiComponent: AngularEmojisComponent;
-  @ViewChild('textarea', {read: ElementRef, static: true}) textarea: ElementRef;
+  @ViewChild('textarea', {read: ElementRef, static: true}) textarea: ElementRef;  
   @ViewChild('loaderSuccessful', {read: LoaderSuccessfulComponent, static: true}) loaderSuccessful: LoaderSuccessfulComponent;
+  @ViewChild('myCommentComponent', {read: SingleCommentComponent, static: false}) myCommentComponent: SingleCommentComponent;
 
   faHome: IconDefinition = faHomeUser;
   faChevronRight: IconDefinition = faChevronRight;
@@ -44,8 +51,11 @@ export class BookComponent implements OnInit, OnDestroy {
 
   book: Book;  
   numberOfComments: number;
+  isContentEditable: boolean;
   isPresentMyComment: boolean;
-  myComment: Comment;
+  isCommentTextareaInPlaceholderMode: boolean;
+  myComment: Comment | null;
+  showMyComment: boolean;
   comments: Comments;
   showLeaveCommentModal: boolean;
   showLeaveCommentContent: boolean;
@@ -56,7 +66,7 @@ export class BookComponent implements OnInit, OnDestroy {
   animateEmojiTimeout: number;
   animateEmojiInitiateTimeout: number;
   emojis: string[] = [
-    'triumph',
+    'rage',
     'anguished',
     'neutral_face',
     'muscle',
@@ -67,34 +77,50 @@ export class BookComponent implements OnInit, OnDestroy {
   showCommentError: boolean;
   showSuccessfulContent: boolean;
 
+  // Modal leave comment
+  modalTitle: string;
+  modalMode: string;
+  selectionTextareaSubscription: Subscription;
+  mouseInsideCommentTextarea: boolean;
+  forceDisableActions: boolean;  
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private titleService: TitleService,
     private findBookResolver: FindBookResolver,
     private recommendService: RecommendBookService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private selectionService: SelectionService
   ) {     
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((param) => {
-      let slug: string = param['slug'];
-      this.book = BookDataManipulation.getBookBySlug(slug)!;
-      if ( this.book === null )
-        this.router.navigate([PathResolver.getPathForAllBooks()]);
-    });
-    this.titleService.changeTitle(this.book.title);   
-    this.numberOfComments = this.findBookResolver.comments.length;   
-    this.isPresentMyComment = this.findBookResolver.userHasComment; 
+
+    // Get book & set the title of the document
+    this.book = this.findBookResolver.book;
+    this.titleService.changeTitle(this.book.title);       
+    
+    // Get data from book resolver
+    this.numberOfComments = this.findBookResolver.getNumberOfComments();       
     this.myComment = this.findBookResolver.userComment; 
     this.comments = this.findBookResolver.comments;
+    this.isPresentMyComment = this.findBookResolver.userHasComment;         
+    setTimeout(() => {
+      this.showMyComment = this.isPresentMyComment;
+    }, 10)
+
     this.showLeaveCommentModal = false;
     this.showLeaveCommentContent = false;        
     this.emoji = this.emojis[0];
     this.myCanvas = confetti.create(this.myCanvasElement.nativeElement, {
       resize: true
     });
+    this.showMyComment = false;
+
+    // Set IDs on loaders
+    this.loaderSuccessful.getLoaderService().setID("comment-successful-loader");
+    this.loader.getLoaderService().setID("comment-loader");
 
     this.selectedSubscription = this.chooseStar.selected.subscribe((rating: number) => {
       this.rating = rating;
@@ -116,15 +142,24 @@ export class BookComponent implements OnInit, OnDestroy {
           particleCount: 100,          
           spread: 100,
           origin: { y: 0.6 }
-        })?.then(() => {
-        
         }); 
-      this.textarea.nativeElement.focus();
-      this.showCommentError = true;
+      this.canConfirmTextarea();
+      this.textarea.nativeElement.focus();      
       this.showSuccessfulContent = false;
+      this.checkForErrors();
     });
 
-    this.leaveComment();
+    // Handle selection on textarea.
+    this.selectionTextareaSubscription = this.selectionService.getOnSelectStartObservable().subscribe((event: any) => {               
+      try {
+        if ( this.showLeaveCommentModal ) {                 
+          this.selectionService.allowToSelect();
+        } else
+          this.selectionService.disallowToSelect();
+      } catch(e) {}   
+    });
+
+    // Check if there are comments for this book.    
   }
 
   ngOnDestroy(): void {
@@ -133,28 +168,103 @@ export class BookComponent implements OnInit, OnDestroy {
       window.clearTimeout(this.animateEmojiInitiateTimeout);
       if ( this.myCanvas )
         this.myCanvas.reset();
+      this.selectionTextareaSubscription.unsubscribe();
   }
 
-  private beforeOpenCommentModal(): void {
+  private beforeOpenCommentModal(op: 'open' | 'edit' = 'open'): void {
+
+    this.modalMode = op;
+    if ( op === "open" ) {
+      this.rating = 0;      
+      this.chooseStar.reset();
+      this.textarea.nativeElement.innerHTML = "Unesite željeni komentar za ovu knjigu"; 
+      this.isCommentTextareaInPlaceholderMode = true;         
+      this.modalTitle = "Unesite ocenu";
+    } else {
+      
+      this.modalTitle = "Izmenite ocenu";      
+      this.rating = this.myComment?.rating!;      
+      this.textarea.nativeElement.innerHTML = this.myComment?.text; 
+      this.isCommentTextareaInPlaceholderMode = false;   
+      this.chooseStar.selectStar(this.myComment?.rating!-1, false);
+    }
+    
+    this.mouseInsideCommentTextarea = false;
     if ( this.myCanvas )
       this.myCanvas.reset();
-    this.rating = 0;
-    this.chooseStar.reset();
-    this.textarea.nativeElement.value = "";
     this.animateEmoji = false;
     this.disabledSuccessButton = true;
     this.showCommentError = false;
+    
     window.clearTimeout(this.animateEmojiTimeout);
     window.clearTimeout(this.animateEmojiInitiateTimeout);
   }
 
   private canConfirmComment(): boolean {
-    return this.rating > 0 && this.textarea.nativeElement.value.length >= 5;
+    return this.rating > 0 && this.canConfirmTextarea();
+  }
+
+  private canConfirmTextarea(): boolean {
+    let str: string = this.textarea.nativeElement.innerHTML;      
+    const tags = /<[^>]*>/g;
+    const output = str.replace(tags, '');    
+    return output.length >= 5;
   }
 
   private checkForErrors(): void {
-    this.showCommentError = this.textarea.nativeElement.value.length < 5;
+    this.showCommentError = !this.canConfirmTextarea();
     this.disabledSuccessButton = this.showCommentError || this.rating === 0;
+  }
+
+  private addNewComment(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      setTimeout(() => {
+        this.myComment = {
+          bookID: this.book.id,
+          dateCreated: new Date(),
+          dateModified: new Date(),
+          rating: this.rating,
+          text: this.textarea.nativeElement.innerHTML,
+          user: UserDataManipulation.getUserForDisplay(UserDataManipulation.getLoggedInUser().username)!
+        };
+        this.isPresentMyComment = true;        
+        this.numberOfComments++;
+
+        // Add comment to the database.
+        CommentsDataManipulation.insertComment(this.myComment, 'insert');
+        
+        setTimeout(() => {
+          this.showMyComment = true;
+          resolve();
+        }, 50);        
+      }, 900);
+    });
+  }
+
+  private updateComment(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {      
+      setTimeout(() => {
+        if ( this.myComment === null ) {
+          resolve();
+          return;
+        }
+
+        this.myComment.rating = this.rating;
+        this.myComment.text = this.textarea.nativeElement.innerHTML;
+        this.myComment.dateModified = new Date();                       
+
+        // Edit comment inside the database.
+        CommentsDataManipulation.insertComment(this.myComment, 'edit');      
+        
+        // Disable actions on comment by force.
+        this.forceDisableActions = true;  
+
+        // Refresh single-comment.component
+        this.myCommentComponent.comment = this.myComment;                             
+
+        resolve();       
+      }, 900);
+    });
   }
 
   getLinkForAllBooks(): string {
@@ -193,11 +303,11 @@ export class BookComponent implements OnInit, OnDestroy {
     this.recommendService.openModal(this.book);
   }
 
-  leaveComment(): void {
-    this.loader.getLoaderService().showLoader({
+  leaveComment(op: 'open' | 'edit' = 'open'): void {
+    this.loader.getLoaderService().showLoader({      
       transition: true,
       beforeOpened: (service: LoaderService) => {
-        this.beforeOpenCommentModal();
+        this.beforeOpenCommentModal(op);
       },
       fetchData: () => new Promise<void>((resolve, reject) => {
         setTimeout(() => {
@@ -223,8 +333,18 @@ export class BookComponent implements OnInit, OnDestroy {
     if ( !this.canConfirmComment() )
       return;
     this.loader.getLoaderService().disallowDismiss();
-    this.showSuccessfulContent = false;
-    this.loaderSuccessful.showLoader({
+    this.showSuccessfulContent = false;    
+
+    this.loaderSuccessful.showLoader({      
+      transition: true,
+      transitionDelayShow: 500,
+      fetchData: () => {
+        // Add new comment to the database    
+        if ( this.modalMode === 'insert' )    
+          return this.addNewComment();
+        else
+          return this.updateComment();
+      },
       shown: (service: LoaderService) => {
         this.showSuccessfulContent = true;
         service.allowDismiss();
@@ -232,9 +352,12 @@ export class BookComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDismissSuccessfulMessage(): void {
+  onDismissSuccessfulMessage(): void {       
     this.loaderSuccessful.hideLoader(false).then(() => {
-      this.loader.getLoaderService().hideLoader();
+      this.showLeaveCommentContent = false;      
+      this.loader.getLoaderService().hideLoader().then(() => {
+        this.showLeaveCommentModal = false;
+      });
     });
   }
 
@@ -244,6 +367,61 @@ export class BookComponent implements OnInit, OnDestroy {
 
   commentKeyup(event: KeyboardEvent): void {
     this.checkForErrors();
+  }
+
+  checkIfCommentActionsShouldBeDisabled(): boolean {
+    if ( !this.myComment )
+      return false;
+
+    if ( this.forceDisableActions )
+      return true;
+
+    let d: Date = this.myComment.dateModified;
+    var diff = Math.floor(((new Date()).getTime() - d.getTime()) / 86400000);       
+    if ( environment.production )
+      return diff <= 10;
+    else
+      return false;
+  }
+
+  getRecommendations(): number {
+    return BookRecommendationController.getSentRecommendationNumberFor(this.book);
+  }
+
+  commentTextfieldClick(event: Event): void {          
+    if ( !this.canConfirmTextarea() )
+      this.showCommentError = true;
+    this.textarea.nativeElement.focus();          
+  }
+
+  commentTextfieldFocus(event: Event): void {
+    if ( this.isCommentTextareaInPlaceholderMode ) {
+      this.isCommentTextareaInPlaceholderMode = false;
+      this.textarea.nativeElement.innerHTML = ""; 
+    };
+  }
+
+  commentTextfieldFocusout(event: Event): void {
+    if ( this.textarea.nativeElement.innerHTML === "" ) {
+      this.isCommentTextareaInPlaceholderMode = true;
+      this.textarea.nativeElement.innerHTML = "Unesite željeni komentar za ovu knjigu";      
+    };
+  }
+
+  commentTextfieldMouseenter(event: Event): void {
+    this.mouseInsideCommentTextarea = true;
+  }
+
+  commentTextfieldMouseleave(event: Event): void {
+    this.mouseInsideCommentTextarea = false;
+  }
+
+  onEditComment(comment: Comment | null): void {
+    this.leaveComment('edit');    
+  }
+
+  onDeleteComment(comment: Comment | null): void {
+
   }
 
 }

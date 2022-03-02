@@ -79,7 +79,7 @@ export class RecommendationsComponent implements OnInit, OnDestroy {
     this.toDeleteIndex = index;
     this.toDeleteRecommendation = elem;      
 
-    this.loaderDelete.getLoaderService().showLoader({
+    this.loaderDelete.getLoaderService().showLoader({      
       transition: true      
     }); 
   }
@@ -87,14 +87,14 @@ export class RecommendationsComponent implements OnInit, OnDestroy {
   deleteAllRecommendations(): void {
     this.deleteText = "Da li ste sigurni da želite da obrišete sve preporuke?";
     this.action = "deleteAll";
-    this.loaderDelete.getLoaderService().showLoader({
+    this.loaderDelete.getLoaderService().showLoader({      
       transition: true      
     }); 
   }
 
   confirmDeleteRecommendation(): void {
     this.loaderDelete.getLoaderService().disallowDismiss();
-    this.loaderSuccessful.getLoaderService().showLoader({
+    this.loaderSuccessful.getLoaderService().showLoader({      
       transition: true,
       fetchData: (service: LoaderService) => {
         return new Promise<void>((resolve, reject) => {

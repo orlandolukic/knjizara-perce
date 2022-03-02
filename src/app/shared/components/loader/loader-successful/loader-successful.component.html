@@ -4,6 +4,7 @@
     [overlayOpacity]="overlayOpacity" 
     [zIndexPlaceholder]="zIndexPlaceholder!"
     (overlayClick)="overlayClicked()"
+    (onDismiss)="dismissLoader()"
     >
     <div *ngIf="showContent" (click)="dismissLoader()" loader-content class="successful-message" [style.z-index]="loader.zIndexContent+1">
         <div class="dismiss-slider-container" [class.start-transition]="startTransition">

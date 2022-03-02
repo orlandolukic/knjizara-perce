@@ -105,7 +105,7 @@
                         <app-trait
                             class="mt-4"    
                             title="Preporuke"
-                            [value]="63"
+                            [value]="getRecommendations()"
                             [icon]="faBookmark"
                             iconSize="2x"
                             iconClass="color-primary"
@@ -165,19 +165,26 @@
                             ></div>
 
                             <div
-                                *ngIf="isPresentMyComment"
-                                single-comment                                
-                                [comment]="myComment"
+                                #myCommentComponent
+                                single-comment
+                                *ngIf="isPresentMyComment"    
+                                [class.is-my-comment]="true"                                                            
+                                [comment]="myComment!"
+                                [emoji]="emojis[myComment!.rating-1]"
                                 [isMyComment]="true"
                                 [class.even]="true"
+                                [class.shown]="showMyComment"
+                                [disabled]="checkIfCommentActionsShouldBeDisabled()"
+                                (delete)="onDeleteComment(myComment)"
+                                (edit)="onEditComment(myComment)"
                             ></div>
                             
                             <div
                                 single-comment
                                 *ngFor="let comment of comments; let i = index"
-                                [comment]="comment"
-                                [isMyComment]="false"
+                                [comment]="comment"                                
                                 [class.even]="(!isPresentMyComment ? i : i+1) % 2 === 0"
+                                [emoji]="emojis[comment.rating-1]"                                
                             ></div>
                             
                                                    
@@ -211,7 +218,7 @@
                         <fa-icon [icon]="faStar" size="3x"></fa-icon>
                     </div>
                     <div class="title">
-                        <div class="text">Ostavite ocenu</div>
+                        <div class="text">{{modalTitle}}</div>
                         <div class="subtitle mt-1"><span>Knjiga</span>: <span class="color-primary fw-bold">{{ book.title }}</span></div>                        
                     </div>
                 </div>                
@@ -238,13 +245,24 @@
             <div class="col-12">
                 <div class="fs-3">Komentar</div>
                 <div class="mt-2">
-                    <textarea                         
+                    <form>
+                        <div 
+                        data-id="comment-textarea"                        
+                        contenteditable="true"   
+                        [attr.is-placeholder-mode]="isCommentTextareaInPlaceholderMode" 
+                        [class.is-placeholder-mode]="isCommentTextareaInPlaceholderMode"                    
                         #textarea 
-                        class="comment-textarea" 
-                        placeholder="Unesite željeni komentar za ovu knjigu"
+                        tabindex="1"
+                        class="comment-textarea"                         
+                        (click)="commentTextfieldClick($event)"
                         (keyup)="commentKeyup($event)"
-                        ></textarea>
-                </div>
+                        (focus)="commentTextfieldFocus($event)"
+                        (focusout)="commentTextfieldFocusout($event)"
+                        (mouseenter)="commentTextfieldMouseenter($event)"
+                        (mouseleave)="commentTextfieldMouseleave($event)"
+                        >Unesite željeni komentar za ovu knjigu</div>          
+                    </form>                             
+                </div>                
                 <div *ngIf="showCommentError" class="mt-1 color-danger font-s-14">
                     * komentar mora imati barem 5 karaktera
                 </div>
@@ -253,7 +271,7 @@
 
         <div class="row mt-1">
             <div class="col-12 font-s-14 color-faded">
-                Nakon dodavanja ocene biće onemogućeno brisanje ocene/komentara u narednih 10 dana.
+                Nakon dodavanja/izmene ocene biće onemogućeno brisanje/izmena ocene u narednih 10 dana.
             </div>
         </div>
 

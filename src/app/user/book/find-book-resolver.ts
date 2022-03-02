@@ -18,7 +18,8 @@ export class FindBookResolver extends FinalResolver<void> {
 
     comments: Comments;
     userHasComment: boolean;
-    userComment: Comment;
+    userComment: Comment | null;
+    book: Book;
 
     constructor(
         protected override loader: LoadService,
@@ -28,8 +29,14 @@ export class FindBookResolver extends FinalResolver<void> {
 
     }
 
+    public getNumberOfComments(): number {
+        return this.comments.length + (this.userHasComment ? 1 : 0);        
+    }
+
     protected _resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<void> | Observable<Promise<void>> | Promise<Promise<void>> {
         return new Promise<void>((resolve, reject) => {    
+
+            this.userHasComment = false;            
             
             // Get all comments for the given book.
             let slug: string = route.params['slug'];
@@ -39,14 +46,14 @@ export class FindBookResolver extends FinalResolver<void> {
                 resolve();
                 return;
             }
+            this.book = book;            
             let comments: Comment[];
             this.comments = [];
-            comments = CommentsDataManipulation.getCommentsForBook(book);   
+            comments = CommentsDataManipulation.getCommentsForBook(book);               
             
             // Check if user has left the comment            
-            comments.forEach((comment: Comment) => {
-                if ( comment.user.username === UserDataManipulation.getLoggedInUser().username ) {
-                    console.log("has comment");
+            comments.forEach((comment: Comment) => {                
+                if ( comment.user.username === UserDataManipulation.getLoggedInUser().username ) {                    
                     this.userHasComment = true;
                     this.userComment = comment;
                 } else 

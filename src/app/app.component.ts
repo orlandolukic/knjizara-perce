@@ -7,6 +7,7 @@ import { faSpinner, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { filter, map, Subscription } from 'rxjs';
 import { LoadService } from './shared/services/load-service';
 import { InitialLoad } from '../../data/interfaces/initial-load';
+import { SelectionService } from './shared/service/selection.service';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     private router: Router,
     private loadService: LoadService,
     private changeDetector: ChangeDetectorRef ,
-    private activatedRoute: ActivatedRoute   
+    private activatedRoute: ActivatedRoute,
+    private selectionService: SelectionService   
   ) {   
 
     this.router.events.subscribe(event => {           
@@ -44,8 +46,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     // Disable selection on window
-    window.onselectstart = function() {
-      return false;
+    window.onselectstart = (e: Event) => {
+      return this.selectionService.checkIfSelectionIsAllowed(e);      
     }
   }
 
