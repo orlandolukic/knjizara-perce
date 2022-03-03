@@ -3,6 +3,7 @@
 @import "bootstrap";
 
 :host {
+
     display: flex;   
     flex-direction: column; 
     width: 100%;
@@ -15,14 +16,25 @@
     opacity: 0;
     transition: 3s;
     box-sizing: border-box;
+    max-height: 180px;
+    overflow: hidden;
 
     > .row {
         width: 100%;
         display: flex;
     }
 
-    &.shown {
+    &.in-showing {
+        opacity: 1;        
+    }
+
+    &.is-shown {
         opacity: 1;
+        transition: 0.2s;
+    }
+
+    &.remove {
+        transition: 1s;
     }
 
     &.even {
@@ -67,7 +79,51 @@
     }
 
     .comment-text {
-        line-height: 25px;
+
+        position: relative;        
+
+        .content {
+            line-height: 25px;
+            padding-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .scroll-more-placeholder {
+            position: absolute;
+            bottom: -10px;   
+            left: 0;         
+            padding: {
+                top: 75px;
+                left: 15px;
+                bottom: 15px;
+            };            
+            width: 100%;
+
+            &.expanded {
+                padding-top: 20px;
+            }
+            
+            background: rgb(255,255,255);
+            background: -moz-linear-gradient(0deg, rgba(255,255,255,1) 34%, rgba(255,255,255,0) 100%);
+            background: -webkit-linear-gradient(0deg, rgba(255,255,255,1) 34%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(0deg, rgba(255,255,255,1) 34%, rgba(255,255,255,0) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+
+            .scroll-more-content {
+                font-size: 14px;
+                display: inline-flex;
+                color: $color-primary;
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                .text {
+                    padding-left: 5px;
+                }
+            }
+        }
     }
 
     .comment-date-with-options {

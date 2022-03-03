@@ -85,18 +85,16 @@
                         <app-trait
                             class="mt-3"
                             title="Prosečna ocena"
-                            [value]="4.5"
+                            [value]="getAverageValue()"
                             [icon]="faStar"
                             iconSize="2x"
                             iconClass="color-star"
                         ></app-trait>
-                        
 
-                        
                         <app-trait
                             class="mt-4"    
                             title="Ocene"
-                            [value]="15"
+                            [value]="getCommentsNumber()"
                             [icon]="faComments"
                             iconSize="2x"
                             iconClass="color-primary"
@@ -171,9 +169,12 @@
                                 [class.is-my-comment]="true"                                                            
                                 [comment]="myComment!"
                                 [emoji]="emojis[myComment!.rating-1]"
+                                [showWarningMessage]="showWarningMessage"
                                 [isMyComment]="true"
                                 [class.even]="true"
-                                [class.shown]="showMyComment"
+                                [class.in-showing]="showMyComment"
+                                [class.is-shown]="isShownMyComment"
+                                [class.remove]="markedForDeletion"
                                 [disabled]="checkIfCommentActionsShouldBeDisabled()"
                                 (delete)="onDeleteComment(myComment)"
                                 (edit)="onEditComment(myComment)"
@@ -183,7 +184,8 @@
                                 single-comment
                                 *ngFor="let comment of comments; let i = index"
                                 [comment]="comment"                                
-                                [class.even]="(!isPresentMyComment ? i : i+1) % 2 === 0"
+                                [class.even]="i % 2 === 0"
+                                [class.is-shown]="true"
                                 [emoji]="emojis[comment.rating-1]"                                
                             ></div>
                             
@@ -197,117 +199,6 @@
     </div>
 </div>
 
-<app-loader 
-    #loader 
-    [zIndexPlaceholder]="9999" 
-    overlayColor="dark" 
-    [overlayOpacity]="0.7" 
-    color="success"
-    [show]="showLeaveCommentModal" 
-    (onDismiss)="onModalDismiss()"   
-    >
-    <div 
-        [class.shown]="showLeaveCommentContent"         
-        class="leave-comment-placeholder" 
-        loader-content
-        >
-        <div class="row">
-            <div class="col-10">
-                <div class="title-section">
-                    <div class="icon">
-                        <fa-icon [icon]="faStar" size="3x"></fa-icon>
-                    </div>
-                    <div class="title">
-                        <div class="text">{{modalTitle}}</div>
-                        <div class="subtitle mt-1"><span>Knjiga</span>: <span class="color-primary fw-bold">{{ book.title }}</span></div>                        
-                    </div>
-                </div>                
-            </div>
-            <div class="col-2 d-flex justify-content-end">
-                <fa-icon class="close-button" (click)="onModalDismiss()" [icon]="faTimes" size="2x"></fa-icon>
-            </div>            
-        </div>
-
-        <div class="rating-number-placeholder row mt-4 d-flex align-items-center">
-            <div class="col-8">
-                <app-choose-star #chooseStar></app-choose-star>
-                <div class="color-faded mt-2 font-s-14">Klikom na zvezdicu odaberite ocenu</div>
-            </div>
-            <div class="rating-column col-4">
-                <div class="rating-number">
-                    {{rating > 0 ? rating : ''}}
-                </div>
-                <angular-emojis #emojiComponent [class.animate]="animateEmoji" class="emoji" [name]="emoji" size="45"> </angular-emojis>
-            </div>
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="fs-3">Komentar</div>
-                <div class="mt-2">
-                    <form>
-                        <div 
-                        data-id="comment-textarea"                        
-                        contenteditable="true"   
-                        [attr.is-placeholder-mode]="isCommentTextareaInPlaceholderMode" 
-                        [class.is-placeholder-mode]="isCommentTextareaInPlaceholderMode"                    
-                        #textarea 
-                        tabindex="1"
-                        class="comment-textarea"                         
-                        (click)="commentTextfieldClick($event)"
-                        (keyup)="commentKeyup($event)"
-                        (focus)="commentTextfieldFocus($event)"
-                        (focusout)="commentTextfieldFocusout($event)"
-                        (mouseenter)="commentTextfieldMouseenter($event)"
-                        (mouseleave)="commentTextfieldMouseleave($event)"
-                        >Unesite željeni komentar za ovu knjigu</div>          
-                    </form>                             
-                </div>                
-                <div *ngIf="showCommentError" class="mt-1 color-danger font-s-14">
-                    * komentar mora imati barem 5 karaktera
-                </div>
-            </div>
-        </div>
-
-        <div class="row mt-1">
-            <div class="col-12 font-s-14 color-faded">
-                Nakon dodavanja/izmene ocene biće onemogućeno brisanje/izmena ocene u narednih 10 dana.
-            </div>
-        </div>
-
-        <div class="row mt-3">
-            <div class="col-12 d-flex justify-content-end">
-                <div class="buttons-placeholder">
-                    <div class="button-placeholder">
-                        <app-button 
-                            [disabled]="disabledSuccessButton" 
-                            (buttonClick)="confirmComment($event)" 
-                            [icon]="faCheck" 
-                            size="xs" 
-                            color="success"
-                            >
-                            <div text>Potvrdite komentar</div>
-                        </app-button>
-                    </div>
-                    <div class="button-placeholder">
-                        <app-button (buttonClick)="declineComment($event)" [icon]="faTimes" size="xs" color="danger" >
-                            <div text>Odustanite</div>
-                        </app-button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</app-loader>
-
-<app-loader-successful
-    #loaderSuccessful
-    textToDisplay="Uspešno ste ostavili ocenu, hvala Vam!"
-    [zIndexPlaceholder]="9999"
-
-    [showContent]="showSuccessfulContent"
-    (dismiss)="onDismissSuccessfulMessage()"
-    (overlayClicked)="onDismissSuccessfulMessage()"
-></app-loader-successful>
-
-<canvas #myCanvas class="confetti-canvas">
+<perce-comments-section
+    #commentsSection
+></perce-comments-section>

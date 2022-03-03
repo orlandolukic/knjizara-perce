@@ -18,7 +18,7 @@ export class FindBookResolver extends FinalResolver<void> {
 
     comments: Comments;
     userHasComment: boolean;
-    userComment: Comment | null;
+    userComment: Comment;
     book: Book;
 
     constructor(

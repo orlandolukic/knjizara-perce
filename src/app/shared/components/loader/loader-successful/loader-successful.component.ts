@@ -40,8 +40,7 @@ export class LoaderSuccessfulComponent implements OnInit, OnDestroy {
 
     // Start transition and trigger the event!
     window.clearTimeout(this.loaderTimeout);
-    this.loaderTimeout = window.setTimeout(() => {   
-      console.log("loader timeout!");   
+    this.loaderTimeout = window.setTimeout(() => {         
       this.dismissLoader();
       this.inTransition = false;
     }, this.timeToWait * 1000);

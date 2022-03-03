@@ -22,7 +22,7 @@ export class TraitComponent implements OnInit {
   iconSize: SizeProp | undefined;
 
   @Input()
-  value: number;
+  value: number | string;
 
   constructor() { }
 

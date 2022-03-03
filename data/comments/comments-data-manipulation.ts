@@ -70,4 +70,63 @@ export class CommentsDataManipulation {
         localStorage.setItem('comments', JSON.stringify(commentsArr));
     }
 
+    public static deleteComment(c: Comment): void {
+        let commentsStr: any = localStorage.getItem('comments');
+        let commentsArr: Comment[];        
+        let xComment: Comment;
+        commentsArr = JSON.parse(commentsStr);    
+
+        if ( commentsArr ) {
+            
+            commentsArr = commentsArr.filter((x: Comment) => {
+                xComment = x as Comment;
+                if ( xComment.bookID === c.bookID && xComment.user.username === UserDataManipulation.getLoggedInUser().username ) {
+                    return false;           
+                }
+                return true;
+            }); 
+
+            localStorage.setItem('comments', JSON.stringify(commentsArr));
+        }
+        
+    }
+
+    public static getCommentNumberForBook(book: Book): number {
+        let commentsStr: any = localStorage.getItem('comments');
+        let commentsArr: Comment[];        
+        let xComment: Comment;
+        let n: number = 0;
+        commentsArr = JSON.parse(commentsStr);    
+
+        if ( commentsArr ) {            
+            commentsArr.forEach((x: Comment) => {
+                xComment = x as Comment;
+                if ( xComment.bookID === book.id ) {
+                    n++;
+                }                
+            });      
+        }
+        return n;
+    }
+
+    public static getAverageForBook(book: Book): number {
+        let commentsStr: any = localStorage.getItem('comments');
+        let commentsArr: Comment[];        
+        let xComment: Comment;
+        let n: number = 0;
+        let d: number = 0.0;
+        commentsArr = JSON.parse(commentsStr);    
+
+        if ( commentsArr ) {            
+            commentsArr.forEach((x: Comment) => {
+                xComment = x as Comment;
+                if ( xComment.bookID === book.id ) {
+                    n++;
+                    d += xComment.rating;
+                }                
+            });      
+        }
+        return d * 1.0 / n;
+    }
+
 }

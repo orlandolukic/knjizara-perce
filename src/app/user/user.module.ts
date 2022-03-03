@@ -28,6 +28,7 @@ import { AllBooksResolver } from './all-books/all-books-resolver';
 import { FindBookResolver } from './book/find-book-resolver';
 import { TraitComponent } from './book/trait/trait.component';
 import { SingleCommentComponent } from './book/single-comment/single-comment.component';
+import { CommentsSectionComponent } from './book/comments-section/comments-section.component';
 
 
 
@@ -43,7 +44,7 @@ import { SingleCommentComponent } from './book/single-comment/single-comment.com
     BookSliderSingleBookComponent,
     BookComponent,
     RecommendBookComponent,    
-    UserListComponent, UserListSingleElementComponent, AllBooksListingComponent, SingleRecommendationComponent, TraitComponent, SingleCommentComponent
+    UserListComponent, UserListSingleElementComponent, AllBooksListingComponent, SingleRecommendationComponent, TraitComponent, SingleCommentComponent, CommentsSectionComponent
   ],
   imports: [
     CommonModule,

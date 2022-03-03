@@ -1,3 +1,18 @@
+<div *ngIf="showWarningMessage" class="row mb-2 mt-2">
+    <div class="col-12">
+        <div class="comment-warning">
+            <div class="comment-warning-icon">
+                <fa-icon [icon]="faExclamation" size="2x"></fa-icon>
+            </div>
+            <div class="comment-warning-text">
+                <div class="text-uppercase fw-bold font-s-14">Sigurnosna provera</div>
+                <div class="mt-1">
+                    Komentar nije moguće obrisati u narednih {{diffDays}} dana.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div *ngIf="isMyComment" class="row my-comment">
     <div class="col-12 col-sm-12 col-md-2">
         MOJ KOMENTAR
@@ -22,8 +37,18 @@
             </div>
         </app-user-details>
     </div>
-    <div #commentTextElementRef class="comment-text col-md-8 col-12 col-sm-12">
-        
+    <div class="comment-text col-md-8 col-12 col-sm-12">
+        <div #commentTextElementRef class="content">
+            
+        </div>
+        <div *ngIf="displayScrollMore" class="scroll-more-placeholder" [class.expanded]="expanded">
+            <div class="scroll-more-content" (click)="readWholeComment()">
+                <div class="icon">
+                    <fa-icon [icon]="!expanded ? faEye : faEyeSlashed"></fa-icon>
+                </div>
+                <div class="text">{{ !expanded ? 'Pročitajte ceo komentar' : 'Sakrijte ceo komentar' }}</div>
+            </div>
+        </div>
     </div>
     <div class="comment-date-with-options col-md-2 col-12 col-sm-12">
         <div class="date-placeholder d-flex align-items-center">
@@ -46,20 +71,3 @@
         </div>
     </div>
 </div>
-
-<div *ngIf="disabled" class="row mt-3">
-    <div class="col-12">
-        <div class="comment-warning">
-            <div class="comment-warning-icon">
-                <fa-icon [icon]="faExclamation" size="2x"></fa-icon>
-            </div>
-            <div class="comment-warning-text">
-                <div class="text-uppercase fw-bold font-s-14">Sigurnosna provera</div>
-                <div class="mt-1">
-                    Komentar nije moguće obrisati u narednih {{diffDays}} dana.
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-

@@ -1,0 +1,153 @@
+
+@import "variables";
+@import "bootstrap";
+
+.leave-comment-placeholder {
+    width: 450px;
+    min-height: 180px;
+    background-color: white;
+    padding: {
+        top: 30px;
+        right: 40px;
+        bottom: 15px;
+        left: 40px;
+    };
+    opacity: 0;
+    transform: scale3d(0.8,0.8,0.8);
+    transition: 0.1s;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 2px 33px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 33px -9px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 33px -9px rgba(0,0,0,0.75);
+
+    &.shown {
+        opacity: 1;
+        transform: scale3d(1,1,1);        
+    }
+
+    .title-section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        .icon {
+            color: $color-star;
+        }
+
+        .title {
+            margin-left: 15px;
+            .subtitle {
+                font-size: 16px;
+                font-weight: normal;
+            }
+        }
+    }
+
+    .close-button {
+        transition: 0.2s;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .rating-number-placeholder {
+        
+
+        .rating-column {
+            position: relative;            
+            .rating-number {
+                font-size: 1.8em;
+                font-weight: bold;
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+            }
+    
+            .emoji {
+                position: absolute;
+                top: -6px;
+                right: 0;
+                left: 0;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                transform: scale3d(0.3,0.3,0.3);
+                opacity: 0;
+
+                &.animate {
+                    animation-name: animateEmoji;
+                    animation-duration: 1s;    
+                    animation-timing-function: cubic-bezier(.28,.51,.47,.9);                
+                }
+            }
+        }    
+    }
+
+    .comment-textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;        
+        min-height: 150px;
+        max-height: 220px;
+        box-sizing: border-box;
+        outline: none;
+        background-color: rgb(248, 248, 248);
+        border: 1px solid darken($color-primary-border, 70%);
+
+        padding: 10px 15px;
+        border-radius: 3px;
+        font-family: $font-family;
+        font-size: 1em;
+        line-height: 25px;
+        pointer-events: all;
+        overflow-y: auto;
+
+        &.is-placeholder-mode {
+            color: lighten($color-faded, 40%);
+        }
+
+        &:focus {
+            border: 1px solid darken($color-primary-border, 50%);
+            background-color: rgb(250, 250, 250);
+        }
+    }
+}
+
+.confetti-canvas {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+@keyframes animateEmoji {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3,0.3,0.3);
+    }
+    50% {
+        opacity: 1;            
+    }
+    100% {
+        opacity: 0;
+        transform: scale3d(1,1,1);
+    }
+}
+
+@-webkit-keyframes animateEmoji {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3,0.3,0.3);
+    }
+    50% {
+        opacity: 1;            
+    }
+    100% {
+        opacity: 0;
+        transform: scale3d(1,1,1);
+    }
+}
