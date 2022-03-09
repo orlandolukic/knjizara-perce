@@ -15,9 +15,51 @@
     };
     opacity: 0;
     transition: 3s;
-    box-sizing: border-box;
-    max-height: 180px;
+    box-sizing: border-box;    
     overflow: hidden;
+
+    min-height: 120px;
+    max-height: 250px;
+
+    &.has-warning-message {
+        max-height: 250px;
+        min-height: 200px;
+    }
+
+    &.has-warning-message.expandable {
+        max-height: 250px;
+        min-height: 200px;
+
+        .comment-text {
+            max-height: 120px;            
+        }
+
+        &.expanded {
+            max-height: none;
+            .comment-text {
+                max-height: initial;
+            }
+        }
+    }
+
+    &.expandable {
+        min-height: 200px;
+        max-height: 200px;
+
+        .comment-text {
+            max-height: 170px;            
+        }
+
+        &.expanded {
+            max-height: none;
+            .comment-text {
+                max-height: initial;
+            }
+        }
+    }
+    &.not-expandable {
+        max-width: initial;        
+    }
 
     > .row {
         width: 100%;

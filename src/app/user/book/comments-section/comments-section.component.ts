@@ -251,7 +251,7 @@ export class CommentsSectionComponent implements OnInit {
         // Disable actions on comment by force.
         this.forceDisableActions = true;  
 
-        // Refresh single-comment.component
+        // Refresh single-comment.component        
         this.parent.myCommentComponent.comment = this.parent.myComment;                             
 
         resolve();       

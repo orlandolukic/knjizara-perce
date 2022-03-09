@@ -41,14 +41,14 @@
         <div #commentTextElementRef class="content">
             
         </div>
-        <div *ngIf="displayScrollMore" class="scroll-more-placeholder" [class.expanded]="expanded">
+        <div *ngIf="displayScrollMore" class="scroll-more-placeholder">
             <div class="scroll-more-content" (click)="readWholeComment()">
                 <div class="icon">
-                    <fa-icon [icon]="!expanded ? faEye : faEyeSlashed"></fa-icon>
+                    <fa-icon [icon]="!expanded.getValue() ? faEye : faEyeSlashed"></fa-icon>
                 </div>
-                <div class="text">{{ !expanded ? 'Pročitajte ceo komentar' : 'Sakrijte ceo komentar' }}</div>
+                <div class="text">{{ !expanded.getValue() ? 'Pročitajte ceo komentar' : 'Sakrijte ceo komentar' }}</div>
             </div>
-        </div>
+        </div>        
     </div>
     <div class="comment-date-with-options col-md-2 col-12 col-sm-12">
         <div class="date-placeholder d-flex align-items-center">

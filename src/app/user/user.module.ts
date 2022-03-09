@@ -46,7 +46,7 @@ import { CommentsSectionComponent } from './book/comments-section/comments-secti
     RecommendBookComponent,    
     UserListComponent, UserListSingleElementComponent, AllBooksListingComponent, SingleRecommendationComponent, TraitComponent, SingleCommentComponent, CommentsSectionComponent
   ],
-  imports: [
+  imports: [        
     CommonModule,
     SharedModule,
     UserRoutingModule,       

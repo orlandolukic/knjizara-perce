@@ -1,4 +1,6 @@
-<div class="container mt-md-4">
+<div @show class="container mt-md-4"
+    (@show.done)="doneAnimation($event)"
+>
     <div class="row">
         <div class="col-md-8 col-12">
             <div class="title-section">

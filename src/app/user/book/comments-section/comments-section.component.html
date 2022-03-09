@@ -45,24 +45,22 @@
         <div class="row mt-4">
             <div class="col-12">
                 <div class="fs-3">Komentar</div>
-                <div class="mt-2">
-                    <form>
-                        <div 
-                        data-id="comment-textarea"                        
-                        contenteditable="true"   
-                        [attr.is-placeholder-mode]="isCommentTextareaInPlaceholderMode" 
-                        [class.is-placeholder-mode]="isCommentTextareaInPlaceholderMode"                    
-                        #textarea 
-                        tabindex="1"
-                        class="comment-textarea"                         
-                        (click)="commentTextfieldClick($event)"
-                        (keyup)="commentKeyup($event)"
-                        (focus)="commentTextfieldFocus($event)"
-                        (focusout)="commentTextfieldFocusout($event)"
-                        (mouseenter)="commentTextfieldMouseenter($event)"
-                        (mouseleave)="commentTextfieldMouseleave($event)"
-                        >Unesite željeni komentar za ovu knjigu</div>          
-                    </form>                             
+                <div class="mt-2">                
+                    <div 
+                    data-id="comment-textarea"                        
+                    contenteditable="true"   
+                    [attr.is-placeholder-mode]="isCommentTextareaInPlaceholderMode" 
+                    [class.is-placeholder-mode]="isCommentTextareaInPlaceholderMode"                    
+                    #textarea 
+                    tabindex="1"
+                    class="comment-textarea"                         
+                    (click)="commentTextfieldClick($event)"
+                    (keyup)="commentKeyup($event)"
+                    (focus)="commentTextfieldFocus($event)"
+                    (focusout)="commentTextfieldFocusout($event)"
+                    (mouseenter)="commentTextfieldMouseenter($event)"
+                    (mouseleave)="commentTextfieldMouseleave($event)"
+                    >Unesite željeni komentar za ovu knjigu</div>                                    
                 </div>                
                 <div *ngIf="showCommentError" class="mt-1 color-danger font-s-14">
                     * komentar mora imati barem 5 karaktera

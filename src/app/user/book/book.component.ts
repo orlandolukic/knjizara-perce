@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faBookmark, faCheckCircle, faChevronRight, faComment, faCommenting, faComments, faCommentSlash, faEye, faFlag, faFlagCheckered, faHomeUser, faStar, faTimes, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Book } from 'data/book/book';
@@ -23,11 +23,13 @@ import { environment } from 'src/environments/environment';
 import { SingleCommentComponent } from './single-comment/single-comment.component';
 import { CommentsSectionComponent } from './comments-section/comments-section.component';
 import { Utilities } from 'data/utilities';
+import { animations } from './book.animations';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss']
+  styleUrls: ['./book.component.scss'],
+  animations: animations
 })
 export class BookComponent implements OnInit, OnDestroy {
 
@@ -161,6 +163,11 @@ export class BookComponent implements OnInit, OnDestroy {
       this.markedForDeletion = false;  
       this.numberOfComments--;      
     }, 1000);
+  }
+
+  doneAnimation(event: any): void {
+    console.log("finished");
+    console.log(event);
   }
 
 }

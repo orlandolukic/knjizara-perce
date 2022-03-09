@@ -1,16 +1,43 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons';
 import { faCalendar, faCalendarAlt, faEdit, faExclamationTriangle, faEye, faEyeSlash, faPencilAlt, faStar, faTrash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { AngularEmojisComponent } from 'angular-emojis';
 import { Comment } from 'data/comments/comment';
 import { Utilities } from 'data/utilities';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,  
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: '[single-comment]',
   templateUrl: './single-comment.component.html',
-  styleUrls: ['./single-comment.component.scss']
+  styleUrls: ['./single-comment.component.scss'],
+  animations: [
+    trigger('collapse', [
+      state('collapsed', style({        
+        height: "{{startHeight}}px"
+      }), { params: {
+        startHeight: 250
+      } }),
+      state("not-collapsed", style({
+        height: "500px"
+      })),
+      transition('collapsed => not-collapsed', [
+        animate('1s ease')
+      ]),
+      transition('not-collapsed => collapsed', [
+        animate('0.5s ease')
+      ])
+    ])    
+  ]
 })
-export class SingleCommentComponent implements OnInit, OnChanges {
+export class SingleCommentComponent implements OnInit, OnChanges, OnDestroy {
 
   public static COMMENT_TEXT_BOUND: number = 100;
   public static HOST_MAX_HEIGHT: number = 180;
@@ -19,13 +46,21 @@ export class SingleCommentComponent implements OnInit, OnChanges {
   @ViewChild('commentTextElementRef', {static: true, read: ElementRef}) commentText: ElementRef;
   @ViewChild('emojiIcon', {static: false, read: AngularEmojisComponent}) emojiIcon: AngularEmojisComponent;
 
+  @HostBinding("@collapse") get getCollapse(): string {
+    return this.expanded.getValue() ? 'not-collapsed' : 'collapsed';
+  }
+
   @Input()
   set comment(c: Comment) {
     
     this.calculateDaysDiff(c);
     this.parseText(c);      
-    this._comment = c;  
-        
+    this._comment = c; 
+    
+    this.resetAllSettingsForLongComment();
+    if ( !this.firstTimeCheckExpansion ) {
+      this.checkForLongComment(this.showWarningMessage);
+    }
   }
   get comment(): Comment { return this._comment; }
   private _comment: Comment;
@@ -66,36 +101,89 @@ export class SingleCommentComponent implements OnInit, OnChanges {
   faCalendar: IconDefinition = faCalendarCheck;
   diffDays: number;
   host: ElementRef;
-  displayScrollMore: boolean;
-  expanded: boolean;
+  displayScrollMore: boolean;  
+
+  expanded: BehaviorSubject<boolean>;
+  expandedSubscription: Subscription;
+  private firstTimeCheckExpansion: boolean;
 
   constructor(
     host: ElementRef,
     private cdr: ChangeDetectorRef
   ) { 
+    this.firstTimeCheckExpansion = true;
     this.isMyComment = false;
     this.disabled = false;
     this.host = host;
+    this.expanded = new BehaviorSubject<boolean>(false);
+    this.expandedSubscription = this.expanded.subscribe((val: boolean) => {
+      if ( val )
+        this.host.nativeElement.classList.add("expanded");
+      else
+        this.host.nativeElement.classList.remove("expanded");
+    });
   }
 
-  ngOnInit(): void {  
+  ngOnInit(): void {      
+
     if ( !this.isMyComment )
       this.host.nativeElement.classList.add("shown");
       
-    this.showWarningMessage = false;
+    this.showWarningMessage = this.isMyComment;    
+
+    if ( this.showWarningMessage )
+      this.host.nativeElement.classList.add("has-warning-message");
+
+    this.checkForLongComment(this.showWarningMessage);
     //this.expanded = false;
     //this.checkForLongComment();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     
-    this.host.nativeElement.style.maxHeight = SingleCommentComponent.HOST_MAX_HEIGHT + "px";
-    this.commentText.nativeElement.style.maxHeight = "initial";
-    this.checkForLongComment();
-
+    if ( changes['showWarningMessage'] ) {
+      if ( changes['showWarningMessage'].firstChange ) 
+        return;
+      if ( changes['showWarningMessage'].currentValue )      
+        this.host.nativeElement.classList.add("has-warning-message");
+      else 
+        this.host.nativeElement.classList.remove("has-warning-message");      
+      this.checkForLongComment( changes['showWarningMessage'].currentValue );      
+    }
   }
 
-  getDateForComment(): string {
+  ngOnDestroy(): void {
+      this.expandedSubscription.unsubscribe();
+  }
+
+  private resetAllSettingsForLongComment(): void {        
+    this.commentText.nativeElement.style.height = "initial";
+  }
+
+  private checkForLongComment(showWarningMessage: boolean): void {
+    this.displayScrollMore = false;
+    let offset: number = showWarningMessage ? 320 : 20;
+    console.log( offset + " " + (this.host.nativeElement.offsetHeight) + " " + this.commentText.nativeElement.offsetHeight);
+    if ( this.host.nativeElement.offsetHeight-offset < this.commentText.nativeElement.offsetHeight ) {        
+      this.host.nativeElement.classList.remove("not-expandable");
+      this.host.nativeElement.classList.add("expandable");
+      this.displayScrollMore = true;
+    } else {
+      this.host.nativeElement.classList.add("not-expandable");
+    }
+  }
+
+  readWholeComment(): void {        
+    this.expanded.next(!this.expanded.getValue());              
+  }
+
+  /**
+   * ==============================================================================================
+   *    Utilities regarding single comment
+   * ==============================================================================================
+   */
+
+   getDateForComment(): string {
     return Utilities.printDate(this.comment.dateCreated);
   }
 
@@ -118,40 +206,6 @@ export class SingleCommentComponent implements OnInit, OnChanges {
 
   editComment(): void {
     this.edit.emit();
-  }
-
-  private resetAllSettingsForLongComment(): void {        
-    this.commentText.nativeElement.style.height = "initial";
-  }
-
-  private checkForLongComment(): void {
-    this.displayScrollMore = false;
-    if ( this.host.nativeElement.offsetHeight < this.commentText.nativeElement.offsetHeight ) {  
-      console.log("here");  
-      let maxHeight: number = SingleCommentComponent.HOST_MAX_HEIGHT;
-      if ( this.showWarningMessage )
-        maxHeight += 280;
-      this.host.nativeElement.style.maxHeight = maxHeight + "px";  
-      this.commentText.nativeElement.style.height = SingleCommentComponent.COMMENT_TEXT_BOUND + "px";
-      this.displayScrollMore = true;
-    };
-  }
-
-  private prepareForLongComment(): void {    
-    if ( !this.expanded ) {
-      this.host.nativeElement.style.minHeight = "initial";
-      this.host.nativeElement.style.maxHeight = "initial";
-      this.commentText.nativeElement.style.height = "initial";
-    } else {
-      this.host.nativeElement.style.minHeight = ((this.isMyComment ? 40 : 0) + SingleCommentComponent.HOST_MIN_HEIGHT) + "px";
-      this.host.nativeElement.style.maxHeight = ((this.isMyComment ? 40 : 0) + SingleCommentComponent.HOST_MAX_HEIGHT) + "px";
-      this.commentText.nativeElement.style.height = ((this.isMyComment ? 40 : 0) + SingleCommentComponent.COMMENT_TEXT_BOUND) + "px";
-    }
-  }
-
-  readWholeComment(): void {
-    this.prepareForLongComment();    
-    this.expanded = !this.expanded;
   }
 
 }
