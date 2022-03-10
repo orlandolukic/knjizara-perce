@@ -2,7 +2,7 @@
     (@show.done)="doneAnimation($event)"
 >
     <div class="row">
-        <div class="col-md-8 col-12">
+        <div class="col-md-8 col-12 mt-3 mt-lg-0">
             <div class="title-section">
                 <div class="icon">
                     <a routerLink="/user">
@@ -10,13 +10,13 @@
                     </a>
                 </div>
                 <div class="icon">
-                    <fa-icon [icon]="faChevronRight" class="color-faded" size="sm"></fa-icon>
+                    <fa-icon [icon]="chevron" class="color-faded" size="sm"></fa-icon>
                 </div>
                 <div class="title">
                     <a [routerLink]="getLinkForAllBooks()">Sve knjige</a>                    
                 </div>  
                 <div class="icon">
-                    <fa-icon [icon]="faChevronRight" class="color-faded" size="sm"></fa-icon>
+                    <fa-icon [icon]="chevron" class="color-faded" size="sm"></fa-icon>
                 </div>
                 <div class="title">
                     {{ book.title }}
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 col-12">
+        <div class="col-md-4 col-12 mt-4">
             <div class="price-placeholder">
                 <div class="price-title">CENA</div>
                 <div class="price-actual">
@@ -38,14 +38,17 @@
 
     <div class="row mt-md-3 mb-md-3 mt-3 mb-3">
         <div class="col-12 col-md-12 col-sm-12">
-            <div class="book-section">
+            <div [@fadeInContent]="fadeInContentAnimation" class="book-section">
                 <div class="row">
                     <div class="col-md-4 col-sm-12 col-12">
-                        <div class="image">
+                        <div 
+                        [@fadeInContentChild] 
+                        (@fadeInContent.done)="doneFadingIn($event)" 
+                        class="image">
                             <img [src]="getImageForBook()">
                         </div>
                     </div>
-                    <div class="center-content col-md-5 col-sm-12 col-12">
+                    <div [@fadeInContentChild] class="center-content col-md-5 col-sm-12 col-12">
                         <div *ngIf="book.onPromotion" class="mt-3">
                             <app-sponsored-star></app-sponsored-star>
                         </div>
@@ -76,7 +79,7 @@
                         </div>   
                     </div>
 
-                    <div class="right-content col-md-3 col-sm-12 col-12">
+                    <div [@fadeInContentChild] class="right-content col-md-3 col-sm-12 col-12">
 
                         <div class="mb-2 mt-3">
                             <app-button (buttonClick)="onRecommend()" [icon]="faBookmark" color="starcolor" size="xs">

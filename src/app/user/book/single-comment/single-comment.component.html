@@ -14,15 +14,15 @@
     </div>
 </div>
 <div *ngIf="isMyComment" class="row my-comment">
-    <div class="col-12 col-sm-12 col-md-2">
+    <div class="col-12 col-sm-12 col-md-6">
         MOJ KOMENTAR
     </div>
-    <div class="d-none d-md-flex d-sm-flex col-sm-12 col-md-2 offset-md-8">
+    <div class="d-none d-md-flex d-sm-flex col-sm-12 col-md-6 justify-content-end">
         AKCIJE
     </div>
 </div>
 <div class="row mt-2">
-    <div class="comment-creator col-md-2 col-12 col-sm-12">
+    <div class="comment-creator col-lg-3 col-xl-2 col-md-6 col-12 col-sm-12">
         <app-user-details [user]="comment.user">
             <div insteadUsername>
                 <div class="star-placeholder">
@@ -37,7 +37,27 @@
             </div>
         </app-user-details>
     </div>
-    <div class="comment-text col-md-8 col-12 col-sm-12">
+    <div class="comment-date-with-options col-md-6 d-none d-sm-none d-md-flex d-lg-none flex-column align-items-end justify-content-end">
+        <div class="date-placeholder d-flex align-items-center">
+            <div class="date-icon color-faded">
+                <fa-icon [icon]="faCalendar"></fa-icon>
+            </div>
+            <div class="date-section ms-2">{{getDateForComment()}}</div>            
+        </div>
+        <div *ngIf="isMyComment" class="options mt-2">
+            <div class="button edit-button">
+                <app-button [disabled]="disabled" [icon]="faEdit" color="success" size="xs"
+                    (buttonClick)="editComment()" 
+                    matTooltip="Izmena komentara" matTooltipPosition="below" matTooltipClass="font-s-14"></app-button>
+            </div>
+            <div class="button delete-button">
+                <app-button [disabled]="disabled" [icon]="faTrash" color="danger" size="xs"
+                    (buttonClick)="deleteComment()"
+                    matTooltip="Brisanje komentara" matTooltipPosition="below" matTooltipClass="font-s-14"></app-button>
+            </div>
+        </div>
+    </div>
+    <div class="comment-text col-lg-7 col-xl-8 col-md-8 col-12 col-sm-12 mt-3 mt-sm-none">
         <div #commentTextElementRef class="content">
             
         </div>
@@ -48,9 +68,9 @@
                 </div>
                 <div class="text">{{ !expanded.getValue() ? 'Pročitajte ceo komentar' : 'Sakrijte ceo komentar' }}</div>
             </div>
-        </div>        
+        </div>         
     </div>
-    <div class="comment-date-with-options col-md-2 col-12 col-sm-12">
+    <div class="comment-date-with-options col-lg-2 col-12 col-sm-12 mt-3 mt-sm-none d-flex flex-column d-sm-none d-md-none d-lg-flex align-items-start align-items-md-end">
         <div class="date-placeholder d-flex align-items-center">
             <div class="date-icon color-faded">
                 <fa-icon [icon]="faCalendar"></fa-icon>

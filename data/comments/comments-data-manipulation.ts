@@ -124,9 +124,10 @@ export class CommentsDataManipulation {
                     n++;
                     d += xComment.rating;
                 }                
-            });      
+            });                  
         }
-        return d * 1.0 / n;
+
+        return n > 0 ? d * 1.0 / n : 0;    
     }
 
 }

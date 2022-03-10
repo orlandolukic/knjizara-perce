@@ -41,7 +41,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
         this.loadService.setTransition();
       } else if ( event instanceof NavigationEnd ) {        
         this.loadService.resetTransition();      
-        this.loadService.checkIfReadyToShow();  
+        this.loadService.checkIfReadyToShow(); 
+        document.body.scrollTop = 0;
       }
     });
 

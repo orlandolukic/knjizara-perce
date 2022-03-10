@@ -20,6 +20,10 @@
     -moz-box-shadow: 0px 2px 33px -9px rgba(0,0,0,0.75);
     box-shadow: 0px 2px 33px -9px rgba(0,0,0,0.75);
 
+    @include media-breakpoint-only(xs) {
+        width: 320px;
+    }
+
     &.shown {
         opacity: 1;
         transform: scale3d(1,1,1);        
@@ -79,6 +83,11 @@
                     animation-name: animateEmoji;
                     animation-duration: 1s;    
                     animation-timing-function: cubic-bezier(.28,.51,.47,.9);                
+                }
+
+                @include media-breakpoint-only(xs) {
+                    top: 0;
+                    left: 15px;
                 }
             }
         }    

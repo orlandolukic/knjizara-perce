@@ -1,6 +1,6 @@
-import { ChangeDetectorRef, Component, ElementRef, HostBinding, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faBookmark, faCheckCircle, faChevronRight, faComment, faCommenting, faComments, faCommentSlash, faEye, faFlag, faFlagCheckered, faHomeUser, faStar, faTimes, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faCheckCircle, faChevronDown, faChevronRight, faComment, faCommenting, faComments, faCommentSlash, faEye, faFlag, faFlagCheckered, faHomeUser, faStar, faTimes, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Book } from 'data/book/book';
 import { BookDataManipulation } from 'data/book/book-data-manipulation';
 import { Comment, Comments } from 'data/comments/comment';
@@ -24,6 +24,7 @@ import { SingleCommentComponent } from './single-comment/single-comment.componen
 import { CommentsSectionComponent } from './comments-section/comments-section.component';
 import { Utilities } from 'data/utilities';
 import { animations } from './book.animations';
+import { BreakpointManager } from 'src/app/shared/utilities/breakpoint-manager';
 
 @Component({
   selector: 'app-book',
@@ -38,6 +39,7 @@ export class BookComponent implements OnInit, OnDestroy {
 
   faHome: IconDefinition = faHomeUser;
   faChevronRight: IconDefinition = faChevronRight;
+  faChevronDown: IconDefinition = faChevronDown;
   faStar: IconDefinition = faStar;
   faComments: IconDefinition = faCommenting;
   faBookmark: IconDefinition = faBookmark;
@@ -47,6 +49,7 @@ export class BookComponent implements OnInit, OnDestroy {
   faCommentSlash: IconDefinition = faCommentSlash;
   faTimes: IconDefinition = faTimesCircle;
   faCheck: IconDefinition = faCheckCircle;
+  chevron: IconDefinition;
 
   emojis: string[] = [
     'rage',
@@ -66,11 +69,29 @@ export class BookComponent implements OnInit, OnDestroy {
   markedForDeletion: boolean;  
   showWarningMessage: boolean;
 
+  animationLeftContent: any = 'hidden';
+  animationCenterContent: any;
+  animationRightContent: any;
+  fadeInContentAnimation: any;
+
   constructor(
     private titleService: TitleService,
     private findBookResolver: FindBookResolver,
     private recommendService: RecommendBookService    
-  ) {     
+  ) {   
+    this.fadeInContentAnimation = {
+      value: 'hidden'
+    };
+    /*    
+    this.animationLeftContent = {
+      value: 'hidden'
+    };
+    this.animationCenterContent = {
+      value: 'hidden'
+    };
+    this.animationRightContent = {
+      value: 'hidden'
+    }*/
   }
 
   ngOnInit(): void {
@@ -92,7 +113,9 @@ export class BookComponent implements OnInit, OnDestroy {
           this.isShownMyComment = true;
         }, 3000);
       }
-    }, 10);   
+    }, 10);  
+    
+    this.checkChevronIcon();
 
     this.markedForDeletion = false;
     
@@ -100,6 +123,10 @@ export class BookComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
       
+  }
+
+  @HostListener('window:resize', ['$event']) resize(event: Event): void {
+    this.checkChevronIcon();
   }
 
   getLinkForAllBooks(): string {
@@ -165,9 +192,24 @@ export class BookComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-  doneAnimation(event: any): void {
-    console.log("finished");
+  @HostListener('@fadeInContent.done', ['$event']) doneFadingIn(event: any) {
     console.log(event);
+  }
+
+  doneAnimation(event: any): void {    
+    setTimeout(() => {
+      this.fadeInContentAnimation = {
+        value: 'shown'
+      }
+    }, 300);
+  }
+
+  private checkChevronIcon(): void {
+    if ( BreakpointManager.getDeviceSizeAsNumber() > BreakpointManager.XS ) {
+      this.chevron = faChevronRight;
+    } else {
+      this.chevron = faChevronDown;
+    }
   }
 
 }

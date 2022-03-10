@@ -16,6 +16,7 @@ import { LoaderComponent } from 'src/app/shared/components/loader/loader.compone
 import { SelectionService } from 'src/app/shared/service/selection.service';
 import { LoaderService } from 'src/app/shared/services/modals/loader-service';
 import { RecommendBookService } from 'src/app/shared/services/modals/recommend-book-service';
+import { BreakpointManager } from 'src/app/shared/utilities/breakpoint-manager';
 import { environment } from 'src/environments/environment';
 import { BookComponent } from '../book.component';
 import { FindBookResolver } from '../find-book-resolver';
@@ -107,6 +108,7 @@ export class CommentsSectionComponent implements OnInit {
       this.emoji = this.parent.emojis[rating-1];      
       this.animateEmoji = false;      
       this.cdr.detectChanges();
+      this.emojiComponent.size = BreakpointManager.getDeviceSizeAsNumber() === BreakpointManager.XS ? '35' : '45';
       this.emojiComponent.ngOnInit();
       this.checkForErrors();
       window.clearTimeout(this.animateEmojiInitiateTimeout);

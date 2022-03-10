@@ -2,6 +2,31 @@
 @import "variables";
 @import "bootstrap";
 
+:host {
+    > .container {
+        @include media-breakpoint-only(xs) {
+            width: calc(100% - 20px);
+        }
+    }
+}
+
+.title-section {   
+
+    @include media-breakpoint-only(xs) {
+        flex-flow: column;
+
+        .title, .icon {
+            @include media-breakpoint-only(xs) {
+                margin-left: 0;
+            }
+        }    
+    
+        > div:nth-child(n+2) {
+            margin-top: 5px;
+        }
+    }
+}
+
 .price-placeholder {
 
     width: 100%;

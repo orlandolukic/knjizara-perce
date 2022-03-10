@@ -2,6 +2,7 @@
 
 @import "global";
 @import "loaders";
+@import "bootstrap";
 
 
 @font-face {
@@ -144,6 +145,10 @@ a {
     .title {
         font-size: 1.5em;
         font-weight: bold;
+    }
+
+    @include media-breakpoint-only(xs) {
+        font-size: 12px;
     }
 
 }
