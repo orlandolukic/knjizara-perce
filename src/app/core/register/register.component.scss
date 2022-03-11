@@ -1,0 +1,244 @@
+
+@import "variables";
+@import "bootstrap";
+
+@mixin gradient-striped($color: rgba(255,255,255,.15), $angle: 45deg) {
+    background-image: -webkit-linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+    background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
+  }
+  
+  @mixin progress-bar-variant($color) {
+    background-color: $color;
+  }
+  
+  @-webkit-keyframes progress-bar-stripes {
+    from  { background-position: 40px 0; }
+    to    { background-position: 0 0; }
+  }
+  
+  // Spec and IE10+
+  @keyframes progress-bar-stripes {
+    from  { background-position: 40px 0; }
+    to    { background-position: 0 0; }
+  }
+  
+  @mixin animation($animation) {
+    -webkit-animation: $animation;
+         -o-animation: $animation;
+            animation: $animation;
+  }
+
+.register-container {
+    position: absolute;
+    left: 0;
+    right: 0;    
+    margin: auto;
+    top: 0;
+    bottom: 0;
+
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+
+    .data-column {
+        @include media-breakpoint-only(xs) {
+            margin-top: 80px;
+        }
+        .content {
+            @include media-breakpoint-only(xs) {
+                padding: 5px 20px;
+            }
+            .logo {                
+                position: absolute;
+                top: -175px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                padding: 20px 30px;
+                background-color: rgba(255,255,255,0.8);
+                display: inline-flex;
+                width: fit-content;
+                img {
+                    width: 140px;
+                    height: 120px
+                }
+    
+                @include media-breakpoint-between(xs,lg) {
+                    top: -140px;
+                    display: flex;
+                }
+            }
+        }
+    }
+
+    // Progress bar styles
+    .progress-bar-placeholder {
+        
+        padding-top: 60px;
+        padding-bottom: 10px;
+        background-color: white;
+
+        .progress-bar {            
+            width: 100%;
+            height: 10px;
+            background-color: lighten( $color-success, 60% );
+            border-radius: 2px;
+            display: flex;
+            flex-direction: row;
+            position: relative;
+    
+            .progress-bar-milestone {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                position: relative;                               
+                
+                &:nth-child(n+2) {
+                    border-left: 3px solid $color-faded;
+                }
+
+                &.completed {
+                    .number {
+                        background-color: $color-success;
+                        color: white;         
+                        border-color: darken( $color-success, 5% );               
+                    }   
+                    
+                    .description {                        
+                        color: $color-success;
+                        opacity: 1;                           
+                    }
+                }
+
+                &.active {
+                    .number {
+                        background: lighten($color-success, 10%);
+                        color: white;
+                        border: 1px solid $color-success;
+                        transform: scale3d(1.1,1.1,1.1);                        
+                    }   
+                    
+                    .description {
+                        font-weight: bold;
+                        color: $color-success;
+                        opacity: 1;    
+                    }
+                }
+    
+                .number {
+                    position: absolute;
+                    top: -100%;
+                    z-index: 10;
+                    border: 1px solid lighten( $color-success, 40% );
+                    padding: 8px 12px;
+                    border-radius: 50%;
+                    background-color: white;
+                    color: $color-success;   
+                    font-weight: bold; 
+                    transition: 0.2s;                
+                }
+    
+                .description {
+                    position: absolute;
+                    top: -350%;
+                    text-transform: uppercase;
+                    font-size: 0.9em;  
+                    opacity: 0.4;                  
+                }
+            }
+    
+            .progress-bar-indicator {
+                position: absolute;
+                top: 0;
+                left: 0;                
+                height: 100%;
+                width: 33.33%;
+    
+                @include gradient-striped;
+                @include animation(progress-bar-stripes 2.5s linear infinite);
+                @include progress-bar-variant(lighten( $color-success, 10% ));
+                background-size: 40px 40px;
+            }        
+        }    
+    }
+
+    .content {
+        background: rgba(255,255,255,1);
+        padding: {
+            left: 60px;
+            right: 60px;
+            top: 5px;
+            bottom: 5px;
+        };        
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;        
+        
+        .title {            
+            font-size: 40px;
+        }
+        
+        h1 {
+            padding: 0;
+            margin: 0;
+        }
+
+        .login-button {
+            padding: 10px 30px;
+
+            .text {
+                padding-left: 10px;
+                font-size: 16px;
+            }
+        }
+
+        .error-placeholder {
+            display: flex;
+            background: rgba(221, 14, 14, 0.575);
+            color: white;
+            padding: 10px 15px;
+
+            & > div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            > .text {
+                padding-left: 10px;
+            }
+        }    
+
+        .column-title {            
+            font-size: 1.3em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .data-field {
+
+            &:nth-child(n+2) {
+                margin-top: 15px;
+            }
+
+            .title {
+                font-size: 1.3em;
+                margin-bottom: 5px;            
+                color: $color-primary;
+                font-weight: bold;
+            }
+
+            .annotation {
+                font-size: 0.8em;
+                margin-top: 5px;
+                color: $color-faded;
+            }
+    
+      
+        }
+    }
+
+}

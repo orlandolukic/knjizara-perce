@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 import { FlushLocalstorageComponent } from './flush-localstorage/flush-localstorage.component';
+import { FooterComponent } from '../shared/components/footer/footer.component';
 
 
 
@@ -24,11 +25,12 @@ import { FlushLocalstorageComponent } from './flush-localstorage/flush-localstor
     FlushLocalstorageComponent
   ],
   imports: [
+    SharedModule,
     CommonModule,
     CoreRoutingModule,    
     MatInputModule,
     MatButtonModule,
-    FontAwesomeModule            
+    FontAwesomeModule               
   ]
 })
 export class CoreModule { }

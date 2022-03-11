@@ -13,9 +13,9 @@ import { ChooseStarComponent } from 'src/app/shared/components/choose-star/choos
 import { LoaderDeleteComponent } from 'src/app/shared/components/loader/loader-delete/loader-delete.component';
 import { LoaderSuccessfulComponent } from 'src/app/shared/components/loader/loader-successful/loader-successful.component';
 import { LoaderComponent } from 'src/app/shared/components/loader/loader.component';
-import { SelectionService } from 'src/app/shared/service/selection.service';
 import { LoaderService } from 'src/app/shared/services/modals/loader-service';
 import { RecommendBookService } from 'src/app/shared/services/modals/recommend-book-service';
+import { SelectionService } from 'src/app/shared/services/selection.service';
 import { BreakpointManager } from 'src/app/shared/utilities/breakpoint-manager';
 import { environment } from 'src/environments/environment';
 import { BookComponent } from '../book.component';

@@ -1,4 +1,7 @@
 
+@import "variables";
+@import "bootstrap";
+
 .login-container {
     position: absolute;
     left: 0;
@@ -19,6 +22,38 @@
             right: 0;
             top: 0;
             padding: 30px 40px;
+            z-index: 10;
+
+            @include media-breakpoint-only(xs) {
+                padding: 20px 30px;
+            }
+        }
+    }
+
+    .data-column {
+        @include media-breakpoint-only(xs) {
+            margin-top: 80px;
+        }
+        .content {
+            @include media-breakpoint-only(xs) {
+                padding: 5px 20px;
+            }
+            .logo {
+                display: none;
+                position: absolute;
+                top: -140px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                img {
+                    width: 140px;
+                    height: 120px
+                }
+    
+                @include media-breakpoint-between(xs,lg) {
+                    display: flex;
+                }
+            }
         }
     }
 
@@ -34,6 +69,7 @@
         display: flex;
         flex-direction: column;
         height: 100%;
+        position: relative;        
         
         .title {            
             font-size: 40px;

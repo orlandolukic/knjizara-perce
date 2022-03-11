@@ -15,7 +15,8 @@
             >
             <li *ngFor="let book of books" class="book-placeholder" [style]="{'width': width + 'px'}">
                 <app-book-slider-single-book 
-                    [book]="book" 
+                    [book]="book"
+                    showBook="shown" 
                     (recommend)="recommendBook($event)"
                     class="full-width"
                 ></app-book-slider-single-book>                

@@ -7,7 +7,7 @@ import { faSpinner, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { filter, map, Subscription } from 'rxjs';
 import { LoadService } from './shared/services/load-service';
 import { InitialLoad } from '../../data/interfaces/initial-load';
-import { SelectionService } from './shared/service/selection.service';
+import { SelectionService } from './shared/services/selection.service';
 
 @Component({
   selector: 'app-root',

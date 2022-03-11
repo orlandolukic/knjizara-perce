@@ -1,4 +1,4 @@
-import { animate, AnimationTransitionMetadata, keyframes, query, stagger, state, style, transition, trigger } from "@angular/animations";
+import { animate, animateChild, AnimationTransitionMetadata, keyframes, query, sequence, stagger, state, style, transition, trigger } from "@angular/animations";
 
 
 export const animations: any[]  = [
@@ -7,7 +7,7 @@ export const animations: any[]  = [
             opacity: 0            
         })),                        
         transition('void <=> *', [
-            animate('0.5s 350ms cubic-bezier(1,.53,.59,.94)', keyframes([
+            animate('0.4s 100ms cubic-bezier(1,.53,.59,.94)', keyframes([
                 style({
                     opacity: 0,
                     transform: "scale3d(0.85,0.85,0.85)",
@@ -34,14 +34,28 @@ export const animations: any[]  = [
         state('hidden', style({
             opacity: 0
         })),
-        transition('hidden <=> shown', [
-            query('@fadeInContentChild', [
-                style({opacity: 0}),
-                stagger(250, [
-                    animate('500ms ease'),
-                    style({opacity: 1}),
+        transition('hidden => shown', [
+            sequence([
+                animate('0.5s ease'),
+                query('@fadeInContentChild', [
+                    stagger(300, [
+                        style({opacity: 0}),
+                        animate('0.3s', style({
+                            opacity: 1
+                        })),                        
+                        style({opacity: 1})
+                    ])
                 ])
-            ])
+            ])            
         ])
+    ]),
+
+    trigger('fadeInContentChild', [              
+        state('shown', style({
+            opacity: 1
+        })),
+        state('hidden', style({
+            opacity: 0
+        }))                        
     ])
 ];

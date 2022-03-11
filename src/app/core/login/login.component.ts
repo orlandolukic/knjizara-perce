@@ -9,12 +9,17 @@ import { UserDataManipulation } from 'data/users/input.data';
 import { LoadService } from 'src/app/shared/services/load-service';
 import { TitleService } from 'src/app/shared/services/title-service';
 import { sha256 } from 'js-sha256';
+import { animationFadeInLeft, animationFadeInRight } from 'src/app/shared/animations/fade-in.animation';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],  
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Emulated,
+  animations: [
+    animationFadeInLeft,
+    animationFadeInRight
+  ]
 })
 export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
 

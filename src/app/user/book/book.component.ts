@@ -17,7 +17,6 @@ import { AngularEmojisComponent } from 'angular-emojis';
 import { LoaderSuccessfulComponent } from 'src/app/shared/components/loader/loader-successful/loader-successful.component';
 import { UserDataManipulation } from 'data/users/input.data';
 import { BookRecommendationController } from 'data/book/recommendation/book-recommendation-controller';
-import { SelectionService } from 'src/app/shared/service/selection.service';
 import { CommentsDataManipulation } from 'data/comments/comments-data-manipulation';
 import { environment } from 'src/environments/environment';
 import { SingleCommentComponent } from './single-comment/single-comment.component';
@@ -73,6 +72,7 @@ export class BookComponent implements OnInit, OnDestroy {
   animationCenterContent: any;
   animationRightContent: any;
   fadeInContentAnimation: any;
+  childAnimation: any[];
 
   constructor(
     private titleService: TitleService,
@@ -82,6 +82,12 @@ export class BookComponent implements OnInit, OnDestroy {
     this.fadeInContentAnimation = {
       value: 'hidden'
     };
+    this.childAnimation = [
+      { value: 'hidden' },
+      { value: 'hidden' },
+      { value: 'hidden' },
+      { value: 'hidden' }
+    ];
     /*    
     this.animationLeftContent = {
       value: 'hidden'
@@ -127,6 +133,10 @@ export class BookComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize', ['$event']) resize(event: Event): void {
     this.checkChevronIcon();
+  }
+
+  @HostListener('@fadeInContentChild.done', ['$event', 'number']) doneAnimatingChild(event: any, i: number): void {
+    
   }
 
   getLinkForAllBooks(): string {
@@ -192,16 +202,17 @@ export class BookComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-  @HostListener('@fadeInContent.done', ['$event']) doneFadingIn(event: any) {
-    console.log(event);
+  @HostListener('@fadeInContent.done', ['$event']) doneFadingIn(event: any) {        
+    if ( event.fromState === "hidden" && event.toState === "shown" ) {      
+      for(let i=0; i<this.childAnimation.length; i++)
+        this.childAnimation[i] = { value: 'shown' };
+    }
   }
 
   doneAnimation(event: any): void {    
-    setTimeout(() => {
-      this.fadeInContentAnimation = {
-        value: 'shown'
-      }
-    }, 300);
+    this.fadeInContentAnimation = {
+      value: 'shown'
+    }    
   }
 
   private checkChevronIcon(): void {

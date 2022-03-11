@@ -47,6 +47,7 @@ export class AllBooksListingComponent implements OnInit, AfterViewInit, OnDestro
   inFetchingBooks: boolean;
   fetchedEverythingFromServer: boolean;
   allowedToFetchMore: boolean;
+  booksAnimation: any;
 
   @ViewChild('bookHost', {read: ViewContainerRef, static: true}) bookContainer: ViewContainerRef;
 
@@ -147,21 +148,20 @@ export class AllBooksListingComponent implements OnInit, AfterViewInit, OnDestro
       subs = compRef.instance.recommend.subscribe((b: Book) => {
         this.recommendBook(b);
       });
-      compRef.instance.book = books[i];        
+      compRef.instance.book = books[i];          
 
       // Add this component to local resources.
       let singleBookResource: SingleBookResource<BookSliderSingleBookComponent> = {
         componentRef: compRef,
         outputRecommendSubscription: subs        
       };
+      let iObj: any = { i: i };
       this.singleBookResources.push(singleBookResource);
-      arrOfNewResources.push(singleBookResource);
+      arrOfNewResources.push(singleBookResource);  
       singleBookResource.timeoutToPreview = new Promise<void>((resolve, reject) => {        
-        setTimeout(() => {          
-          singleBookResource.componentRef.location.nativeElement.classList.add("in-list-loaded");
-          resolve();
-        }, 300 + i*200);
+        compRef.instance.showBook = { value: "animating", params: { delay: (300 + i*300) + "ms", duration: (1000 + i*100) + "ms" }, resolvePromise: resolve };    
       });
+      promisesArr.push();
       promisesArr.push(singleBookResource.timeoutToPreview);
     }
     

@@ -24,6 +24,7 @@ import { SearchBookComponent } from './components/search-book/search-book.compon
 import { BigInfoComponent } from './components/big-info/big-info.component';
 import { ChooseStarComponent } from './components/choose-star/choose-star.component';
 import { AngularEmojisModule } from 'angular-emojis';
+import { BasicFinalResolver } from './resolvers/basic-final.resolver';
 
 
 
@@ -71,7 +72,8 @@ import { AngularEmojisModule } from 'angular-emojis';
   ],
   providers: [
     TitleService,    
-    RecommendBookService    
+    RecommendBookService,
+    BasicFinalResolver    
   ]
 })
 export class SharedModule {

@@ -1,1 +1,105 @@
-<p>register works!</p>
+<div class="register-container">
+    <div [@fadeInY]="{ value: true, params: { yStart: -60, yMiddle: -40, delay: '350ms' } }" class="container">
+        <div class="row">
+
+            <div class="col-12 col-lg-8 offset-lg-2 data-column">
+                <div *ngIf="isLoading" class="loading-spinner">
+                    <fa-icon [icon]="faSpinner" [spin]="true" size="2x"></fa-icon>
+                </div>
+                <div class="content">
+                    <a routerLink="/">
+                        <div class="logo margin-t-40">
+                            <img src="assets/images/logo.png" />
+                        </div>
+                    </a>                    
+                    <div class="margin-t-20">
+                        <div class="title text-center text-bold">
+                            Registracija
+                        </div>
+                        <div class="mt-2 text-center font-s-20">
+                            Za prave knjiške moljce smo pripremili puno iznenađenja....
+                        </div>
+                    </div>
+                </div>                                        
+            </div>
+
+            <div class="col-12 col-lg-8 offset-lg-2 data-column">
+                
+                <div class="progress-bar-placeholder">
+                    <div class="progress-bar">
+                        <div class="progress-bar-milestone active">
+                            <div class="description">
+                                Opšti podaci
+                            </div>
+                            <div class="number">1</div>
+                        </div>
+                        <div class="progress-bar-milestone">                            
+                            <div class="description">
+                                Podaci za prijavu
+                            </div>
+                            <div class="number">2</div>
+                        </div>
+                        <div class="progress-bar-milestone">
+                            <div class="description">
+                                Kraj
+                            </div>
+                            <div class="number">
+                                <fa-icon [icon]="faFlag" size="sm" ></fa-icon>
+                            </div>
+                        </div>
+        
+                        <div class="progress-bar-indicator" style="width: 33%"></div>
+                    </div>    
+                </div>
+
+                <div class="content">
+                    
+                    <div class="center-content">
+                        
+                          sdsd
+
+                            
+                    </div>
+
+                    <div class="d-none d-lg-block text-center mt-lg-5">
+                        <div class="row">
+                            <div class="col-6 text-right">
+                                Imate nalog?
+                            </div>
+                            <div class="col-6 text-left">
+                                <span class="solution">
+                                    <a routerLink="/login">Prijavite se</a>
+                                </span>
+                            </div>          
+                        </div>                           
+                    </div>
+
+                    <div class="d-block d-lg-none media-query mt-3">
+                        <div class="row">
+                            <div class="col-6 text-left">
+                                <div class="fw-bold font-s-16">
+                                    Zaboravili ste lozinku?
+                                </div>                                
+                                <div class="solution mt-1">
+                                    <a routerLink="/forgot-password">Oporavak lozinke</a>
+                                </div>
+                            </div>
+                            <div class="col-6 text-left mt-1">  
+                                <div class="fw-bold">
+                                    Nemate nalog?
+                                </div>
+                                <div class="solution mt-1">                                    
+                                    <a routerLink="/register">Registrujte se</a>                                    
+                                </div>          
+                            </div>          
+                        </div>     
+                    </div>
+
+                    <app-footer></app-footer>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>    
+</div>
