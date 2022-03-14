@@ -27,19 +27,19 @@
                 
                 <div class="progress-bar-placeholder">
                     <div class="progress-bar">
-                        <div class="progress-bar-milestone active">
+                        <div class="progress-bar-milestone completed">
                             <div class="description">
                                 Opšti podaci
                             </div>
                             <div class="number">1</div>
                         </div>
-                        <div class="progress-bar-milestone">                            
+                        <div class="progress-bar-milestone completed">                            
                             <div class="description">
                                 Podaci za prijavu
                             </div>
                             <div class="number">2</div>
                         </div>
-                        <div class="progress-bar-milestone">
+                        <div class="progress-bar-milestone active">
                             <div class="description">
                                 Kraj
                             </div>
@@ -51,15 +51,55 @@
                         <div class="progress-bar-indicator" style="width: 33%"></div>
                     </div>    
                 </div>
+                
+                <div class="section-progress">
+                    <div class="section-progress-title">Napredak</div>
+                    <div *ngIf="showTasks" class="single-task-list">
+                        <div class="single-task"                         
+                        *ngFor="let stage of tasks[activeSection].getStages(); let index = index" 
+                        [class.active]="index == activeSection"
+                        [class.completed]="index < activeSection"
+                        >
+                            <div class="single-task-text">{{ index+1 }}. {{ stage }}</div>
+                            <div class="single-task-check">
+                                <fa-icon [icon]="faDoubleCheck"></fa-icon>
+                            </div>
+                            <div class="single-task-bar"></div>
+                        </div>                    
+                    </div>                                        
+                </div>
 
-                <div class="content">
+                <div class="content register-form-content">
                     
-                    <div class="center-content">
+                    <div #registerFormPlaceholderContent class="center-content register-form-placeholder">                       
                         
-                          sdsd
+                        <div 
+                            class="register-form register-form-basic"   
+                            [class.active]="activeSection === 0"                            
+                            app-register-form-basic                            
+                            #formBasic
+                            (onStageChange)="onStateChange(formBasic, $event)"
+                        ></div>
+                        <div   
+                            class="register-form register-form-login"                             
+                            [class.active]="activeSection === 1"                                                         
+                            app-register-form-login
+                            #formLogin
+                            (onStageChange)="onStateChange(formLogin, $event)"
+                        ></div>
+                        <div
+                            class="register-form register-form-finish"                          
+                            [class.active]="activeSection === 2"                             
+                            app-register-form-finish
+                            #formFinish
+                            (onStageChange)="onStateChange(formFinish, $event)"
+                        ></div>
 
                             
                     </div>
+                </div>
+
+                <div class="content">
 
                     <div class="d-none d-lg-block text-center mt-lg-5">
                         <div class="row">

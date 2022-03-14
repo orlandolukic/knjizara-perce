@@ -15,27 +15,37 @@
 
     // Paddings
     &.theme-button-xs {
-        padding: 0px 15px;
+        button {
+            padding: 0px 15px;
 
-        &.is-icon-alone {
-            padding: 0px 10px;
+            &.is-icon-alone {
+                padding: 0px 10px;
+            }
         }
     }
 
     &.theme-button-sm {
-        padding: 3px 20px;
+        button {
+            padding: 3px 20px;
+        }        
     }
 
     &.theme-button-md {
-        padding: 7px 25px;
+        button {
+            padding: 7px 25px;
+        }           
     }
 
     &.theme-button-lg {
-        padding: 10px 30px;
+        button {
+            padding: 10px 30px;
+        }        
     }
 
     &.theme-button-xlg {
-        padding: 12px 35px;
+        button {
+            padding: 12px 35px;
+        }        
     }
 
     // Colors

@@ -1,0 +1,37 @@
+@import "variables";
+@import "bootstrap";
+
+:host {
+    margin-top: 15px;
+}
+
+.fields {    
+    .field-group {
+
+        display: none;
+        &.active {            
+            display: block;
+        }
+
+        .field:not(:last-child) {
+            margin-bottom: 30px;
+        }
+
+        .field {
+            color: $color-primary;          
+            
+            
+            .title {
+                font-size: 1.3em;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+    
+            .input {
+                input {
+                    width: 450px;
+                }
+            }
+        }
+    }
+}

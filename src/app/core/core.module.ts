@@ -13,6 +13,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 import { FlushLocalstorageComponent } from './flush-localstorage/flush-localstorage.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
+import { RegisterFormBasicComponent } from './register/register-form-basic/register-form-basic.component';
+import { RegisterFormLoginComponent } from './register/register-form-login/register-form-login.component';
+import { RegisterFormFinishComponent } from './register/register-form-finish/register-form-finish.component';
 
 
 
@@ -22,7 +25,10 @@ import { FooterComponent } from '../shared/components/footer/footer.component';
     LogoutComponent,
     RegisterComponent,
     AccountRecoveryComponent,
-    FlushLocalstorageComponent
+    FlushLocalstorageComponent,
+    RegisterFormBasicComponent,
+    RegisterFormLoginComponent,
+    RegisterFormFinishComponent
   ],
   imports: [
     SharedModule,
