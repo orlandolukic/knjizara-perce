@@ -27,4 +27,8 @@ export class RegisterFormLoginComponent extends SingleTask implements OnInit {
     
   }
 
+  initStartupAnimation(): void {
+    
+  }
+
 }

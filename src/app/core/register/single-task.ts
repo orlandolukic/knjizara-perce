@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { faCheck, faChevronRight, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 export class RegisterTasks {
@@ -22,8 +22,10 @@ export abstract class SingleTask {
     faChevronRight: IconDefinition = faChevronRight;
 
     @Output()
-    onStageChange: EventEmitter<number> = new EventEmitter();
+    private onSubmit: EventEmitter<void> = new EventEmitter();
     fieldGroupActive: number;
+
+    private index: number;
 
     constructor() {
         this.fieldGroupActive = 0;
@@ -32,10 +34,19 @@ export abstract class SingleTask {
     abstract getStages(): string[];
     abstract verify(): boolean;
     abstract focusFirst(): void;
+    abstract initStartupAnimation(): void;
     
     submit(): void {
         if ( !this.verify() )
             return;
-        this.onStageChange.emit(++this.fieldGroupActive)
+        this.onSubmit.emit();
+    }
+
+    setIndex(index: number): void {
+        this.index = index;
+    }
+
+    public getIndex(): number {
+        return this.index;
     }
 }

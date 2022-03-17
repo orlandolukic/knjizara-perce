@@ -1,9 +1,10 @@
 import { trigger } from '@angular/animations';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core';
 import { faCheck, faCheckCircle, faCheckDouble, faFlag, faSpinner, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { animationFadeInLeft, animationFadeInRight, animationFadeInY } from 'src/app/shared/animations/fade-in.animation';
+import { animationFadeInLeft, animationFadeInRight, animationFadeInY } from 'src/app/shared/animations/common.animation';
 import { BasicFinalResolver } from 'src/app/shared/resolvers/basic-final.resolver';
 import { TitleService } from 'src/app/shared/services/title-service';
+import { sectionChangeAnimation } from './animations';
 import { RegisterFormBasicComponent } from './register-form-basic/register-form-basic.component';
 import { RegisterFormFinishComponent } from './register-form-finish/register-form-finish.component';
 import { RegisterFormLoginComponent } from './register-form-login/register-form-login.component';
@@ -14,7 +15,8 @@ import { RegisterTasks, SingleTask } from './single-task';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   animations: [
-    animationFadeInY
+    animationFadeInY,
+    sectionChangeAnimation
   ]
 })
 export class RegisterComponent extends RegisterTasks implements OnInit, AfterViewInit {
@@ -31,41 +33,88 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   faDoubleCheck: IconDefinition = faCheckCircle;
 
   isLoading: boolean; 
-  showTasks: boolean;  
+  showTasks: boolean;
+
+  animations: any[];
+
+  doneAnimating(event: any) {        
+    if ( event.fromState === "void" && event.toState === "start" ) {  
+
+      this.activeSection = 0;
+      this.showTasks = true;
+      
+      this.animations[0] = { value: 'sectionLoaded', params: {
+        duration: 500,
+        delay: 200,
+        initTranslateX: -800,
+        currentTranslateX: 0        
+      } };
+    }
+  }
 
   constructor(
     private resolver: BasicFinalResolver,
-    private titleService: TitleService
+    private titleService: TitleService,
+    private cdr: ChangeDetectorRef
   ) {   
     super();  
     this.titleService.changeTitle("Registracija"); 
-    this.showTasks = false;    
+    this.showTasks = false;  
+    this.animations = [
+      { value: "sectionNotLoaded" },
+      { value: "sectionNotLoaded" },
+      { value: "sectionNotLoaded" }
+    ];         
   }  
   
 
   ngOnInit(): void {
-    this.activeSection = 0;    
+    this.activeSection = -1;    
 
     this.tasks.push( this.formBasic );
     this.tasks.push( this.formLogin );
     this.tasks.push( this.formFinish );
+    for( let i=0; i<this.tasks.length; i++) {
+      this.tasks[i].setIndex(i);
+    }
     
-    this.activeTask = this.tasks[this.activeSection];
-    this.showTasks = true;
+    this.activeTask = this.tasks[this.activeSection];  
   }
 
   ngAfterViewInit(): void {
 
     let width: number = this.registerFormPlaceholderContent.nativeElement.offsetWidth;
     this.registerFormPlaceholderContent.nativeElement.style.width = (width*3) + "px";
-
-    // Focus first element inside the section
-    this.tasks[this.activeSection].focusFirst();    
   }
 
-  onStateChange( task: SingleTask, changedIndex: number ) {
-    console.log(task);
-    console.log(changedIndex);
+  onStateChange( task: SingleTask ) {
+    let next: number = task.getIndex() + 1;
+    /*
+    this.animations[task.getIndex()] = { value: 'sectionLoaded', params: {
+      duration: 500,
+      delay: 200,
+      initTranslateX: -800,
+      currentTranslateX: 0        
+    } };*/
+    this.animations[next] = { value: 'sectionLoaded', params: {
+      duration: 500,
+      delay: 200,
+      initTranslateX: -800,
+      currentTranslateX: 0        
+    } };
+  }
+
+  onSectionChange( event: any, i: number ) {
+    if ( event.fromState === "sectionNotLoaded" && event.toState === "sectionLoaded" ) {
+      this.activeSection = i;
+      this.tasks[this.activeSection].focusFirst();     
+    }    
+  }
+
+  getStages(): string[] {
+    if ( this.activeSection === -1 )
+      return [""];
+    return this.tasks[this.activeSection].getStages();
   }
 
   

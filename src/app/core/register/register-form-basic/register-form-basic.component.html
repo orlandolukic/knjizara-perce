@@ -1,6 +1,6 @@
 <div class="fields">
     
-    <div class="field-group" [class.active]="fieldGroupActive === 0">
+    <div class="field-group" [@stageChange]="animations[0]" (@stageChange.done)="doneAnimating($event,0)" >
         <div class="field">
             <div class="title">Ime</div>
             <div class="input">
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="field-group" [class.active]="fieldGroupActive === 1">
+    <div class="field-group" [@stageChange]="animations[1]">
         <div class="field">
             <div class="title">ASD</div>
             <div class="input">

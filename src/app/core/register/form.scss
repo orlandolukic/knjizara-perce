@@ -8,10 +8,7 @@
 .fields {    
     .field-group {
 
-        display: none;
-        &.active {            
-            display: block;
-        }
+        
 
         .field:not(:last-child) {
             margin-bottom: 30px;

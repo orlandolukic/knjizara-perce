@@ -26,5 +26,9 @@ export class RegisterFormFinishComponent extends SingleTask implements OnInit {
   focusFirst(): void {
     
   }
+  
+  initStartupAnimation(): void {
+    
+  }
 
 }

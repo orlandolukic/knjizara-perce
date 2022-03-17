@@ -1,4 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { animationFadeInLeft } from 'src/app/shared/animations/common.animation';
+import { stageChangeAnimation } from '../animations';
 import { SingleTask } from '../single-task';
 
 @Component({
@@ -7,6 +9,9 @@ import { SingleTask } from '../single-task';
   styleUrls: [
     './register-form-basic.component.scss', 
     '../form.scss'
+  ],
+  animations: [
+    stageChangeAnimation
   ]
 })
 export class RegisterFormBasicComponent extends SingleTask implements OnInit {
@@ -16,11 +21,17 @@ export class RegisterFormBasicComponent extends SingleTask implements OnInit {
   @ViewChild("telephone", {read: ElementRef, static: true}) telephone: ElementRef;
   @ViewChild("address", {read: ElementRef, static: true}) address: ElementRef;
 
-  constructor() {
-    super();
-   }
+  animations: any[];  
 
-  ngOnInit(): void {
+  constructor() {
+    super();    
+  }
+
+  ngOnInit(): void {    
+    this.animations = [
+      {value: 'stageLoaded'},
+      {value: 'stageNotLoaded'},
+    ];     
   }
 
   verify(): boolean {
@@ -33,6 +44,16 @@ export class RegisterFormBasicComponent extends SingleTask implements OnInit {
 
   focusFirst(): void {
     this.name.nativeElement.focus();
+  }
+
+  @HostListener('@stageChange.done', ['$event', 'number'])
+  doneAnimating(event: any, i: number) {
+    console.log(i);
+    console.log(event);
+  }
+
+  initStartupAnimation(): void {
+    
   }
 
 }

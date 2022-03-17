@@ -99,7 +99,11 @@
                 overflow: hidden;
                 display: flex;
                 width: 100%;
-                opacity: 0.2;               
+                opacity: 0;               
+
+                &.visible {
+                    opacity: 0.2;
+                }
 
                 &:nth-child(n+1):not(:last-child) {
                     border-right: 1px solid lighten( $color-faded, 50% );
@@ -314,12 +318,7 @@
                 flex-direction: row;                
     
                 .register-form {
-                    width: 100%;
-                    opacity: 0;
-
-                    &.active {
-                        opacity: 1;
-                    }
+                    width: 100%;                                       
                 }
             }
         }       

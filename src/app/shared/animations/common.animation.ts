@@ -1,4 +1,4 @@
-import { animate, AnimationTriggerMetadata, keyframes, state, style, transition, trigger } from "@angular/animations";
+import { animate, AnimationMetadata, AnimationTriggerMetadata, keyframes, state, style, transition, trigger } from "@angular/animations";
 
 
 export const animationFadeInRight: AnimationTriggerMetadata = trigger("fadeInRight", [    
@@ -32,30 +32,32 @@ export const animationFadeInRight: AnimationTriggerMetadata = trigger("fadeInRig
     })
 ]);
 
-export const animationFadeInLeft: AnimationTriggerMetadata = trigger("fadeInLeft", [    
-    transition(":enter", [
+const animationFadeInLeftMetadata: AnimationMetadata[] = [
+    style({
+        opacity: 0,        
+        transform: "translateX(-50px)"
+    }),
+    animate("{{ duration }} {{ delay }} cubic-bezier(.69,.3,0,.99)", keyframes([
         style({
             opacity: 0,
-            transform: "translateX(-50px)"
+            transform: "translateX(-50px)",
+            offset: 0
         }),
-        animate("{{ duration }} {{ delay }} cubic-bezier(.69,.3,0,.99)", keyframes([
-            style({
-                opacity: 0,
-                transform: "translateX(-50px)",
-                offset: 0
-            }),
-            style({
-                opacity: 0.6,
-                transform: "translateX(-20px)",
-                offset: 0.6
-            }),
-            style({
-                opacity: 1,
-                transform: "translateX(0)",
-                offset: 1
-            }),
-        ]))
-    ], {
+        style({
+            opacity: 0.6,
+            transform: "translateX(-20px)",
+            offset: 0.6
+        }),
+        style({
+            opacity: 1,
+            transform: "translateX(0)",
+            offset: 1
+        }),
+    ]))
+];
+
+export const animationFadeInLeft: AnimationTriggerMetadata = trigger("fadeInLeft", [        
+    transition(":enter", animationFadeInLeftMetadata, {
         params: {
             duration: "600ms",
             delay: "350ms"
@@ -63,7 +65,7 @@ export const animationFadeInLeft: AnimationTriggerMetadata = trigger("fadeInLeft
     })
 ]);
 
-export const animationFadeInY: AnimationTriggerMetadata = trigger("fadeInY", [    
+export const animationFadeInY: AnimationTriggerMetadata = trigger("fadeInY", [     
     transition(":enter", [
         style({
             opacity: 0,
