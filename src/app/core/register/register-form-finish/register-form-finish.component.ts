@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { SingleTask } from '../single-task';
 
 @Component({
@@ -8,11 +8,14 @@ import { SingleTask } from '../single-task';
 })
 export class RegisterFormFinishComponent extends SingleTask implements OnInit {
 
-  constructor() {
-    super();
+  constructor(
+    host: ElementRef
+  ) {
+    super(0, host);
    }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
+    super.ngOnInit();
   }
 
   verify(): boolean {

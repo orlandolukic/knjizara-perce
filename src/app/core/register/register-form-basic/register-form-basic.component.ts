@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { animationFadeInLeft } from 'src/app/shared/animations/common.animation';
 import { stageChangeAnimation } from '../animations';
 import { SingleTask } from '../single-task';
@@ -9,29 +9,27 @@ import { SingleTask } from '../single-task';
   styleUrls: [
     './register-form-basic.component.scss', 
     '../form.scss'
-  ],
-  animations: [
-    stageChangeAnimation
   ]
 })
-export class RegisterFormBasicComponent extends SingleTask implements OnInit {
+export class RegisterFormBasicComponent extends SingleTask implements AfterViewInit {
 
   @ViewChild("name", {read: ElementRef, static: true}) name: ElementRef;
   @ViewChild("surname", {read: ElementRef, static: true}) surname: ElementRef;
   @ViewChild("telephone", {read: ElementRef, static: true}) telephone: ElementRef;
-  @ViewChild("address", {read: ElementRef, static: true}) address: ElementRef;
+  @ViewChild("address", {read: ElementRef, static: true}) address: ElementRef; 
 
-  animations: any[];  
-
-  constructor() {
-    super();    
+  constructor(
+    host: ElementRef
+  ) {
+    super(3, host);    
   }
 
-  ngOnInit(): void {    
-    this.animations = [
-      {value: 'stageLoaded'},
-      {value: 'stageNotLoaded'},
-    ];     
+  override ngOnInit(): void {    
+    super.ngOnInit();    
+  }
+
+  ngAfterViewInit(): void {
+
   }
 
   verify(): boolean {
@@ -42,14 +40,11 @@ export class RegisterFormBasicComponent extends SingleTask implements OnInit {
     return ["Ime i prezime", "Kontakt podaci", "Adresa"];
   }
 
-  focusFirst(): void {
-    this.name.nativeElement.focus();
-  }
-
-  @HostListener('@stageChange.done', ['$event', 'number'])
-  doneAnimating(event: any, i: number) {
-    console.log(i);
-    console.log(event);
+  focusFirst(): void {    
+    if ( this.currentStage === 0 )
+      this.name.nativeElement.focus();
+    else
+      this.telephone.nativeElement.focus();
   }
 
   initStartupAnimation(): void {

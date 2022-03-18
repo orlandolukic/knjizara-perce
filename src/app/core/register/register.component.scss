@@ -133,6 +133,7 @@
                 }
 
                 &.completed {
+                    opacity: 1;
                     .single-task-check {
                         opacity: 1
                     }

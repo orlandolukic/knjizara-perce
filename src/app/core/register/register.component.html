@@ -60,8 +60,8 @@
                         <div class="single-task"                         
                         *ngFor="let stage of getStages(); let index = index" 
                         [class.visible]="showTasks"
-                        [class.active]="index == activeSection"
-                        [class.completed]="index < activeSection"
+                        [class.active]="index == activeStage"
+                        [class.completed]="index < activeStage"
                         >
                             <div class="single-task-text">{{ index+1 }}. {{ stage }}</div>
                             <div class="single-task-check">
@@ -76,27 +76,33 @@
                     
                     <div #registerFormPlaceholderContent class="center-content register-form-placeholder">                       
                         
-                        <div 
+                        <div
+                            #form 
                             class="register-form register-form-basic"                                                         
                             app-register-form-basic                            
                             #formBasic
                             (onSubmit)="onStateChange(formBasic)"   
+                            (stageChange)="onStageChange($event)"
                             [@sectionChange]="animations[0]"                         
                             (@sectionChange.done)="onSectionChange($event, 0)"
                         ></div>
-                        <div   
+                        <div  
+                            #form  
                             class="register-form register-form-login"                                                                                                                
                             app-register-form-login
                             #formLogin
-                            (onSubmit)="onStateChange(formLogin)"                            
+                            (onSubmit)="onStateChange(formLogin)"  
+                            (stageChange)="onStageChange($event)"                          
                             [@sectionChange]="animations[1]"                         
                             (@sectionChange.done)="onSectionChange($event, 1)"
                         ></div>
                         <div
+                            #form 
                             class="register-form register-form-finish"                                                                                 
                             app-register-form-finish
                             #formFinish
-                            (onSubmit)="onStateChange(formFinish)"                            
+                            (onSubmit)="onStateChange(formFinish)" 
+                            (stageChange)="onStageChange($event)"                           
                             [@sectionChange]="animations[2]"                         
                             (@sectionChange.done)="onSectionChange($event, 2)"
                         ></div>

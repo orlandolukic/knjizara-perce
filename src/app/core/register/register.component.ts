@@ -1,5 +1,5 @@
 import { trigger } from '@angular/animations';
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { faCheck, faCheckCircle, faCheckDouble, faFlag, faSpinner, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { animationFadeInLeft, animationFadeInRight, animationFadeInY } from 'src/app/shared/animations/common.animation';
 import { BasicFinalResolver } from 'src/app/shared/resolvers/basic-final.resolver';
@@ -27,6 +27,8 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   @ViewChild('formLogin', {read: RegisterFormLoginComponent, static: true}) formLogin: RegisterFormLoginComponent;
   @ViewChild('registerFormPlaceholderContent', {read: ElementRef, static: true}) registerFormPlaceholderContent: ElementRef;
 
+  @ViewChildren('form', {read: ElementRef}) forms: QueryList<ElementRef>;
+
   faSpinner: IconDefinition = faSpinner;
   faFlag: IconDefinition = faFlag;
   faCheck: IconDefinition = faCheck;
@@ -35,7 +37,7 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   isLoading: boolean; 
   showTasks: boolean;
 
-  animations: any[];
+  animations: any[];  
 
   doneAnimating(event: any) {        
     if ( event.fromState === "void" && event.toState === "start" ) {  
@@ -85,6 +87,9 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
 
     let width: number = this.registerFormPlaceholderContent.nativeElement.offsetWidth;
     this.registerFormPlaceholderContent.nativeElement.style.width = (width*3) + "px";
+    this.forms.forEach((form) => {
+      form.nativeElement.style.width = width + "px";
+    });
   }
 
   onStateChange( task: SingleTask ) {
@@ -101,11 +106,16 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
       delay: 200,
       initTranslateX: -800,
       currentTranslateX: 0        
-    } };
+    } };    
   }
 
-  onSectionChange( event: any, i: number ) {
-    if ( event.fromState === "sectionNotLoaded" && event.toState === "sectionLoaded" ) {
+  onStageChange( index: number ): void {
+    this.activeStage = index;    
+  }
+
+  onSectionChange( event: any, i: number ) {        
+    if ( event.fromState === "sectionNotLoaded" && event.toState === "sectionLoaded" ) {      
+      this.activeStage = 0;
       this.activeSection = i;
       this.tasks[this.activeSection].focusFirst();     
     }    

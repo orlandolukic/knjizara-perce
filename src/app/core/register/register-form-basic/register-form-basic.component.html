@@ -1,6 +1,6 @@
 <div class="fields">
     
-    <div class="field-group" [@stageChange]="animations[0]" (@stageChange.done)="doneAnimating($event,0)" >
+    <div #fieldGroup class="field-group" [@stageChange]="animations[0]" (@stageChange.done)="doneAnimating($event,0)" >
         <div class="field">
             <div class="title">Ime</div>
             <div class="input">
@@ -24,18 +24,39 @@
         </div>
     </div>
 
-    <div class="field-group" [@stageChange]="animations[1]">
+    <div #fieldGroup class="field-group" [@stageChange]="animations[1]">
         <div class="field">
             <div class="title">ASD</div>
             <div class="input">
-                <input #name class="theme-input" type="text" placeholder="Unesite Vaše ime" />
+                <input #telephone class="theme-input" type="text" placeholder="Unesite Vaše ime" />
             </div>
-        </div>
+        </div> 
+        <div class="call-to-action">
+            <app-button 
+                [icon]="faChevronRight"
+                color="success"
+                class="theme-button theme-button-sm"
+                (buttonClick)="submit()">
+                <div text>Dalje</div>
+            </app-button>
+        </div>       
+    </div>
+
+    <div #fieldGroup class="field-group" [@stageChange]="animations[2]">        
         <div class="field">
             <div class="title">ImSDSDe</div>
             <div class="input">
-                <input #name class="theme-input" type="text" placeholder="Unesite Vaše ime" />
+                <input #address class="theme-input" type="text" placeholder="Unesite Vaše ime" />
             </div>
+        </div>
+        <div class="call-to-action">
+            <app-button 
+                [icon]="faChevronRight"
+                color="success"
+                class="theme-button theme-button-sm"
+                (buttonClick)="submit()">
+                <div text>Dalje</div>
+            </app-button>
         </div>
     </div>
 </div>

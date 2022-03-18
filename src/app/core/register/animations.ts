@@ -48,12 +48,17 @@ export const stageChangeAnimation: AnimationMetadata = trigger("stageChange", [
     state('stageNotLoaded', style({
         opacity: 0,         
         display: "none",       
-        transform: "translateX(150px)"
+        transform: "translateX(0px)"
     })),
 
     state("stageLoaded", style({
         opacity: 1,
         transform: "translateX(0px)"       
+    })),
+
+    state("stageAfterExit", style({        
+        //visibility: "hidden"
+        display: "none"        
     })),
     
     transition("stageNotLoaded => stageLoaded,stageStartNotLoaded => stageLoaded", [    
@@ -87,27 +92,29 @@ export const stageChangeAnimation: AnimationMetadata = trigger("stageChange", [
     }),
 
     transition("stageLoaded => stageAfterExit", [
-        animate("{{ duration }} {{ delay }} cubic-bezier(.69,.3,0,.99)", keyframes([
+        animate("{{ duration }} {{ delay }} cubic-bezier(.17,.67,.38,.99)", keyframes([
             style({
-                opacity: 0,
+                opacity: 1,
                 transform: "translateX(0)",
                 offset: 0
             }),
             style({
                 opacity: 0.6,
-                transform: "translateX(-20px)",
+                transform: "translateX({{ xMiddle }}px)",
                 offset: 0.6
             }),
             style({
-                opacity: 1,
-                transform: "translateX(-50px)",
+                opacity: 0,
+                transform: "translateX({{ xEnd }}px)",
                 offset: 1
             }),
         ]))
     ], {
         params: {
             duration: "600ms",
-            delay: "350ms"
+            delay: "350ms",
+            xMiddle: -30,
+            xEnd: -150
         }
     })
 ]);

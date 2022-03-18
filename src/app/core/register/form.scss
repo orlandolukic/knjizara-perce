@@ -5,10 +5,11 @@
     margin-top: 15px;
 }
 
-.fields {    
-    .field-group {
+.fields {
+    display: flex;
+    flex-direction: row;
 
-        
+    .field-group {        
 
         .field:not(:last-child) {
             margin-bottom: 30px;
