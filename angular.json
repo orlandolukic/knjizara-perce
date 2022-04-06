@@ -84,7 +84,8 @@
             },
             "en": {
               "localize": ["en"],
-              "outputPath": "dist"             
+              "outputPath": "dist",
+              "baseHref": "/"             
             }
           },
           "defaultConfiguration": "production"
