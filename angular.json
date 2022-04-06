@@ -83,7 +83,8 @@
               "namedChunks": true
             },
             "en": {
-              "localize": ["en"]
+              "localize": ["en"],
+              "outputPath": "dist"             
             }
           },
           "defaultConfiguration": "production"
