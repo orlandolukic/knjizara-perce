@@ -43,7 +43,7 @@ export class SearchBooksComponent implements OnInit {
       if ( v['searchTerm'] ) {
         this.searchedValue = v['searchTerm'];        
         this.lastSearched = this.searchedValue;
-        this.titleService.changeTitle("Pretraga knjige - " + this.searchedValue);
+        this.titleService.changeTitle($localize `:@@bookSearchTitle:Pretraga knjige - ${this.searchedValue}`);
       }
     });    
   }

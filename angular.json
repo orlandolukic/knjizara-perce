@@ -13,6 +13,14 @@
           "strict": true
         }
       },
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "en": {
+            "translation": "src/locale/messages.en.xlf"           
+          }
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -26,6 +34,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "localize": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"              
@@ -72,6 +81,9 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "en": {
+              "localize": ["en"]
             }
           },
           "defaultConfiguration": "production"
@@ -84,12 +96,15 @@
             },
             "development": {
               "browserTarget": "my-first-project:build:development"
-            }
+            },
+            "en": {
+              "browserTarget": "my-first-project:build:development,en"
+            }          
           },
           "defaultConfiguration": "development",
           "options": {
             "host": "perce.rs",
-            "port": 80
+            "port": 80       
           }
         },
         "extract-i18n": {

@@ -37,7 +37,7 @@ export class RegisterFormBasicComponent extends SingleTask implements AfterViewI
   }
 
   getStages(): string[] {
-    return ["Ime i prezime", "Kontakt podaci", "Adresa"];
+    return [$localize `Ime i prezime`, $localize `Kontakt podaci`, $localize `Adresa`];
   }
 
   focusFirst(): void {    

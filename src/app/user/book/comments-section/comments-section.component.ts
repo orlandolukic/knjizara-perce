@@ -157,12 +157,12 @@ export class CommentsSectionComponent implements OnInit {
     if ( op === "open" ) {
       this.rating = 0;      
       this.chooseStar.reset();
-      this.textarea.nativeElement.innerHTML = "Unesite željeni komentar za ovu knjigu"; 
+      this.textarea.nativeElement.innerHTML = $localize `Unesite željeni komentar za ovu knjigu`; 
       this.isCommentTextareaInPlaceholderMode = true;         
-      this.modalTitle = "Unesite ocenu";
+      this.modalTitle = $localize `Unesite ocenu`;
     } else {
       
-      this.modalTitle = "Izmenite ocenu";      
+      this.modalTitle = $localize `Izmenite ocenu`;      
       this.rating = this.parent.myComment?.rating!;      
       this.textarea.nativeElement.innerHTML = this.parent.myComment?.text; 
       this.isCommentTextareaInPlaceholderMode = false;   
@@ -358,7 +358,7 @@ export class CommentsSectionComponent implements OnInit {
   commentTextfieldFocusout(event: Event): void {
     if ( this.textarea.nativeElement.innerHTML === "" ) {
       this.isCommentTextareaInPlaceholderMode = true;
-      this.textarea.nativeElement.innerHTML = "Unesite željeni komentar za ovu knjigu";      
+      this.textarea.nativeElement.innerHTML = $localize `Unesite željeni komentar za ovu knjigu`;      
     };
   }
 

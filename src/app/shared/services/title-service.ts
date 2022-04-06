@@ -8,7 +8,7 @@ import { AdminModule } from "src/app/admin/admin.module";
 })
 export class TitleService {
 
-    private titlePrefix: string = "Knjizara PERCE";
+    private titlePrefix: string = $localize `Knjizara PERCE`;
 
     constructor(
         private titleServiceImpl: Title

@@ -63,7 +63,7 @@ export class RecommendationsComponent implements OnInit, OnDestroy {
       this.recommendations = this.recommendationsResolver.getData();
       this.hasRecommendations = this.recommendations.length > 0;
       this.numberOfAllRecommendations = this.recommendationsResolver.getNumberOfAllRecommendations();
-      this.titleService.changeTitle(`Moje preporuke (${this.numberOfAllRecommendations})`);
+      this.titleService.changeTitle($localize `Moje preporuke (${this.numberOfAllRecommendations})`);
       this.showDeleteLoader = false;
       this.showDeleteContent = false;     
   }
@@ -75,7 +75,7 @@ export class RecommendationsComponent implements OnInit, OnDestroy {
   onDelete(recommendation: SingleRecommendation, index: number, elem: SingleRecommendationToDelete): void {
 
     this.action = "deleteSingle";
-    this.deleteText = "Da li ste sigurni da želite da obrišete preporuku?";    
+    this.deleteText = $localize `Da li ste sigurni da želite da obrišete preporuku?`;    
     this.toDeleteIndex = index;
     this.toDeleteRecommendation = elem;      
 
@@ -85,7 +85,7 @@ export class RecommendationsComponent implements OnInit, OnDestroy {
   }
 
   deleteAllRecommendations(): void {
-    this.deleteText = "Da li ste sigurni da želite da obrišete sve preporuke?";
+    this.deleteText = $localize `Da li ste sigurni da želite da obrišete sve preporuke?`;
     this.action = "deleteAll";
     this.loaderDelete.getLoaderService().showLoader({      
       transition: true      
@@ -181,7 +181,7 @@ export class RecommendationsComponent implements OnInit, OnDestroy {
   }
 
   private refreshNumberOfRecommendations(): void {    
-    this.titleService.changeTitle(`Moje preporuke (${this.numberOfAllRecommendations})`);
+    this.titleService.changeTitle($localize `Moje preporuke (${this.numberOfAllRecommendations})`);
   }
 
   private _deleteAllRecommendations(): void {    

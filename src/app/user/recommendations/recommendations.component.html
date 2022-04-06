@@ -10,16 +10,16 @@
                 <div class="icon">
                     <fa-icon [icon]="faChevronRight" class="color-faded" size="sm"></fa-icon>
                 </div>
-                <div class="title">
+                <div class="title" i18n>
                     Moje preporuke
                 </div>                
             </div>
-            <div class="font-s-20 color-faded mt-2">Pogledajte preporuke koje su Vam drugi korisnici uputili...</div>            
+            <div class="font-s-20 color-faded mt-2" i18n>Pogledajte preporuke koje su Vam drugi korisnici uputili...</div>            
         </div>
 
         <div class="col-12 col-sm-6 d-flex justify-content-sm-end align-items-sm-center mt-4">
             <div class="total-recommendations">
-                <div class="total-recommendations-text color-faded">Ukupno preporuka</div>
+                <div class="total-recommendations-text color-faded" i18n>Ukupno preporuka</div>
                 <div class="total-recommendations-number">
                     {{ numberOfAllRecommendations }}
                 </div>
@@ -30,7 +30,7 @@
     <div class="row mt-2 mb-0 mt-sm-4 mb-sm-1">
         <div class="col-12 col-sm-6 d-flex align-items-center">
             <app-button color="success" size="xs" [icon]="faPaperPlane">                
-                <div text>
+                <div text i18n="@@sendRecommendation">
                     Pošaljite preporuku
                 </div>
             </app-button>
@@ -38,7 +38,7 @@
 
         <div class="col-12 col-sm-6 d-flex align-items-center justify-content-start justify-content-sm-end mt-2 mt-sm-0">
             <app-button (buttonClick)="deleteAllRecommendations()" color="danger" size="xs" [icon]="faTrashCanList" [disabled]="numberOfAllRecommendations === 0">                
-                <div text>
+                <div text i18n="@@deleteAllRecommendations">
                     Obrišite sve preporuke
                 </div>
             </app-button>
@@ -52,16 +52,16 @@
                 <div class="recommendations-content">
                     <div class="container-fluid header">
                         <div class="row">
-                            <div class="col-sm-12 col-md-1">
+                            <div class="col-sm-12 col-md-1" i18n="@@no">
                                 R.br.
                             </div>
-                            <div class="col-sm-12 col-md-5">
+                            <div class="col-sm-12 col-md-5" i18n="@@author">
                                 Knjiga / Autor
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <div class="row">
-                                    <div class="col-md-4">Datum preporuke</div>
-                                    <div class="col-md-8">Ko mi je preporucio ovu knjigu?</div>
+                                    <div class="col-md-4" i18n="@@dateOfRecommendation">Datum preporuke</div>
+                                    <div class="col-md-8" i18n="@@whoRecommended">Ko mi je preporucio ovu knjigu?</div>
                                 </div>
                             </div>                            
                         </div>                                                
@@ -83,10 +83,10 @@
                         <div class="icon">
                             <fa-icon [icon]="faHourglass" size="8x"></fa-icon>
                         </div>
-                        <div class="title mt-4">
+                        <div class="title mt-4" i18n="@@othersAreReading">
                             Drugi korisnici i dalje čitaju knjige
                         </div>
-                        <div class="subtitle mt-2">
+                        <div class="subtitle mt-2" i18n="@@pleaseBePatient">
                             <span>Molimo Vas za strpljenje...</span>
                         </div>
                     </div>
@@ -101,7 +101,9 @@
     #loaderDelete
     [textToDisplay]="deleteText"
     confirmButtonText="Potvrdite brisanje"
+    i18n-confirmButtonText="loaderDeleteConfirm"
     declineButtonText="Odustanite"
+    i18n-declineButtonText="loaderDeleteDecline"
 
     (confirm)="confirmDeleteRecommendation()"
     (decline)="declineDeleteRecommendation()"    
@@ -111,6 +113,7 @@
 <app-loader-successful
     #loaderSuccessful
     textToDisplay="Uspešno ste obrisali preporuku"
+    i18n-textToDisplay="@@2209406867676585666"
     [timeToWait]="3"    
 
     (dismiss)="dismissSuccessfulMessage()"

@@ -8,9 +8,10 @@
         <input #searchbox (keyup.Enter)="search($event)" 
         class="theme-input full-width searchbox" type="text" 
         placeholder="Pretražite knjigu ili autora"
+        i18n-placeholder
         [value]="value"
         (keyup)="keyup($event)"
         >
-        <div *ngIf="!allowedToBeEmpty" class="error" [class.shown]="showError">Polje ne može biti prazno</div>
+        <div *ngIf="!allowedToBeEmpty" class="error" [class.shown]="showError" i18n>Polje ne može biti prazno</div>
     </div>
 </div>

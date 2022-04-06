@@ -33,10 +33,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.profileImage = user.image;
     this.nameOfTheUser = user.name + " " + user.surname;
     if ( user.type === User.BUYER ) {
-      this.accountType = "kupac";
+      this.accountType = $localize `kupac`;
       this.link = "user";
     } else {
-      this.accountType = "prodavac";
+      this.accountType = $localize `prodavac`;
       this.link = "admin";
     }
   } 

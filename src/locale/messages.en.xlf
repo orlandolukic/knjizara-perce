@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="5195267747007812670" datatype="html">
+        <source>Zajedno možemo sve!</source>
+        <target>Together we can achieve anything!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="68377130702251528" datatype="html">
+        <source>Knjižara</source>
+        <target>BookStore</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7715177209984078548" datatype="html">
+        <source> PERCE </source>
+        <target>Feather</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6404704209995181207" datatype="html">
+        <source> Prijavljivanje </source>
+        <target>Login</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">29,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3270791996078019324" datatype="html">
+        <source>Korisničko ime</source>
+        <target>Username</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4597127065202478542" datatype="html">
+        <source>Molimo unesite Vaše korisničko ime</source>
+        <target>Please enter your username</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4476181992833332731" datatype="html">
+        <source>Lozinka</source>
+        <target>Password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4780617052983254927" datatype="html">
+        <source>Molimo unesite Vašu lozinku</source>
+        <target>Please enter your password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2635184530846462439" datatype="html">
+        <source> Prijava na sistem </source>
+        <target>Login with BookStore Feather</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">60,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1519264335245568714" datatype="html">
+        <source> Nemate nalog? </source>
+        <target>Don't have an account?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">68,70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">103,105</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">140,142</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4774132058643598050" datatype="html">
+        <source>Registrujte se</source>
+        <target>Register</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="34944358008222882" datatype="html">
+        <source> Zaboravili ste lozinku? </source>
+        <target>Forgot password?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">81,83</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">95,97</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">132,134</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="716940625383855359" datatype="html">
+        <source>Oporavak lozinke</source>
+        <target>Password recovery</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3821920913892659190" datatype="html">
+        <source>Prijava na sistem</source>
+        <target>Login</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6667909832612722375" datatype="html">
+        <source>Korisničko ime i/ili lozinka su prazni. Molimo pokušajte ponovo</source>
+        <target>Username and/or password are empty. Please fill in the fields.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1431120559217044558" datatype="html">
+        <source>Korisničko ime i/ili lozinka nisu ispravno unešeni. Molimo pokušajte ponovo</source>
+        <target>Username and/or password are not correct. Please try again.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.ts</context>
+          <context context-type="linenumber">96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8254231162016881121" datatype="html">
+        <source>Unesite Vaše ime</source>
+        <target>Enter Your name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register-form-basic/register-form-basic.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register-form-basic/register-form-basic.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register-form-basic/register-form-basic.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7961247457880029165" datatype="html">
+        <source>Unesite Vaše prezime</source>
+        <target>Enter Your last name</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register-form-basic/register-form-basic.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1054064477747027142" datatype="html">
+        <source>Ime i prezime</source>
+        <target>Name and Surname</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register-form-basic/register-form-basic.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7509044508911853027" datatype="html">
+        <source>Kontakt podaci</source>
+        <target>Contact info</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register-form-basic/register-form-basic.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1952544279620141537" datatype="html">
+        <source>Adresa</source>
+        <target>Address</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register-form-basic/register-form-basic.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5215748616383891950" datatype="html">
+        <source> Registracija </source>
+        <target>Registration</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2779601634091833089" datatype="html">
+        <source> Za prave knjiške moljce smo pripremili puno iznenađenja.... </source>
+        <target>For passionate readers we've prepared something special...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">21,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7524752863171951316" datatype="html">
+        <source> Opšti podaci </source>
+        <target>General information</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8739044095006021124" datatype="html">
+        <source> Podaci za prijavu </source>
+        <target>Login data</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">39,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4358613084955698790" datatype="html">
+        <source> Kraj </source>
+        <target>Finish</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3398129373587589731" datatype="html">
+        <source>Napredak</source>
+        <target>Progress</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5645452686965132457" datatype="html">
+        <source> Imate nalog? </source>
+        <target>Don't have an account?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">118,120</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4661692021002485337" datatype="html">
+        <source>Prijavite se</source>
+        <target>Login</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.html</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8038917819960927655" datatype="html">
+        <source>Registracija</source>
+        <target>Register</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/register/register.component.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1080456625735677295" datatype="html">
+        <source>PERCE</source>
+        <target>FEATHER</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1173696353388275614" datatype="html">
+        <source> Sve knjige </source>
+        <target>All books</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">38,40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/all-books/all-books.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6938976426337816440" datatype="html">
+        <source> Moje preporuke </source>
+        <target>My Recommendations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">48,50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5576319486880711583" datatype="html">
+        <source> Podešavanja naloga </source>
+        <target>Account Settings</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">58,60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7926141896826457398" datatype="html">
+        <source> Odjavite se </source>
+        <target>Logout</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">68,70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4062847579349360756" datatype="html">
+        <source>kupac</source>
+        <target>buyer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3659908812419649295" datatype="html">
+        <source>prodavac</source>
+        <target>seller</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1351037862985517037" datatype="html">
+        <source> © 2022 - Knjižara PERCE. Sva prava zadržana. </source>
+        <target>&copy; 2022 - BookStore FEATHER. All rights reserved.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/footer/footer.component.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4664711903931401189" datatype="html">
+        <source> Preporuke </source>
+        <target>Recommendations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/recommend-numbers-content/recommend-numbers-content.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="186120620933383808" datatype="html">
+        <source>Pretražite knjigu ili autora</source>
+        <target>Search for book or author</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/search-book/search-book.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="357711399707203552" datatype="html">
+        <source>Polje ne može biti prazno</source>
+        <target>Field cannot be empty</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/search-book/search-book.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5737144407524177470" datatype="html">
+        <source>SPONZORISANO</source>
+        <target>SPONSORED</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/sponsored-star/sponsored-star.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/book-slider-single-book/book-slider-single-book.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5040598794149937267" datatype="html">
+        <source>Knjizara PERCE</source>
+        <target>BookStore FEATHER</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/services/title-service.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2611861918097833372" datatype="html">
+        <source>Bogat asortiman, knjige po Vašem ukusu</source>
+        <target>Rich offer, books by Your taste</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/all-books/all-books.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="480784166665706622" datatype="html">
+        <source>Sve knjige</source>
+        <target>All books</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/all-books/all-books.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/all-books-listing/all-books-listing.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/main/main.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1851709839244669456" datatype="html">
+        <source>CENA</source>
+        <target>PRICE</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4765641836267256890" datatype="html">
+        <source> Godina izdanja </source>
+        <target>Year of issuance</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">60,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1718561209638918180" datatype="html">
+        <source> Broj strana </source>
+        <target>No. of pages</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">67,69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9010224903794900009" datatype="html">
+        <source> Autor(i) </source>
+        <target>Author(s)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">74,76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="817234868867863254" datatype="html">
+        <source>PREPORUČITE</source>
+        <target>RECOMMEND</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3107770140695562149" datatype="html">
+        <source>Prosečna ocena</source>
+        <target>Average rating</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1355512808185567132" datatype="html">
+        <source>Ocene</source>
+        <target>Reviews</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="353233499137051649" datatype="html">
+        <source>Preporuke</source>
+        <target>Sent recommendations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2675607721645076599" datatype="html">
+        <source>Trenutno gleda</source>
+        <target>Currently watching</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">124</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4865592560184093499" datatype="html">
+        <source>Pregledi</source>
+        <target>Views</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">134</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7126417340429040917" datatype="html">
+        <source>Ocene i komentari</source>
+        <target>Comments</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">156</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7756947566052212210" datatype="html">
+        <source>Pročitali ste knjigu i želite da nam prenesete utiske?</source>
+        <target>You've read the book and want to share Your impressions?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">159</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6974476875609114120" datatype="html">
+        <source>Ostavite komentar</source>
+        <target>Leave a review</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">161</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2564049833069786491" datatype="html">
+        <source>Hm... svi čitaju knjigu!</source>
+        <target>Hm... Everybody's reading the book!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">178</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="598833789761147103" datatype="html">
+        <source>Trenutno nema komentara, molimo pokušajte kasnije</source>
+        <target>No comments at the moment, please try again later</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/book.component.html</context>
+          <context context-type="linenumber">180</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4169776462317522956" datatype="html">
+        <source>Knjiga</source>
+        <target>Book</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="426620474300355907" datatype="html">
+        <source>Klikom na zvezdicu odaberite ocenu</source>
+        <target>Click on the star to choose rating</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2765936041161020936" datatype="html">
+        <source>Komentar</source>
+        <target>Comment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7674630625017047017" datatype="html">
+        <source>Unesite željeni komentar za ovu knjigu</source>
+        <target>Please enter the comment for this book</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.ts</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.ts</context>
+          <context context-type="linenumber">361</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5747656098330744257" datatype="html">
+        <source> * komentar mora imati barem 5 karaktera </source>
+        <target> * comment needs to have at least 5 characters </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">66,68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5313080428968649760" datatype="html">
+        <source> Nakon dodavanja/izmene ocene biće onemogućeno brisanje/izmena ocene u narednih 10 dana. </source>
+        <target> After submitting/editing the comment any further action will be disabled for the next 10 days. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">73,75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1215701487903112105" datatype="html">
+        <source>Potvrdite komentar</source>
+        <target>Submit</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4020648162975011347" datatype="html">
+        <source>Odustanite</source>
+        <target>Decline</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.html</context>
+          <context context-type="linenumber">134</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7036003472187732346" datatype="html">
+        <source>Uspešno ste ostavili ocenu, hvala Vam!</source>
+        <target>You've successfully left the comment. Thank You for that!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4195651213044920589" datatype="html">
+        <source>Da li ste sigurni da želite da obrišete komentar?</source>
+        <target>Are You sure you want to delete the comment?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7716454336934807170" datatype="html">
+        <source>Uspešno ste obrisali Vaš komentar</source>
+        <target>The comment has been deleted successfully</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1505342893034556829" datatype="html">
+        <source>Unesite ocenu</source>
+        <target>Submit Your review</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.ts</context>
+          <context context-type="linenumber">162</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="774590842109186929" datatype="html">
+        <source>Izmenite ocenu</source>
+        <target>Change Your review</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.ts</context>
+          <context context-type="linenumber">165</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6419511430161297663" datatype="html">
+        <source>Sigurnosna provera</source>
+        <target>Security check</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7613472153646939002" datatype="html">
+        <source> Komentar nije moguće obrisati u narednih <x id="INTERPOLATION" equiv-text="{{diffDays}}"/> dana. </source>
+        <target> You cannot delete Your comment for the next <x id="INTERPOLATION" equiv-text="{{diffDays}}"/> days.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4052016862623576178" datatype="html">
+        <source> MOJ KOMENTAR </source>
+        <target>MY REVIEW</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">17,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3324430992038896091" datatype="html">
+        <source> AKCIJE </source>
+        <target>ACTIONS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5295572390986550608" datatype="html">
+        <source>Izmena komentara</source>
+        <target>Change review</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="readWholeComment" datatype="html">
+        <source>Pročitajte ceo komentar</source>
+        <target>Read whole comment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>       
+      </trans-unit>
+      <trans-unit id="hideWholeComment" datatype="html">
+        <source>Sakrijte ceo komentar</source>
+        <target>Hide whole comment</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>       
+      </trans-unit>
+      <trans-unit id="bookSearchTitle" datatype="html">
+        <source>Pretraga knjige {$PH}</source>
+        <target>Book search {$PH}</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/search-books/search-books.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>       
+      </trans-unit>
+      <trans-unit id="loaderDeleteConfirm" datatype="html">
+        <source>Potvrdite brisanje</source>
+        <target>Confirm deletion</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">122</context>
+        </context-group>  
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">103</context>
+        </context-group>       
+      </trans-unit>
+      <trans-unit id="loaderDeleteDecline" datatype="html">
+        <source>Odustanite</source>
+        <target>Decline</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/comments-section/comments-section.component.html</context>
+          <context context-type="linenumber">120</context>
+        </context-group>  
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">105</context>
+        </context-group>      
+      </trans-unit>
+      <trans-unit id="346069560575305837" datatype="html">
+        <source>Brisanje komentara</source>
+        <target>Delete review</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="187187500641108332" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ !expanded.getValue() ? &apos;Pročitajte ceo komentar&apos; : &apos;Sakrijte ceo komentar&apos; }}"/></source>
+        <target><x id="INTERPOLATION" equiv-text="{{ !expanded.getValue() ? &apos;Read the whole comment&apos; : &apos;Hide the whole comment&apos; }}"/></target>        
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/book/single-comment/single-comment.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8955926498729332826" datatype="html">
+        <source>Učitajte još knjiga</source>
+        <target>Load more books</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/all-books-listing/all-books-listing.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5312286445972803541" datatype="html">
+        <source>Nema rezultata pretrage</source>
+        <target>The resultset is empty</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/all-books-listing/all-books-listing.component.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2820408824497263024" datatype="html">
+        <source>Nismo uspeli da pronađemo knjige za zadati kriterijum &apos;<x id="PH" equiv-text="this.searchTerm"/>&apos;</source>
+        <target>We didn't manage to find books with the given criteria &apos;<x id="PH" equiv-text="this.searchTerm"/>&apos;</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/all-books-listing/all-books-listing.component.ts</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4939872014529018418" datatype="html">
+        <source>Trenutno nema knjiga</source>
+        <target>Curently, there're no books available</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/all-books-listing/all-books-listing.component.ts</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6926520610632000770" datatype="html">
+        <source> PREPORUČITE </source>
+        <target>RECOMMEND</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/book-slider-single-book/book-slider-single-book.component.html</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6955048339010961864" datatype="html">
+        <source> Da li ste sigurni da želite da obrišete preporuku? </source>
+        <target>Are You sure You want to delete recommendation?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.html</context>
+          <context context-type="linenumber">36,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2410111739755275462" datatype="html">
+        <source>Potvrdite brisanje</source>
+        <target>Confirm removal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="225262775327482339" datatype="html">
+        <source>Preporučite knjigu</source>
+        <target>Recommend book</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.html</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7782899199380776656" datatype="html">
+        <source> Trenutni broj preporuka </source>
+        <target>Number of recommendations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.html</context>
+          <context context-type="linenumber">70,72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1306172560407613148" datatype="html">
+        <source>Pretraga korisnika...</source>
+        <target>Search for user...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.html</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="924385629850468530" datatype="html">
+        <source> Selektovano korisnika </source>
+        <target>Selected users</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.html</context>
+          <context context-type="linenumber">118,120</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1217608827696674867" datatype="html">
+        <source>Potvrdite preporuke</source>
+        <target>Submit recommendations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.html</context>
+          <context context-type="linenumber">129</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5318105820189823691" datatype="html">
+        <source>Uspešno ste poslali preporuk<x id="PH" equiv-text="this.viewSelectedRecommendations &gt; 1 ? &apos;e&apos; : &apos;u&apos;"/></source>
+        <target>You've successfully sent recommendation<x id="PH" equiv-text="this.viewSelectedRecommendations &gt; 1 ? &apos;s&apos; : &apos;&apos;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.ts</context>
+          <context context-type="linenumber">167</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2209406867676585666" datatype="html">
+        <source>Uspešno ste obrisali preporuku</source>
+        <target>You've successfully delete recommendation</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/components/recommend-book/recommend-book.component.ts</context>
+          <context context-type="linenumber">199</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3405093906664973071" datatype="html">
+        <source>STATISTIKA</source>
+        <target>STATISTICS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/main/main.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7662653575878085185" datatype="html">
+        <source>NOVE PREPORUKE</source>
+        <target>NEW RECOMMENDATIONS</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/main/main.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5111179154027604459" datatype="html">
+        <source>Pogledajte preporuke</source>
+        <target>Take a look at recommendations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/main/main.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1180360131346026176" datatype="html">
+        <source><x id="START_TAG_FA_ICON" ctype="x-fa_icon" equiv-text="&lt;fa-icon class=&quot;color-primary&quot; [icon]=&quot;faFaceGrinStars&quot;&gt;"/><x id="CLOSE_TAG_FA_ICON" ctype="x-fa_icon" equiv-text="&lt;/fa-icon&gt;"/> Na promociji </source>
+        <target><x id="START_TAG_FA_ICON" ctype="x-fa_icon" equiv-text="&lt;fa-icon class=&quot;color-primary&quot; [icon]=&quot;faFaceGrinStars&quot;&gt;"/><x id="CLOSE_TAG_FA_ICON" ctype="x-fa_icon" equiv-text="&lt;/fa-icon&gt;"/> Sponsored </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/main/main.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8584330936533926679" datatype="html">
+        <source>Ne propustite popularne naslove...</source>
+        <target>Don't miss out on anything...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/main/main.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7810874777200596014" datatype="html">
+        <source><x id="START_TAG_FA_ICON" ctype="x-fa_icon" equiv-text="&lt;fa-icon class=&quot;color-primary&quot; [icon]=&quot;faBook&quot;&gt;"/><x id="CLOSE_TAG_FA_ICON" ctype="x-fa_icon" equiv-text="&lt;/fa-icon&gt;"/> Sve knjige </source>
+        <target><x id="START_TAG_FA_ICON" ctype="x-fa_icon" equiv-text="&lt;fa-icon class=&quot;color-primary&quot; [icon]=&quot;faBook&quot;&gt;"/><x id="CLOSE_TAG_FA_ICON" ctype="x-fa_icon" equiv-text="&lt;/fa-icon&gt;"/> All books </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/main/main.component.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2865583472804036921" datatype="html">
+        <source>Pogledajte našu ponudu knjiga</source>
+        <target>Take a sneak peek at our offer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/main/main.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6755139837857265118" datatype="html">
+        <source>Pogledajte preporuke koje su Vam drugi korisnici uputili...</source>
+        <target>View all the recommendations other users sent You...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6673942542991658061" datatype="html">
+        <source>Ukupno preporuka</source>
+        <target>Total recommendations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="312168685243759247" datatype="html">
+        <source>Moje preporuke (<x id="PH" equiv-text="this.numberOfAllRecommendations"/>)</source>
+        <target>My recommendations (<x id="PH" equiv-text="this.numberOfAllRecommendations"/>)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.ts</context>
+          <context context-type="linenumber">184</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5744948103106119697" datatype="html">
+        <source>Da li ste sigurni da želite da obrišete preporuku?</source>
+        <target>Are You sure you want to delete recommendation?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1120780298427064863" datatype="html">
+        <source>Da li ste sigurni da želite da obrišete sve preporuke?</source>
+        <target>Are You sure You want to delete all recommendations?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.ts</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7565873100961019560" datatype="html">
+        <source> PREPORUKE <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;recommendation-number ms-2&quot;&gt;"/><x id="INTERPOLATION" equiv-text="{{recommendation.recommendations.length}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <target> RECOMMENDATIONS <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span class=&quot;recommendation-number ms-2&quot;&gt;"/><x id="INTERPOLATION" equiv-text="{{recommendation.recommendations.length}}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/single-recommendation/single-recommendation.component.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8462790169410207443" datatype="html">
+        <source>Obrišite preporuku</source>
+        <target>Delete recommendation</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/single-recommendation/single-recommendation.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resultsFound" datatype="html">
+        <source>Pronađeno rezultata:</source>
+        <target>Results found:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/search-books/search-books.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bookSearch" datatype="html">
+        <source> Pretraga knjige </source>
+        <target>Find a book</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/search-books/search-books.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit> 
+      <trans-unit id="sendRecommendation" datatype="html">
+        <source> Pošaljite preporuku </source>
+        <target> Send recommendation </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>  
+      <trans-unit id="deleteAllRecommendations" datatype="html">
+        <source> Obrišite sve preporuke </source>
+        <target> Delete all recommendations </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>  
+      <trans-unit id="no" datatype="html">
+        <source> R.br. </source>
+        <target> No. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="author" datatype="html">
+        <source> Knjiga / Autor </source>
+        <target> Book / Author </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dateOfRecommendation" datatype="html">
+        <source> Datum preporuke </source>
+        <target> Date of recommendation </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="whoRecommended" datatype="html">
+        <source> Ko mi je preporucio ovu knjigu? </source>
+        <target> Who recommended me the book? </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="othersAreReading" datatype="html">
+        <source> Drugi korisnici i dalje čitaju knjige </source>
+        <target> Others are busy reading books... </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pleaseBePatient" datatype="html">
+        <source>{$START_TAG_SPAN}Molimo Vas za strpljenje{$CLOSE_TAG_SPAN}</source>
+        <target>Please be patient</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user/recommendations/recommendations.component.html</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

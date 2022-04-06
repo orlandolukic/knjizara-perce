@@ -22,7 +22,7 @@ export class AllBooksComponent implements OnInit {
     private titleService: TitleService,
     private router: Router
   ) { 
-    this.titleService.changeTitle('Sve knjige');
+    this.titleService.changeTitle($localize `Sve knjige`);
   }
 
   ngOnInit(): void {

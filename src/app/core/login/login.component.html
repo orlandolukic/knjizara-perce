@@ -4,14 +4,14 @@
             <div @fadeInLeft class="col-12 col-lg-6 login-column d-none d-lg-block">
                 <div class="content">
                     <div class="text-center margin-t-20">
-                        <h1 class="title text-italic">Zajedno možemo sve!</h1>
+                        <h1 class="title text-italic" i18n>Zajedno možemo sve!</h1>
                     </div>
                     <div class="logo margin-t-40">
                         <img src="assets/images/logo.png" />
                     </div>
                     <div class="text-center margin-t-20 margin-b-30">
-                        <h1>Knjižara</h1>
-                        <h1 class="logo-sub">
+                        <h1 i18n>Knjižara</h1>
+                        <h1 class="logo-sub" i18n>
                             PERCE
                         </h1>
                     </div>
@@ -26,7 +26,7 @@
                         <img src="assets/images/logo.png" />
                     </div>
                     <div class="margin-t-20">
-                        <div class="title text-center text-bold">
+                        <div class="title text-center text-bold" i18n>
                             Prijavljivanje
                         </div>
                     </div>
@@ -41,23 +41,23 @@
                     </div>
 
                     <div class="margin-t-20">
-                        <div class="font-s-26">Korisničko ime</div>
+                        <div class="font-s-26" i18n>Korisničko ime</div>
                         <div class="full-width margin-t-10">
-                            <input #username (keyup)="keyup('username', $event)" class="theme-input full-width username" type="text" placeholder="Molimo unesite Vaše korisničko ime">
+                            <input #username (keyup)="keyup('username', $event)" class="theme-input full-width username" type="text" i18n-placeholder placeholder="Molimo unesite Vaše korisničko ime">
                         </div>
                     </div>
 
                     <div class="margin-t-20">
-                        <div class="font-s-26">Lozinka</div>
+                        <div class="font-s-26" i18n>Lozinka</div>
                         <div class="full-width margin-t-10">
-                            <input #password (keyup)="keyup('password', $event)" class="theme-input full-width password" type="password" placeholder="Molimo unesite Vašu lozinku">
+                            <input #password (keyup)="keyup('password', $event)" class="theme-input full-width password" type="password" i18n-placeholder placeholder="Molimo unesite Vašu lozinku">
                         </div>
                     </div>
 
                     <div class="margin-t-30 text-center">
                         <button #loginButton (click)="login()" mat-raised-button color="primary" class="login-button">
                             <fa-icon [icon]="faSignInAlt" size="lg"></fa-icon>
-                            <span class="text">
+                            <span class="text" i18n>
                                 Prijava na sistem
                             </span>
                         </button>
@@ -65,12 +65,12 @@
 
                     <div class="d-none d-lg-block margin-t-30 text-center">
                         <div class="row">
-                            <div class="col-6 text-right">
+                            <div class="col-6 text-right" i18n>
                                 Nemate nalog?
                             </div>
                             <div class="col-6 text-left">
                                 <span class="solution">
-                                    <a routerLink="/register">Registrujte se</a>
+                                    <a routerLink="/register" i18n>Registrujte se</a>
                                 </span>
                             </div>          
                         </div>                                      
@@ -78,12 +78,12 @@
 
                     <div class="d-none d-lg-block margin-t-10 margin-b-20 text-center">
                         <div class="row">
-                            <div class="col-6 text-right">
+                            <div class="col-6 text-right" i18n>
                                 Zaboravili ste lozinku?
                             </div>
                             <div class="col-6 text-left">
                                 <span class="solution">
-                                    <a routerLink="/forgot-password">Oporavak lozinke</a>
+                                    <a routerLink="/forgot-password" i18n>Oporavak lozinke</a>
                                 </span>
                             </div>          
                         </div>                           
@@ -92,19 +92,19 @@
                     <div class="d-block d-lg-none media-query mt-3">
                         <div class="row">
                             <div class="col-6 text-left">
-                                <div class="fw-bold font-s-16">
+                                <div class="fw-bold font-s-16" i18n>
                                     Zaboravili ste lozinku?
                                 </div>                                
                                 <div class="solution mt-1">
-                                    <a routerLink="/forgot-password">Oporavak lozinke</a>
+                                    <a routerLink="/forgot-password" i18n>Oporavak lozinke</a>
                                 </div>
                             </div>
                             <div class="col-6 text-left mt-1">  
-                                <div class="fw-bold">
+                                <div class="fw-bold" i18n>
                                     Nemate nalog?
                                 </div>
                                 <div class="solution mt-1">                                    
-                                    <a routerLink="/register">Registrujte se</a>                                    
+                                    <a routerLink="/register" i18n>Registrujte se</a>                                    
                                 </div>          
                             </div>          
                         </div>     

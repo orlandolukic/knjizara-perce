@@ -164,7 +164,7 @@ export class RecommendBookComponent implements OnInit, OnDestroy {
       this.showTemporaryLoader = true;
       this.submitRecommendations().then(() => {
         // Display success dialog
-        this.previewSuccessfulMessage(`Uspešno ste poslali preporuk${ this.viewSelectedRecommendations > 1 ? 'e' : 'u' }`, 
+        this.previewSuccessfulMessage($localize `Uspešno ste poslali preporuk${ this.viewSelectedRecommendations > 1 ? 'e' : 'u' }`, 
             faCheckDouble, 
             false, () => {
               this.declineModal();
@@ -196,7 +196,7 @@ export class RecommendBookComponent implements OnInit, OnDestroy {
       this.showDeleteModal = false;         
       this.service.getOnRecommendationDelete().emit(x);   
       this.viewRecommendationNumber = BookRecommendationController.getSentRecommendationNumberFor(this.bookInstance);
-      this.previewSuccessfulMessage("Uspešno ste obrisali preporuku", faTrashAlt, false, () => {
+      this.previewSuccessfulMessage($localize `Uspešno ste obrisali preporuku`, faTrashAlt, false, () => {
         this.hideSuccessfulMessage();
       });
     });

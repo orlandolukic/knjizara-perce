@@ -112,11 +112,11 @@ export class AllBooksListingComponent implements OnInit, AfterViewInit, OnDestro
       this.fetchedEverythingFromServer = true;
       this.loadedEverything = this.lastShowIndex === this.allBooksNumber;
       if ( this.allBooksNumber === 0 && this.searchTerm ) {
-        this.noBooksFoundTitle = "Nema rezultata pretrage";
-        this.noBooksFoundSubtitle = "Nismo uspeli da pronađemo knjige za zadati kriterijum '" + this.searchTerm + "'";
+        this.noBooksFoundTitle = $localize `Nema rezultata pretrage`;
+        this.noBooksFoundSubtitle = $localize `Nismo uspeli da pronađemo knjige za zadati kriterijum '${this.searchTerm}'`;
       } else if ( this.allBooksNumber === 0 ) {
-        this.noBooksFoundTitle = "Trenutno nema knjiga";
-        this.noBooksFoundSubtitle = "U procesu smo nabavke knjiga, molimo Vas pokušajte kasnije";
+        this.noBooksFoundTitle = $localize `Trenutno nema knjiga`;
+        this.noBooksFoundSubtitle = `U procesu smo nabavke knjiga, molimo Vas pokušajte kasnije`;
       }
     });
   }

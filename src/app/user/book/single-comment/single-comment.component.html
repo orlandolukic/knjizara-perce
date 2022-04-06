@@ -5,8 +5,8 @@
                 <fa-icon [icon]="faExclamation" size="2x"></fa-icon>
             </div>
             <div class="comment-warning-text">
-                <div class="text-uppercase fw-bold font-s-14">Sigurnosna provera</div>
-                <div class="mt-1">
+                <div class="text-uppercase fw-bold font-s-14" i18n>Sigurnosna provera</div>
+                <div class="mt-1" i18n>
                     Komentar nije moguće obrisati u narednih {{diffDays}} dana.
                 </div>
             </div>
@@ -14,10 +14,10 @@
     </div>
 </div>
 <div *ngIf="isMyComment" class="row my-comment">
-    <div class="col-12 col-sm-12 col-md-6">
+    <div class="col-12 col-sm-12 col-md-6" i18n>
         MOJ KOMENTAR
     </div>
-    <div class="d-none d-md-flex d-sm-flex col-sm-12 col-md-6 justify-content-end">
+    <div class="d-none d-md-flex d-sm-flex col-sm-12 col-md-6 justify-content-end" i18n>
         AKCIJE
     </div>
 </div>
@@ -47,12 +47,14 @@
         <div *ngIf="isMyComment" class="options mt-2">
             <div class="button edit-button">
                 <app-button [disabled]="disabled" [icon]="faEdit" color="success" size="xs"
-                    (buttonClick)="editComment()" 
+                    (buttonClick)="editComment()"
+                    i18n-matTooltip 
                     matTooltip="Izmena komentara" matTooltipPosition="below" matTooltipClass="font-s-14"></app-button>
             </div>
             <div class="button delete-button">
                 <app-button [disabled]="disabled" [icon]="faTrash" color="danger" size="xs"
                     (buttonClick)="deleteComment()"
+                    i18n-matTooltip
                     matTooltip="Brisanje komentara" matTooltipPosition="below" matTooltipClass="font-s-14"></app-button>
             </div>
         </div>
@@ -65,8 +67,11 @@
             <div class="scroll-more-content" (click)="readWholeComment()">
                 <div class="icon">
                     <fa-icon [icon]="!expanded.getValue() ? faEye : faEyeSlashed"></fa-icon>
+                </div>                
+                <div class="text">
+                    <span i18n="@@readWholeComment" *ngIf="!expanded.getValue()">Pročitajte ceo komentar</span>
+                    <span i18n="@@hideWholeComment" *ngIf="expanded.getValue()">Sakrijte ceo komentar</span>
                 </div>
-                <div class="text">{{ !expanded.getValue() ? 'Pročitajte ceo komentar' : 'Sakrijte ceo komentar' }}</div>
             </div>
         </div>         
     </div>
@@ -81,11 +86,13 @@
             <div class="button edit-button">
                 <app-button [disabled]="disabled" [icon]="faEdit" color="success" size="xs"
                     (buttonClick)="editComment()" 
+                    i18n-matTooltip
                     matTooltip="Izmena komentara" matTooltipPosition="below" matTooltipClass="font-s-14"></app-button>
             </div>
             <div class="button delete-button">
                 <app-button [disabled]="disabled" [icon]="faTrash" color="danger" size="xs"
                     (buttonClick)="deleteComment()"
+                    i18n-matTooltip
                     matTooltip="Brisanje komentara" matTooltipPosition="below" matTooltipClass="font-s-14"></app-button>
             </div>
         </div>

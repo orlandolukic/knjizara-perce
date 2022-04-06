@@ -20,7 +20,7 @@
                     </div>
                     <div class="title">
                         <div class="text">{{modalTitle}}</div>
-                        <div class="subtitle mt-1"><span>Knjiga</span>: <span class="color-primary fw-bold">{{ book.title }}</span></div>                        
+                        <div class="subtitle mt-1"><span i18n>Knjiga</span>: <span class="color-primary fw-bold">{{ book.title }}</span></div>                        
                     </div>
                 </div>                
             </div>
@@ -32,7 +32,7 @@
         <div class="rating-number-placeholder row mt-4 d-flex align-items-center">
             <div class="col-8">
                 <app-choose-star #chooseStar></app-choose-star>
-                <div class="color-faded mt-2 font-s-14">Klikom na zvezdicu odaberite ocenu</div>
+                <div class="color-faded mt-2 font-s-14" i18n>Klikom na zvezdicu odaberite ocenu</div>
             </div>
             <div class="rating-column col-4">
                 <div class="rating-number">
@@ -44,7 +44,7 @@
 
         <div class="row mt-4">
             <div class="col-12">
-                <div class="fs-3">Komentar</div>
+                <div class="fs-3" i18n>Komentar</div>
                 <div class="mt-2">                
                     <div 
                     data-id="comment-textarea"                        
@@ -60,16 +60,17 @@
                     (focusout)="commentTextfieldFocusout($event)"
                     (mouseenter)="commentTextfieldMouseenter($event)"
                     (mouseleave)="commentTextfieldMouseleave($event)"
+                    i18n
                     >Unesite željeni komentar za ovu knjigu</div>                                    
                 </div>                
-                <div *ngIf="showCommentError" class="mt-1 color-danger font-s-14">
+                <div *ngIf="showCommentError" class="mt-1 color-danger font-s-14" i18n>
                     * komentar mora imati barem 5 karaktera
                 </div>
             </div>
         </div>
 
         <div class="row mt-1">
-            <div class="col-12 font-s-14 color-faded">
+            <div class="col-12 font-s-14 color-faded" i18n>
                 Nakon dodavanja/izmene ocene biće onemogućeno brisanje/izmena ocene u narednih 10 dana.
             </div>
         </div>
@@ -85,12 +86,12 @@
                             size="xs" 
                             color="success"
                             >
-                            <div text>Potvrdite komentar</div>
+                            <div text i18n>Potvrdite komentar</div>
                         </app-button>
                     </div>
                     <div class="button-placeholder">
                         <app-button (buttonClick)="declineComment($event)" [icon]="faTimes" size="xs" color="danger" >
-                            <div text>Odustanite</div>
+                            <div text i18n>Odustanite</div>
                         </app-button>
                     </div>
                 </div>
@@ -102,6 +103,7 @@
 <app-loader-successful
     #loaderSuccessful
     textToDisplay="Uspešno ste ostavili ocenu, hvala Vam!"
+    i18n-textToDisplay
     [zIndexPlaceholder]="9999"
 
     [showContent]="showSuccessfulContent"
@@ -111,11 +113,14 @@
 
 <app-loader-delete
     #loaderDeleteComment
-    textToDisplay="Da li ste sigurni da želite da obrišete komentar?"    
+    textToDisplay="Da li ste sigurni da želite da obrišete komentar?"  
+    i18n-textToDisplay  
 
     [showContent]="showDeleteContent"
     declineButtonText="Odustanite"
+    i18n-declineButtonText="@@loaderDeleteDecline"
     confirmButtonText="Potvrdite brisanje"
+    i18n-confirmButtonText="@@loaderDeleteConfirm"
     (decline)="onDeclineDeleteComment()"
     (confirm)="onConfirmDeleteComment()"
 ></app-loader-delete>
@@ -123,6 +128,7 @@
 <app-loader-successful
     #loaderSuccessfulDelete
     textToDisplay="Uspešno ste obrisali Vaš komentar"
+    i18n-textToDisplay
     [zIndexPlaceholder]="9999"
     [icon]="faTrash"
 

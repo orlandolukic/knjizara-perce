@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.titleService.changeTitle("Prijava na sistem");    
+    this.titleService.changeTitle($localize `Prijava na sistem`);    
   }
 
   ngOnDestroy(): void {
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     this.hideErrorMessage();    
 
     if ( username === "" || password === "" ) {
-      this.showErrorMessage("Korisničko ime i/ili lozinka su prazni. Molimo pokušajte ponovo");
+      this.showErrorMessage($localize `Korisničko ime i/ili lozinka su prazni. Molimo pokušajte ponovo`);
       return;
     }
 
@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
         this.router.navigate(['admin']);
 
     }).catch((reason: any) => {
-      this.showErrorMessage("Korisničko ime i/ili lozinka nisu ispravno unešeni. Molimo pokušajte ponovo");      
+      this.showErrorMessage($localize `Korisničko ime i/ili lozinka nisu ispravno unešeni. Molimo pokušajte ponovo`);      
       this.username.nativeElement.value = "";
       this.password.nativeElement.value = "";
     }).finally(() => {

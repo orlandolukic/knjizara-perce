@@ -60,7 +60,7 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
     private cdr: ChangeDetectorRef
   ) {   
     super();  
-    this.titleService.changeTitle("Registracija"); 
+    this.titleService.changeTitle($localize `Registracija`); 
     this.showTasks = false;  
     this.animations = [
       { value: "sectionNotLoaded" },

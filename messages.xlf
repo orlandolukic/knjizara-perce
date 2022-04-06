@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="5195267747007812670" datatype="html">
+        <source>Zajedno možemo sve!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="68377130702251528" datatype="html">
+        <source>Knjižara</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7715177209984078548" datatype="html">
+        <source> PERCE </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6404704209995181207" datatype="html">
+        <source> Prijavljivanje </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">29,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3270791996078019324" datatype="html">
+        <source>Korisničko ime</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4597127065202478542" datatype="html">
+        <source>Molimo unesite Vaše korisničko ime</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4476181992833332731" datatype="html">
+        <source>Lozinka</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4780617052983254927" datatype="html">
+        <source>Molimo unesite Vašu lozinku</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2635184530846462439" datatype="html">
+        <source> Prijava na sistem </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/login/login.component.html</context>
+          <context context-type="linenumber">60,62</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

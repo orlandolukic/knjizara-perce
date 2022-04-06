@@ -12,7 +12,7 @@
             </div>
             <div class="preview-more-button">
                 <app-button [disabled]="loading" (buttonClick)="onPreviewMore($event)" [icon]="faEllipsis" size="sm" color="primary">        
-                    <div text>Učitajte još knjiga</div>
+                    <div text i18n>Učitajte još knjiga</div>
                 </app-button>
             </div>
         </div>        
@@ -31,7 +31,7 @@
             <div after class="d-flex mt-3 justify-content-center">
                 <a [routerLink]="getURLForAllBooks()">
                     <app-button [icon]="faBooks" color="primary" size="sm">
-                        <div text>Sve knjige</div>
+                        <div text i18n>Sve knjige</div>
                     </app-button>
                 </a>
             </div>

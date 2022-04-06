@@ -27,7 +27,7 @@
     </div>    
 </div>
 <div class="col-12 d-flex d-sm-none align-items-center mt-3 mb-2">
-    <div class="ps-3 color-faded text-bold">
+    <div class="ps-3 color-faded text-bold" i18n>
         PREPORUKE <span class="recommendation-number ms-2">{{recommendation.recommendations.length}}</span>
     </div>
 </div>
@@ -41,7 +41,7 @@
             <app-user-details [user]="eachRec.user!" [lightenUsername]="0.6"></app-user-details>
         </div>
         <div class="delete-recommendation-placeholder">
-            <div (click)="deleteRecommendation(i, eachRec)" class="delete-icon" matTooltip="Obrišite preporuku" matTooltipPosition="below" matTooltipClass="font-s-14">
+            <div (click)="deleteRecommendation(i, eachRec)" class="delete-icon" i18n-matTooltip matTooltip="Obrišite preporuku" matTooltipPosition="below" matTooltipClass="font-s-14">
                 <fa-icon [icon]="faTrash"></fa-icon>
             </div>
         </div>

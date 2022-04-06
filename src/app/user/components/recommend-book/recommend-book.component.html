@@ -33,19 +33,19 @@
                     <div class="icon">
                         <fa-icon [icon]="faQuestionMark" class="color-danger" size="2x"></fa-icon>
                     </div>
-                    <div class="question">
+                    <div class="question" i18n>
                         Da li ste sigurni da želite da obrišete preporuku?
                     </div>
                 </div>
                 <div class="buttons-placeholder margin-t-20">
                     <div class="button-placeholder">
                         <app-button (buttonClick)="confirmDeleteRecommendation($event)" [icon]="faCheck" size="xs" color="success" >
-                            <div text>Potvrdite brisanje</div>
+                            <div text i18n>Potvrdite brisanje</div>
                         </app-button>
                     </div>
                     <div class="button-placeholder">
                         <app-button (buttonClick)="declineDeleteRecommendation($event)" [icon]="faTimes" size="xs" color="danger" >
-                            <div text>Odustanite</div>
+                            <div text i18n>Odustanite</div>
                         </app-button>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                         <div>
                             <fa-icon class="color-success" [icon]="faBookmark" size="2x"></fa-icon>
                         </div>
-                        <div class="header-title-content">Preporučite knjigu</div>
+                        <div class="header-title-content" i18n>Preporučite knjigu</div>
                     </div>
                 </div>
                 <div class="col-4 recommend-book-column d-flex d-sm-none">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-8 col-md-6 col-sm-9 recommend-book-column recommend-book-column-statistics mt-3 mt-md-0">
                     <div class="statistics-placeholder">
-                        <div class="statistics-text">
+                        <div class="statistics-text" i18n>
                             Trenutni broj preporuka                            
                         </div>
                         <div class="statistics-number">{{ viewRecommendationNumber }}</div>
@@ -97,7 +97,7 @@
                             <fa-icon [icon]="faSearch" size="lg"></fa-icon>
                         </div>
                         <div class="search-input">
-                            <input #searchbox (keyup)="search($event)" class="theme-input full-width searchbox" type="text" placeholder="Pretraga korisnika...">
+                            <input #searchbox (keyup)="search($event)" class="theme-input full-width searchbox" type="text" i18n-placeholder placeholder="Pretraga korisnika...">
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 col-sm-6">
                     <div class="statistics-placeholder">
-                        <div class="statistics-text">
+                        <div class="statistics-text" i18n>
                             Selektovano korisnika              
                         </div>
                         <div class="statistics-number">{{ viewSelectedRecommendations }}</div>
@@ -126,12 +126,12 @@
                     <div class="buttons-placeholder mt-2 mt-md-0 mt-sm-2">
                         <div class="button-placeholder">
                             <app-button [disabled]="confirmButtonDisabled" (buttonClick)="onClick('confirm', $event)" [icon]="faCheck" size="xs" color="success" >
-                                <div text>Potvrdite preporuke</div>
+                                <div text i18n>Potvrdite preporuke</div>
                             </app-button>
                         </div>
                         <div class="button-placeholder">
                             <app-button [disabled]="false" (buttonClick)="onClick('decline', $event)" [icon]="faTimes" size="xs" color="danger" >
-                                <div text>Odustanite</div>
+                                <div text i18n>Odustanite</div>
                             </app-button>
                         </div>
                     </div>
