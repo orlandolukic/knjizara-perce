@@ -25,6 +25,7 @@ import { BigInfoComponent } from './components/big-info/big-info.component';
 import { ChooseStarComponent } from './components/choose-star/choose-star.component';
 import { AngularEmojisModule } from 'angular-emojis';
 import { BasicFinalResolver } from './resolvers/basic-final.resolver';
+import { InfoMessageComponent } from './components/info-message/info-message.component';
 
 
 
@@ -46,7 +47,8 @@ import { BasicFinalResolver } from './resolvers/basic-final.resolver';
     LoaderSuccessfulComponent,
     SearchBookComponent,
     BigInfoComponent,
-    ChooseStarComponent
+    ChooseStarComponent,
+    InfoMessageComponent
   ],
   imports: [
     CommonModule,

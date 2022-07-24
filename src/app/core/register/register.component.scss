@@ -69,6 +69,24 @@
                     display: flex;
                 }
             }
+
+            .data-field {
+                > label {
+                    font-size: 22px;
+                    color: $color-faded;
+                }
+                .smalltip {
+                    font-size: 12px;
+                    color: $color-faded;
+                    margin-top: 5px;
+                }
+                display: flex;
+                flex-direction: column;
+            }
+
+            .button-row {
+                margin: auto;
+            }
         }
     }
 

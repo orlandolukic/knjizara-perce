@@ -9,7 +9,10 @@
     display: flex;
     flex-direction: row;
 
-    .field-group {        
+    .field-group {    
+        display: flex;
+        flex-direction: column;    
+        width: 752px;
 
         .field:not(:last-child) {
             margin-bottom: 30px;

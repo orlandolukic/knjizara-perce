@@ -39,6 +39,7 @@ export abstract class SingleTask implements OnInit {
     protected currentStage: number;
     protected index: number;
     protected hasStages: boolean;
+    protected placeholderWidth: number;
 
     animations: any[];
 
@@ -77,17 +78,17 @@ export abstract class SingleTask implements OnInit {
         let current: number = this.currentStage;
         this.currentStage++;
 
-        // Animate current form to exit
-        let width: number = this.fieldGroups.get(current)?.nativeElement.offsetWidth;            
+        // Animate current form to exit           
         this.animations[current] = {
             value: 'stageAfterExit',
             params: {
                 duration: "500ms",
                 delay: "150ms",
                 xMiddle: -30,
-                xEnd: -width
+                xEnd: -this.placeholderWidth
             }
         };
+        console.log(this.placeholderWidth);
 
         if ( this.currentStage === this.numberOfStages ) {
             console.log("on submit");
@@ -114,5 +115,13 @@ export abstract class SingleTask implements OnInit {
 
     public getIndex(): number {
         return this.index;
+    }
+
+    public setPlaceholderWidth(width: number): void {
+        this.placeholderWidth = width;
+    }
+
+    public getHost(): ElementRef {
+        return this.host;
     }
 }

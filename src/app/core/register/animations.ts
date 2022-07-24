@@ -41,46 +41,37 @@ export const sectionChangeAnimation: AnimationTriggerMetadata = trigger("section
 export const stageChangeAnimation: AnimationMetadata = trigger("stageChange", [
     
     state('stageStartNotLoaded', style({
-        opacity: 0,                      
-        transform: "translateX(150px)"
+        opacity: 0                     
     })),
 
     state('stageNotLoaded', style({
-        opacity: 0,         
-        display: "none",       
-        transform: "translateX(0px)"
+        opacity: 0,       
     })),
 
     state("stageLoaded", style({
-        opacity: 1,
-        transform: "translateX(0px)"       
+        opacity: 1       
     })),
 
     state("stageAfterExit", style({        
-        //visibility: "hidden"
-        display: "none"        
+        display: "none"      
     })),
     
     transition("stageNotLoaded => stageLoaded,stageStartNotLoaded => stageLoaded", [    
         style({
             opacity: 0,
             display: "block",
-            transform: "translateX(50px)"
         }),    
         animate("{{ duration }} {{ delay }} cubic-bezier(.69,.3,0,.99)", keyframes([
             style({
                 opacity: 0,                
-                transform: "translateX(50px)",
                 offset: 0
             }),
             style({
                 opacity: 0.6,                
-                transform: "translateX(20px)",
                 offset: 0.6
             }),
             style({
                 opacity: 1,                
-                transform: "translateX(0)",
                 offset: 1
             }),
         ]))
@@ -95,17 +86,11 @@ export const stageChangeAnimation: AnimationMetadata = trigger("stageChange", [
         animate("{{ duration }} {{ delay }} cubic-bezier(.17,.67,.38,.99)", keyframes([
             style({
                 opacity: 1,
-                transform: "translateX(0)",
                 offset: 0
-            }),
-            style({
-                opacity: 0.6,
-                transform: "translateX({{ xMiddle }}px)",
-                offset: 0.6
-            }),
+            }),           
             style({
                 opacity: 0,
-                transform: "translateX({{ xEnd }}px)",
+                display: "none",
                 offset: 1
             }),
         ]))

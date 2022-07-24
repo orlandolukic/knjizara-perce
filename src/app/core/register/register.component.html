@@ -1,5 +1,5 @@
 <div class="register-container">
-    <div [@fadeInY]="{ value: 'start', params: { yStart: -60, yMiddle: -40, delay: '350ms' } }" 
+    <div [@fadeInY]="{ value: 'start', params: { yStart: -60, yMiddle: -40, yEnd: 120, delay: '350ms' } }" 
         (@fadeInY.done)="doneAnimating($event)"
     class="container">
         <div class="row">
@@ -27,93 +27,83 @@
 
             <div class="col-12 col-lg-8 offset-lg-2 data-column">
                 
-                <div class="progress-bar-placeholder">
-                    <div class="progress-bar">
-                        <div class="progress-bar-milestone completed">
-                            <div class="description" i18n>
-                                Opšti podaci
-                            </div>
-                            <div class="number">1</div>
-                        </div>
-                        <div class="progress-bar-milestone completed">                            
-                            <div class="description" i18n>
-                                Podaci za prijavu
-                            </div>
-                            <div class="number">2</div>
-                        </div>
-                        <div class="progress-bar-milestone active">
-                            <div class="description" i18n>
-                                Kraj
-                            </div>
-                            <div class="number">
-                                <fa-icon [icon]="faFlag" size="sm" ></fa-icon>
+                <div class="content">
+                    <div class="row">
+                        <div 
+                            app-big-info
+                            [icon]="faCheck"
+                        >sdsd</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <h2>OPŠTI PODACI</h2>
+
+                            <div class="mt-2">
+                                <div class="data-field">
+                                    <label for="name">Ime</label>
+                                    <input #name name="name" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše ime" autofocus="autofocus" autocomplete="off" />
+                                </div>
+
+                                <div class="data-field">
+                                    <label for="surname">Prezime</label>
+                                    <input #surname name="surname" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše prezime" autocomplete="off" />
+                                </div>
+
+                                <div class="data-field">
+                                    <label for="contact">Kontakt telefon</label>
+                                    <input #contact name="contact" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaš kontakt telefona" autocomplete="off" />
+                                </div>
+
+                                <div class="data-field">
+                                    <label for="address">Adresa</label>
+                                    <input #address name="address" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vašu adresu" autocomplete="off" />
+                                    <div class="smalltip">Na ovu adresu vršimo dostavu knjiga.</div>
+                                </div>
                             </div>
                         </div>
         
-                        <div class="progress-bar-indicator" style="width: 33%"></div>
-                    </div>    
-                </div>
-                
-                <div class="section-progress">
-                    <div class="section-progress-title" i18n>Napredak</div>
-                    <div class="single-task-list">
-                        <div class="single-task"                         
-                        *ngFor="let stage of getStages(); let index = index" 
-                        [class.visible]="showTasks"
-                        [class.active]="index == activeStage"
-                        [class.completed]="index < activeStage"
-                        >
-                            <div class="single-task-text">{{ index+1 }}. {{ stage }}</div>
-                            <div class="single-task-check">
-                                <fa-icon [icon]="faDoubleCheck"></fa-icon>
+                        <div class="col-12 col-md-6">
+                            <h2>PODACI ZA PRIJAVU</h2>
+
+                            <div class="mt-2">
+                                <div class="data-field">
+                                    <label for="name">E-mail</label>
+                                    <input #email name="email" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaš email" autocomplete="off" />
+                                </div>
+
+                                <div class="data-field">
+                                    <label for="username">Korisnicko ime</label>
+                                    <input #username name="username" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše željeno korisničko ime" autocomplete="off" />
+                                </div>
+
+                                <div class="data-field">
+                                    <label for="password">Lozinka</label>
+                                    <input #password name="password" class="theme-input" type="password" i18n-placeholder placeholder="Unesite Vašu lozinku" autocomplete="off" />
+                                </div>
+
+                                <div class="data-field">
+                                    <label for="passwordConfirm">Potvrda lozinke</label>
+                                    <input #passwordConfirm name="passwordConfirm" class="theme-input" type="password" i18n-placeholder placeholder="Potvrdite lozinku" autocomplete="off" />
+                                    <div class="smalltip">Molimo Vas da potvrdite lozinku.</div>
+                                </div>
                             </div>
-                            <div class="single-task-bar"></div>
-                        </div>                    
-                    </div>                                        
-                </div>
+                        </div>
+                    </div>
 
-                <div class="content register-form-content">
-                    
-                    <div #registerFormPlaceholderContent class="center-content register-form-placeholder">                       
-                        
-                        <div
-                            #form 
-                            class="register-form register-form-basic"                                                         
-                            app-register-form-basic                            
-                            #formBasic
-                            (onSubmit)="onStateChange(formBasic)"   
-                            (stageChange)="onStageChange($event)"
-                            [@sectionChange]="animations[0]"                         
-                            (@sectionChange.done)="onSectionChange($event, 0)"
-                        ></div>
-                        <div  
-                            #form  
-                            class="register-form register-form-login"                                                                                                                
-                            app-register-form-login
-                            #formLogin
-                            (onSubmit)="onStateChange(formLogin)"  
-                            (stageChange)="onStageChange($event)"                          
-                            [@sectionChange]="animations[1]"                         
-                            (@sectionChange.done)="onSectionChange($event, 1)"
-                        ></div>
-                        <div
-                            #form 
-                            class="register-form register-form-finish"                                                                                 
-                            app-register-form-finish
-                            #formFinish
-                            (onSubmit)="onStateChange(formFinish)" 
-                            (stageChange)="onStageChange($event)"                           
-                            [@sectionChange]="animations[2]"                         
-                            (@sectionChange.done)="onSectionChange($event, 2)"
-                        ></div>
-
-                            
+                    <div class="row mt-3 button-row">
+                        <app-button 
+                            [icon]="faCheckCircle"
+                            size="md"
+                            color="success"
+                            class="theme-button theme-button-sm">
+                            <div text>Registrujte se</div>
+                        </app-button>
                     </div>
                 </div>
 
                 <div class="content">
 
-                    <div class="d-none d-lg-block text-center mt-lg-5">
+                    <div class="d-none d-lg-block text-center mt-lg-2">
                         <div class="row">
                             <div class="col-6 text-right" i18n>
                                 Imate nalog?

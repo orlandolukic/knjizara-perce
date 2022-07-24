@@ -18,6 +18,9 @@
         "locales": {
           "en": {
             "translation": "src/locale/messages.en.xlf"           
+          },
+          "sr": {
+            "translation": "messages.xlf"
           }
         }
       },
@@ -75,6 +78,7 @@
               "outputHashing": "all"
             },
             "development": {
+              "localize": ["sr"],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
