@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { faCheck, faCheckCircle, faCheckDouble, faChevronRight, faFlag, faSpinner, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCheckCircle, faCheckDouble, faChevronRight, faFlag, faSpinner, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { animationFadeInY } from 'src/app/shared/animations/common.animation';
 import { BasicFinalResolver } from 'src/app/shared/resolvers/basic-final.resolver';
 import { TitleService } from 'src/app/shared/services/title-service';
@@ -32,8 +32,15 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   faCheckCircle: IconDefinition = faCheckCircle;
   faDoubleCheck: IconDefinition = faCheckCircle;
   faChevronRight: IconDefinition = faChevronRight;
+  faTimesCircle: IconDefinition = faTimesCircle;
 
   isLoading: boolean; 
+
+  /**
+   * Error indicators
+   */
+  errorName: string;
+  isErrorName: boolean;
 
   doneAnimating(event: any) {        
     this.inputName.nativeElement.focus();

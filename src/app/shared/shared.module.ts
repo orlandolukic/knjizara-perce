@@ -70,7 +70,8 @@ import { InfoMessageComponent } from './components/info-message/info-message.com
     LoaderSuccessfulComponent,
     SearchBookComponent,
     BigInfoComponent,
-    ChooseStarComponent
+    ChooseStarComponent,
+    InfoMessageComponent
   ],
   providers: [
     TitleService,    

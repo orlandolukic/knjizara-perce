@@ -28,20 +28,16 @@
             <div class="col-12 col-lg-8 offset-lg-2 data-column">
                 
                 <div class="content">
-                    <div class="row">
-                        <div 
-                            app-big-info
-                            [icon]="faCheck"
-                        >sdsd</div>
-                    </div>
+                    
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <h2>OPŠTI PODACI</h2>
 
                             <div class="mt-2">
-                                <div class="data-field">
+                                <div class="data-field" [class.error]="isErrorName">
                                     <label for="name">Ime</label>
                                     <input #name name="name" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše ime" autofocus="autofocus" autocomplete="off" />
+                                    <div *ngIf="isErrorName" class="error-message">{{ errorName }}</div>
                                 </div>
 
                                 <div class="data-field">

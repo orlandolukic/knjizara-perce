@@ -1,0 +1,37 @@
+@import "variables";
+
+.info-message-container {
+    &.info-message-color-primary {
+        background-color: $color-primary;
+        color: white;
+
+        .icon-placeholder {
+            background-color: rgba(255,255,255,0.6);
+        }
+    }
+
+    &.info-message-color-danger {
+        background-color: $color-danger;
+        color: white;
+        .icon-placeholder {
+            background-color: rgba(255,255,255,0.2);
+        }
+    }
+
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    -webkit-box-shadow: 2px 2px 12px -6px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 12px -6px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 12px -6px rgba(0,0,0,0.75);    
+
+    .icon-placeholder {
+        padding: 20px;
+
+    }
+
+    .info-message {
+        padding: 5px 10px 5px 30px;
+    }
+}

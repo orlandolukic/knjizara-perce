@@ -71,6 +71,13 @@
             }
 
             .data-field {
+
+                &.error {
+                    input {
+                        border: 1px solid $color-danger;
+                        background: lighten($color-danger, 53%);
+                    }
+                }
                 > label {
                     font-size: 22px;
                     color: $color-faded;
@@ -80,8 +87,15 @@
                     color: $color-faded;
                     margin-top: 5px;
                 }
+                .error-message {
+                    font-size: 12px;
+                    color: $color-danger;
+                    margin-top: 5px;
+                }
                 display: flex;
                 flex-direction: column;
+
+
             }
 
             .button-row {

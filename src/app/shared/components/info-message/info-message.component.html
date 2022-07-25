@@ -1,1 +1,11 @@
-<p>info-message works!</p>
+<div 
+    class="info-message-container"
+    [class]="'info-message-color-' + color"
+    >
+    <div class="icon-placeholder">
+        <fa-icon [icon]="icon" size="2x"></fa-icon>
+    </div>
+    <div class="info-message">
+        <ng-content></ng-content>
+    </div>
+</div>
