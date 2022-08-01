@@ -1,9 +1,11 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { faCheck, faCheckCircle, faCheckDouble, faChevronRight, faFlag, faSpinner, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { NotifierService } from 'angular-notifier';
 import { animationFadeInY } from 'src/app/shared/animations/common.animation';
 import { BasicFinalResolver } from 'src/app/shared/resolvers/basic-final.resolver';
 import { TitleService } from 'src/app/shared/services/title-service';
 import { sectionChangeAnimation } from './animations';
+import { checkRegisterRequest } from './register-utils';
 import { RegisterTasks, SingleTask } from './single-task';
 
 @Component({
@@ -35,12 +37,28 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   faTimesCircle: IconDefinition = faTimesCircle;
 
   isLoading: boolean; 
+  errors: number;
 
   /**
    * Error indicators
    */
   errorName: string;
+  errorSurname: string;
+  errorContact: string;
+  errorAddress: string;
+  errorEmail: string;
+  errorUsername: string;
+  errorPassword: string;
+  errorPasswordConfirm: string;
+
   isErrorName: boolean;
+  isErrorSurname: boolean;
+  isErrorContact: boolean;
+  isErrorAddress: boolean;
+  isErrorEmail: boolean;
+  isErrorUsername: boolean;
+  isErrorPassword: boolean;
+  isErrorPasswordConfirm: boolean;  
 
   doneAnimating(event: any) {        
     this.inputName.nativeElement.focus();
@@ -49,7 +67,8 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   constructor(
     private resolver: BasicFinalResolver,
     private titleService: TitleService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private notifier: NotifierService
   ) {   
     super();  
     this.titleService.changeTitle($localize `Registracija`);   
@@ -81,6 +100,34 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
       return [""];
     return this.tasks[this.activeSection].getStages();
   }
+
+  validate( inputField: HTMLInputElement ): void {
+    checkRegisterRequest(this, inputField);
+  }
+
+  addUpError(): void {
+    this.errors++;
+  }
+
+  removeDownError() : void {
+    this.errors--;
+  }
+
+  clearAllErrors(): void {
+    this.errors = 0;
+  }
+
+  getErrorNumber(): number {
+    return this.errors;
+  }
+
+  register(): void {    
+    this.notifier.show({
+      type: 'error',
+      message: 'You are awesome! I mean it!'      
+    });
+  }
+
 
   
 

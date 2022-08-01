@@ -8,6 +8,7 @@ import { UnloggedSectionGuard } from 'src/app/shared/guards/unlogged-section-gua
 import { AdminSectionGuard } from 'src/app/shared/guards/admin-section-guard';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,19 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    FontAwesomeModule    
+    FontAwesomeModule,
+    NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: "right",
+          distance: 50
+        },
+        vertical: {
+          position: "bottom",
+          distance: 50
+        }
+      }
+    }),   
   ],
   providers: [
     UserSectionGuard,

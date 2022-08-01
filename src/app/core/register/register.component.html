@@ -36,24 +36,27 @@
                             <div class="mt-2">
                                 <div class="data-field" [class.error]="isErrorName">
                                     <label for="name">Ime</label>
-                                    <input #name name="name" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše ime" autofocus="autofocus" autocomplete="off" />
+                                    <input #name name="name" (blur)="validate(name)" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše ime" autofocus="autofocus" autocomplete="off" />
                                     <div *ngIf="isErrorName" class="error-message">{{ errorName }}</div>
                                 </div>
 
-                                <div class="data-field">
+                                <div class="data-field" [class.error]="isErrorSurname">
                                     <label for="surname">Prezime</label>
-                                    <input #surname name="surname" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše prezime" autocomplete="off" />
+                                    <input #surname name="surname" (blur)="validate(surname)" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše prezime" autocomplete="off" />
+                                    <div *ngIf="isErrorSurname" class="error-message">{{ errorSurname }}</div>
                                 </div>
 
-                                <div class="data-field">
+                                <div class="data-field" [class.error]="isErrorContact">
                                     <label for="contact">Kontakt telefon</label>
-                                    <input #contact name="contact" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaš kontakt telefona" autocomplete="off" />
+                                    <input #contact name="contact" (blur)="validate(contact)" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaš kontakt telefona" autocomplete="off" />
+                                    <div *ngIf="isErrorContact" class="error-message">{{ errorContact }}</div>                                    
                                 </div>
 
-                                <div class="data-field">
+                                <div class="data-field" [class.error]="isErrorAddress">
                                     <label for="address">Adresa</label>
-                                    <input #address name="address" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vašu adresu" autocomplete="off" />
-                                    <div class="smalltip">Na ovu adresu vršimo dostavu knjiga.</div>
+                                    <input #address name="address" (blur)="validate(address)" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vašu adresu" autocomplete="off" />
+                                    <div *ngIf="!isErrorAddress" class="smalltip">Na ovu adresu vršimo dostavu knjiga.</div>
+                                    <div *ngIf="isErrorAddress" class="error-message">{{ errorAddress }}</div>
                                 </div>
                             </div>
                         </div>
@@ -62,25 +65,29 @@
                             <h2>PODACI ZA PRIJAVU</h2>
 
                             <div class="mt-2">
-                                <div class="data-field">
+                                <div class="data-field" [class.error]="isErrorEmail">
                                     <label for="name">E-mail</label>
-                                    <input #email name="email" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaš email" autocomplete="off" />
+                                    <input #email name="email" (blur)="validate(email)" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaš email" autocomplete="off" />
+                                    <div *ngIf="isErrorEmail" class="error-message">{{ errorEmail }}</div>
                                 </div>
 
-                                <div class="data-field">
+                                <div class="data-field" [class.error]="isErrorUsername">
                                     <label for="username">Korisnicko ime</label>
-                                    <input #username name="username" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše željeno korisničko ime" autocomplete="off" />
+                                    <input #username name="username" (blur)="validate(username)" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše željeno korisničko ime" autocomplete="off" />
+                                    <div *ngIf="isErrorUsername" class="error-message">{{ errorUsername }}</div>
                                 </div>
 
-                                <div class="data-field">
+                                <div class="data-field" [class.error]="isErrorPassword">
                                     <label for="password">Lozinka</label>
-                                    <input #password name="password" class="theme-input" type="password" i18n-placeholder placeholder="Unesite Vašu lozinku" autocomplete="off" />
+                                    <input #password name="password" (blur)="validate(password)" class="theme-input" type="password" i18n-placeholder placeholder="Unesite Vašu lozinku" autocomplete="off" />
+                                    <div *ngIf="isErrorPassword" class="error-message">{{ errorPassword }}</div>
                                 </div>
 
-                                <div class="data-field">
+                                <div class="data-field" [class.error]="isErrorPasswordConfirm">
                                     <label for="passwordConfirm">Potvrda lozinke</label>
-                                    <input #passwordConfirm name="passwordConfirm" class="theme-input" type="password" i18n-placeholder placeholder="Potvrdite lozinku" autocomplete="off" />
-                                    <div class="smalltip">Molimo Vas da potvrdite lozinku.</div>
+                                    <input #passwordConfirm name="passwordConfirm" (blur)="validate(passwordConfirm)" class="theme-input" type="password" i18n-placeholder placeholder="Potvrdite lozinku" autocomplete="off" />
+                                    <div *ngIf="!isErrorPasswordConfirm" class="smalltip">Molimo Vas da potvrdite lozinku.</div>
+                                    <div *ngIf="isErrorPasswordConfirm" class="error-message">{{ errorPasswordConfirm }}</div>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +98,9 @@
                             [icon]="faCheckCircle"
                             size="md"
                             color="success"
-                            class="theme-button theme-button-sm">
+                            class="theme-button theme-button-sm"
+                            (buttonClick)="register()"
+                            >
                             <div text>Registrujte se</div>
                         </app-button>
                     </div>
