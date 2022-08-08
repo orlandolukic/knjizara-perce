@@ -73,14 +73,35 @@
 
                                 <div class="data-field" [class.error]="isErrorUsername">
                                     <label for="username">Korisnicko ime</label>
-                                    <input #username name="username" (blur)="validate(username)" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše željeno korisničko ime" autocomplete="off" />
+                                    <input #username name="username" [disabled]="disabledUsername" (blur)="validate(username)" class="theme-input" type="text" i18n-placeholder placeholder="Unesite Vaše željeno korisničko ime" autocomplete="off" />
                                     <div *ngIf="isErrorUsername" class="error-message">{{ errorUsername }}</div>
+                                    <div *ngIf="isOkUsername" class="success-message" i18n>
+                                        <fa-icon [icon]="faCheck"></fa-icon>
+                                        <span>Korisničko ime <span class="text-bold">{{ username.value }}</span> je dostupno.</span>
+                                    </div>
+                                    <div *ngIf="disabledUsername" class="loading-indicator">
+                                        <fa-icon [icon]="faCircleONotch" [spin]="true"></fa-icon>
+                                    </div>
                                 </div>
 
                                 <div class="data-field" [class.error]="isErrorPassword">
                                     <label for="password">Lozinka</label>
-                                    <input #password name="password" (blur)="validate(password)" class="theme-input" type="password" i18n-placeholder placeholder="Unesite Vašu lozinku" autocomplete="off" />
-                                    <div *ngIf="isErrorPassword" class="error-message">{{ errorPassword }}</div>
+                                    <input #password name="password" (blur)="validate(password)" (keyup)="validate(password)" class="theme-input" type="password" i18n-placeholder placeholder="Unesite Vašu lozinku" autocomplete="off" />
+                                    <div *ngIf="isErrorPassword && errorPassword !== null" class="error-message">{{ errorPassword }}</div>
+                                    <div *ngIf="isErrorPassword && errorPassword === null" class="error-message">
+                                        Dogodile su se greške:
+                                        <ol>
+                                            <li *ngIf="errorPasswordCapitalLetter">
+                                                Lozinka mora imati barem jedno veliko slovo.
+                                            </li>
+                                            <li *ngIf="errorPasswordNumber">
+                                                Lozinka mora imati barem jedan broj.
+                                            </li>
+                                            <li *ngIf="errorPasswordSpecialChar">
+                                                Lozinka mora imati barem jedan specijalni karakter.
+                                            </li>
+                                        </ol>
+                                    </div>
                                 </div>
 
                                 <div class="data-field" [class.error]="isErrorPasswordConfirm">
@@ -95,13 +116,15 @@
 
                     <div class="row mt-3 button-row">
                         <app-button 
-                            [icon]="faCheckCircle"
+                            [icon]="!disabledUsername ? faCheckCircle : faHourglassHalf"
                             size="md"
                             color="success"
                             class="theme-button theme-button-sm"
+                            [disabled]="disabledUsername"
                             (buttonClick)="register()"
                             >
-                            <div text>Registrujte se</div>
+                            <div *ngIf="!disabledUsername" text>Registrujte se</div>
+                            <div *ngIf="disabledUsername" text>Učitavanje...</div>
                         </app-button>
                     </div>
                 </div>

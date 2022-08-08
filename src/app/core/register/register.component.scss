@@ -72,6 +72,10 @@
 
             .data-field {
 
+                position: relative;
+                display: flex;
+                flex-direction: column;
+
                 &.error {
                     input {
                         border: 1px solid $color-danger;
@@ -88,10 +92,38 @@
                     margin-top: 5px;
                 }
                 .error-message {
-                    font-size: 12px;
+                    font-size: 14px;
                     color: $color-danger;
                     margin-top: 5px;
                 }
+
+                .success-message {
+                    font-size: 14px;
+                    color: $color-success;
+                    margin-top: 5px;
+                    letter-spacing: 0.4px;
+
+                    > span {
+                        padding-left: 5px;
+                    }
+                }
+
+                .loading-indicator {
+                    position: absolute;
+                    display: flex;
+                    right: 20px;
+                    top: 0;
+                    bottom: 0;    
+                    align-items: flex-end;
+                    margin-bottom: 10px;                
+                }
+
+                ol {
+                    margin: 0;
+                    margin-top: 10px;
+                    padding-left: 20px;
+                }
+
                 display: flex;
                 flex-direction: column;
 

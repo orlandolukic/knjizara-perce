@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { faCheck, faCheckCircle, faCheckDouble, faChevronRight, faFlag, faSpinner, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCheckCircle, faCheckDouble, faChevronRight, faCircleNotch, faFlag, faHourglassHalf, faSpinner, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { NotifierService } from 'angular-notifier';
 import { animationFadeInY } from 'src/app/shared/animations/common.animation';
 import { BasicFinalResolver } from 'src/app/shared/resolvers/basic-final.resolver';
@@ -35,6 +35,8 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   faDoubleCheck: IconDefinition = faCheckCircle;
   faChevronRight: IconDefinition = faChevronRight;
   faTimesCircle: IconDefinition = faTimesCircle;
+  faHourglassHalf: IconDefinition = faHourglassHalf;
+  faCircleONotch: IconDefinition = faCircleNotch;
 
   isLoading: boolean; 
   errors: number;
@@ -48,7 +50,10 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   errorAddress: string;
   errorEmail: string;
   errorUsername: string;
-  errorPassword: string;
+  errorPassword: string | null;
+  errorPasswordCapitalLetter: boolean;
+  errorPasswordNumber: boolean;
+  errorPasswordSpecialChar: boolean;
   errorPasswordConfirm: string;
 
   isErrorName: boolean;
@@ -59,6 +64,11 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   isErrorUsername: boolean;
   isErrorPassword: boolean;
   isErrorPasswordConfirm: boolean;  
+
+  disabledUsername: boolean;
+  isOkUsername: boolean;
+  successMessage: string;
+  lastEnteredUsername: string;
 
   doneAnimating(event: any) {        
     this.inputName.nativeElement.focus();
@@ -102,7 +112,25 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   }
 
   validate( inputField: HTMLInputElement ): void {
-    checkRegisterRequest(this, inputField);
+
+    if ( !checkRegisterRequest(this, inputField) )
+      return;
+
+    if ( inputField.name === "username" ) {
+      if ( this.lastEnteredUsername === inputField.value )
+        return;
+      this.disabledUsername = true;
+      this.isOkUsername = false;
+      this.lastEnteredUsername = inputField.value;
+      new Promise<void>((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      }).finally(() => {
+        this.disabledUsername = false;
+        this.isOkUsername = true;
+      });
+    };
   }
 
   addUpError(): void {
