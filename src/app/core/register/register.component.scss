@@ -95,6 +95,10 @@
                     font-size: 14px;
                     color: $color-danger;
                     margin-top: 5px;
+
+                    > span {
+                        padding-left: 5px;
+                    }
                 }
 
                 .success-message {

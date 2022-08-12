@@ -1,6 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostBinding, HostListener, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { faCheck, faCheckCircle, faCheckDouble, faChevronRight, faCircleNotch, faFlag, faHourglassHalf, faSpinner, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { faCheck, faCheckCircle, faCheckDouble, faChevronRight, faCircleNotch, faFlag, faHourglassHalf, faSpinner, faTimes, faTimesCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { NotifierService } from 'angular-notifier';
+import { UserDataManipulation } from 'data/users/input.data';
 import { animationFadeInY } from 'src/app/shared/animations/common.animation';
 import { BasicFinalResolver } from 'src/app/shared/resolvers/basic-final.resolver';
 import { TitleService } from 'src/app/shared/services/title-service';
@@ -37,9 +39,12 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   faTimesCircle: IconDefinition = faTimesCircle;
   faHourglassHalf: IconDefinition = faHourglassHalf;
   faCircleONotch: IconDefinition = faCircleNotch;
+  faTimes: IconDefinition = faTimes;
 
   isLoading: boolean; 
   errors: number;
+  isFormDisabled: boolean;
+  firstErrorElement: HTMLInputElement | null;
 
   /**
    * Error indicators
@@ -67,6 +72,7 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
 
   disabledUsername: boolean;
   isOkUsername: boolean;
+  isTakenUsername: boolean;
   successMessage: string;
   lastEnteredUsername: string;
 
@@ -78,7 +84,8 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
     private resolver: BasicFinalResolver,
     private titleService: TitleService,
     private cdr: ChangeDetectorRef,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private router: Router
   ) {   
     super();  
     this.titleService.changeTitle($localize `Registracija`);   
@@ -86,7 +93,8 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   
 
   ngOnInit(): void {
-    
+    this.errors = 0;
+    this.firstErrorElement = null;
   }
 
   ngAfterViewInit(): void {
@@ -111,24 +119,35 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
     return this.tasks[this.activeSection].getStages();
   }
 
-  validate( inputField: HTMLInputElement ): void {
+  clearFirstErrorElement(): void {
+    this.firstErrorElement = null;
+  }
 
-    if ( !checkRegisterRequest(this, inputField) )
+  validate( inputField: HTMLInputElement, focusFirst: boolean = false ): void {
+
+    if ( !checkRegisterRequest(this, inputField) ) {
+      if ( focusFirst && this.firstErrorElement === null ) {
+        this.firstErrorElement = inputField;
+        this.firstErrorElement.focus();
+      }
       return;
+    }
 
     if ( inputField.name === "username" ) {
       if ( this.lastEnteredUsername === inputField.value )
-        return;
+        return;      
       this.disabledUsername = true;
-      this.isOkUsername = false;
+      this.isOkUsername = false; 
+      this.isTakenUsername = false;     
       this.lastEnteredUsername = inputField.value;
-      new Promise<void>((resolve) => {
-        setTimeout(() => {
-          resolve();
-        }, 2000);
-      }).finally(() => {
+      new Promise<boolean>((resolve) => {        
+        setTimeout(() => {          
+          resolve( UserDataManipulation.hasUsername(inputField.value) );
+        }, 750 + Math.random() * 500);
+      }).then((hasUsername) => {
         this.disabledUsername = false;
-        this.isOkUsername = true;
+        this.isOkUsername = !hasUsername;
+        this.isTakenUsername = hasUsername;
       });
     };
   }
@@ -150,10 +169,37 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
   }
 
   register(): void {    
-    this.notifier.show({
-      type: 'error',
-      message: 'You are awesome! I mean it!'      
-    });
+
+    this.clearFirstErrorElement();    
+    this.validate(this.inputName.nativeElement, true);
+    this.validate(this.inputSurname.nativeElement, true);
+    this.validate(this.inputContact.nativeElement, true);
+    this.validate(this.inputAddress.nativeElement, true);
+    this.validate(this.inputEmail.nativeElement, true);
+    this.validate(this.inputUsername.nativeElement, true);
+    this.validate(this.inputPassword.nativeElement, true);
+    this.validate(this.inputPasswordConfirm.nativeElement, true);   
+
+    if ( this.errors > 0 )
+      this.notifier.show({
+        type: 'error',
+        message: $localize `Dogodile su se greške prilikom unosa. Molimo proverite formu.`      
+      });
+    else {
+      // Perform registration of new user      
+      this.isLoading = true;
+      this.isFormDisabled = true;
+      UserDataManipulation.registerNewUser(
+        this.inputName.nativeElement.value,
+        this.inputSurname.nativeElement.value,
+        this.inputContact.nativeElement.value,
+        this.inputAddress.nativeElement.value,
+        this.inputUsername.nativeElement.value,
+        this.inputPassword.nativeElement.value
+      ).then(() => {        
+        this.router.navigate(['user']);
+      });
+    }
   }
 
 

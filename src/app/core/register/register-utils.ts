@@ -87,11 +87,15 @@ export function checkRegisterRequest( component: RegisterComponent, field: HTMLI
             {
                 component.errorUsername = $localize `Korisnicko ime ne može biti prazno`;
                 component.isErrorUsername = true;
+                component.isOkUsername = false;
+                component.isTakenUsername = false;
                 component.addUpError();
                 return false;
             } else if ( value.length < 5 ) {
                 component.errorUsername = $localize `Korisničko ime mora imati barem 5 karaktera`;
                 component.isErrorUsername = true;
+                component.isOkUsername = false;
+                component.isTakenUsername = false;
                 component.addUpError();
                 return false;
             }
@@ -132,7 +136,11 @@ export function checkRegisterRequest( component: RegisterComponent, field: HTMLI
             }
             break; 
             
-        case "passwordConfirm":            
+        case "passwordConfirm": 
+            // Check if password input is empty, so there should not be any error
+            if ( component.inputPassword.nativeElement.value.trim() === "" )           
+                return true;
+
             if ( value !== component.inputPassword.nativeElement.value )
             {
                 component.errorPasswordConfirm = $localize `Lozinke se ne podudaraju`;
@@ -194,8 +202,7 @@ export function resetErrorFor( name: string, component: RegisterComponent ): voi
         case "username":
             if ( component.isErrorUsername ) 
                 component.removeDownError();
-            component.isErrorUsername = false;   
-            component.isOkUsername = false;         
+            component.isErrorUsername = false;               
             break;
 
         case "password":

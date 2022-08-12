@@ -136,4 +136,43 @@ export class UserDataManipulation {
         };
     }
 
+    public static hasUsername(username: string): boolean {
+        let s: any = localStorage.getItem("users");
+        let obj: Object[] = JSON.parse(s);
+        for(let i=0; i<obj.length; i++) {
+            let user: any = obj[i];
+            if ( user.username === username )
+                return true;            
+        }
+        return false;
+    }
+
+    public static registerNewUser(
+        name: string,
+        surname: string,
+        contact: string,
+        address: string,
+        username: string,
+        password: string
+    ): Promise<void> {
+        return new Promise<void>((resolve) => {
+            setTimeout(() => {
+                const user: Buyer = new Buyer( name, surname, contact, address, username, password, "no-user.webp");
+                let s: any = localStorage.getItem("users");
+                let obj: Object[] = JSON.parse(s);  
+                obj.push(user);
+
+                // Save users into list
+                localStorage.setItem("users", JSON.stringify(obj));
+
+                // Log in this newly created user
+                UserDataManipulation.logInUser(user);
+                sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+
+                // Resolve this promise
+                resolve();
+            }, 600 + Math.random() * 1000);
+        })
+    }
+
 }
