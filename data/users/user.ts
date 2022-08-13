@@ -16,6 +16,7 @@ export abstract class User {
         protected surname: string,
         protected telephoneNo: string,
         protected address: string,
+        protected email: string,
         protected username: string,
         protected password: string,
         protected image: string
@@ -31,6 +32,7 @@ export abstract class User {
     public getFullName(): string { return this.name + " " + this.surname; }
     public getTelephoneNo(): string { return this.telephoneNo; }
     public getAddress(): string { return this.address; }
+    public getEmail(): string { return this.email; }
     public getUsername(): string { return this.username; }
     public getPassword(): string { return this.password; }  
     public getImage(): string { return this.image; }  
@@ -43,11 +45,12 @@ export class Buyer extends User {
         surname: string,
         telephoneNo: string,
         address: string,
+        email: string,
         username: string,
         password: string,
         image: string
     ) {
-        super("B", name, surname, telephoneNo, address, username, sha256(password), image);
+        super("B", name, surname, telephoneNo, address, email, username, sha256(password), image);
     }
 
     public isBuyer(): boolean { return true; }
@@ -60,11 +63,12 @@ export class Admin extends User {
         surname: string,
         telephoneNo: string,
         address: string,
+        email: string,
         username: string,
         password: string,
         image: string
     ) {
-        super("A", name, surname, telephoneNo, address, username, sha256(password), image);
+        super("A", name, surname, telephoneNo, address, email, username, sha256(password), image);
     }
     public isBuyer(): boolean { return false; }
     public isAdmin(): boolean { return true; }

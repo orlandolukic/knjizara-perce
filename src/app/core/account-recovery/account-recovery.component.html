@@ -1,1 +1,87 @@
-<p>account-recovery works!</p>
+
+<div class="account-recovery-container">
+    <div [@fadeInY]="{ value: 'start', params: { yStart: -60, yMiddle: -40, yEnd: 120, delay: '350ms' } }"
+class="container">
+    <div class="row">
+
+        <div class="col-12 col-lg-8 offset-lg-2 data-column">
+            <div *ngIf="isLoading" class="loading-spinner">
+                <fa-icon [icon]="faSpinner" [spin]="true" size="2x"></fa-icon>
+            </div>
+            <div class="content">
+                <a routerLink="/">
+                    <div class="logo margin-t-40">
+                        <img src="assets/images/logo.png" />
+                    </div>
+                </a>                    
+                <div class="margin-t-20">
+                    <div class="title text-center text-bold" i18n>
+                        Zaboravili ste lozinku?
+                    </div>
+                    <div class="mt-2 text-center font-s-20" i18n>
+                        Bez brige, uskoro ćemo rešiti problem.
+                    </div>
+                </div>
+            </div>                                        
+        </div>
+
+        <div class="col-12 col-lg-8 offset-lg-2 data-column">
+            
+            <div class="content">
+                
+                <div class="row">
+                    <div class="col-12 col-md-12 d-flex mt-3 mb-2">
+                        <div class="form-placeholder">
+                            <div #dataField class="data-field" [class.error]="isError" [style.width]="width">
+                                <label for="identificationData">Korisničko ime ili e-mail</label>
+                                <input #identificationData 
+                                    name="identificationData" 
+                                    (blur)="validate(identificationData)" 
+                                    class="theme-input" 
+                                    type="text" 
+                                    i18n-placeholder 
+                                    placeholder="Molimo unesite Vaše podatke" 
+                                    autocomplete="off"                                     
+                                    />
+                                <div *ngIf="!isError" class="smalltip" i18n>Na Vašu e-adresu ćemo postati link za resetovanje lozinke.</div>
+                                <div *ngIf="isError" class="error-message">{{ errorMessage }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 button-row button-placeholder">
+                    <app-button 
+                            [icon]="faCheck"
+                            size="md"
+                            color="primary"
+                            class="theme-button theme-button-sm"
+                            (buttonClick)="process()"
+                            >
+                            <div text>Potvrdite zahtev</div>
+                        </app-button>
+                </div>
+            </div>
+
+            <div class="content">
+
+                <div class="d-none d-lg-block text-center mt-lg-2">
+                    <div class="row">
+                        <div class="col-6 text-right" i18n>
+                            Imate nalog?
+                        </div>
+                        <div class="col-6 text-left">
+                            <span class="solution">
+                                <a routerLink="/login" i18n>Prijavite se</a>
+                            </span>
+                        </div>          
+                    </div>                           
+                </div>
+
+                <app-footer></app-footer>
+
+            </div>
+            
+        </div>
+    </div>
+</div>

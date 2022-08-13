@@ -180,20 +180,21 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
     this.validate(this.inputPassword.nativeElement, true);
     this.validate(this.inputPasswordConfirm.nativeElement, true);   
 
+    console.log(this.errors);
     if ( this.errors > 0 )
       this.notifier.show({
         type: 'error',
         message: $localize `Dogodile su se greške prilikom unosa. Molimo proverite formu.`      
       });
     else {
-      // Perform registration of new user      
-      this.isLoading = true;
+      // Perform registration of new user           
       this.isFormDisabled = true;
       UserDataManipulation.registerNewUser(
         this.inputName.nativeElement.value,
         this.inputSurname.nativeElement.value,
         this.inputContact.nativeElement.value,
         this.inputAddress.nativeElement.value,
+        this.inputEmail.nativeElement.value,
         this.inputUsername.nativeElement.value,
         this.inputPassword.nativeElement.value
       ).then(() => {        

@@ -1,0 +1,112 @@
+@import "variables";
+@import "bootstrap";
+
+.account-recovery-container {
+    position: absolute;
+    left: 0;
+    right: 0;    
+    margin: auto;
+    top: 0;
+    bottom: 0;
+
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+
+    .data-column {
+        @include media-breakpoint-only(xs) {
+            margin-top: 80px;
+        }
+        .content {
+            @include media-breakpoint-only(xs) {
+                padding: 5px 20px;
+            }
+            .logo {                
+                position: absolute;
+                top: -175px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                padding: 20px 30px;
+                background-color: rgba(255,255,255,0.8);
+                display: inline-flex;
+                width: fit-content;
+                img {
+                    width: 140px;
+                    height: 120px
+                }
+    
+                @include media-breakpoint-between(xs,lg) {
+                    top: -140px;
+                    display: flex;
+                }
+            }
+        }
+    }
+
+    .content {
+        background: rgba(255,255,255,1);
+        padding: {
+            left: 60px;
+            right: 60px;
+            top: 5px;
+            bottom: 5px;
+        };        
+        justify-content: center;
+        display: flex;
+        flex-direction: column;        
+        position: relative;        
+        
+        .title {            
+            font-size: 40px;
+        }
+        
+        h1 {
+            padding: 0;
+            margin: 0;
+        }
+
+        .form-placeholder {
+            margin: auto;
+            
+            .data-field {
+
+                position: relative;
+                display: flex;
+                flex-direction: column;                
+
+                &.error {
+                    input {
+                        border: 1px solid $color-danger;
+                        background: lighten($color-danger, 53%);
+                    }
+                }
+
+                > label {
+                    font-size: 22px;
+                    color: $color-faded;
+                }
+                .smalltip {
+                    font-size: 14px;
+                    color: $color-faded;
+                    margin-top: 5px;
+                }
+                .error-message {
+                    font-size: 14px;
+                    color: $color-danger;
+                    margin-top: 5px;
+
+                    > span {
+                        padding-left: 5px;
+                    }
+                }
+            }
+        }
+        
+        .button-placeholder {
+            margin: auto;
+            display: flex;
+        }
+
+    }
+}

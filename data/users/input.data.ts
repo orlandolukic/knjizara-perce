@@ -18,6 +18,7 @@ export class UserDataManipulation {
                 user.surname,
                 user.telephoneNo,
                 user.address,
+                user.email,
                 user.username,
                 user.password,
                 user.image
@@ -28,6 +29,7 @@ export class UserDataManipulation {
                 user.surname,
                 user.telephoneNo,
                 user.address,
+                user.email,
                 user.username,
                 user.password,
                 user.image
@@ -40,12 +42,12 @@ export class UserDataManipulation {
             return;       
 
         UserDataManipulation.users = new Array<User>();
-        UserDataManipulation.users.push( new Buyer( "Petar", "Petrovic", "0603120456", "Bulevar Kralja Aleksandra 207c", "petar", "p123", "user1.png") );
-        UserDataManipulation.users.push( new Buyer( "Djordje", "Ristic", "0645151205", "Bulevar Kralja Aleksandra 207c", "djordje", "d123", "user2.png") );
-        UserDataManipulation.users.push( new Buyer( "Ivan", "Marković", "0623344555", "Bulevar Kralja Aleksandra 207c", "ivan", "i", "user5.png") );        
-        UserDataManipulation.users.push( new Buyer( "Filip", "Ostojić", "0644025987", "Bulevar Kralja Aleksandra 207c", "filip", "f", "user6.png") );        
-        UserDataManipulation.users.push( new Buyer( "Ivana", "Vasić", "0653074850", "Bulevar Kralja Aleksandra 207c", "ivana", "i", "user7.png") );        
-        UserDataManipulation.users.push( new Admin( "Teodora", "Marjanovic", "0636352968", "Bulevar Kralja Aleksandra 207c", "teodora", "t123", "user4.png") );
+        UserDataManipulation.users.push( new Buyer( "Petar", "Petrovic", "0603120456", "Bulevar Kralja Aleksandra 207c", "petar@gmail.com", "petar", "p123", "user1.png") );
+        UserDataManipulation.users.push( new Buyer( "Djordje", "Ristic", "0645151205", "Bulevar Kralja Aleksandra 207c", "djordje@gmail.com", "djordje", "d123", "user2.png") );
+        UserDataManipulation.users.push( new Buyer( "Ivan", "Marković", "0623344555", "Bulevar Kralja Aleksandra 207c", "ivan@gmail.com", "ivan", "i", "user5.png") );        
+        UserDataManipulation.users.push( new Buyer( "Filip", "Ostojić", "0644025987", "Bulevar Kralja Aleksandra 207c", "filip@gmail.com", "filip", "f", "user6.png") );        
+        UserDataManipulation.users.push( new Buyer( "Ivana", "Vasić", "0653074850", "Bulevar Kralja Aleksandra 207c", "ivana@gmail.com", "ivana", "i", "user7.png") );        
+        UserDataManipulation.users.push( new Admin( "Teodora", "Marjanovic", "0636352968", "Bulevar Kralja Aleksandra 207c", "teodora@gmail.com", "teodora", "t123", "user4.png") );
 
         // Put all users inside local storage.        
         localStorage.setItem("users", JSON.stringify(UserDataManipulation.users));
@@ -121,7 +123,7 @@ export class UserDataManipulation {
             if ( user.username === myself.username || user.type === User.ADMIN )
                 continue;
             buyers.push(
-                new Buyer(user.name,user.surname,user.telephoneNo, user.address, user.username, user.password, user.image)
+                new Buyer(user.name,user.surname,user.telephoneNo, user.address, user.email, user.username, user.password, user.image)
             );
         }
         return buyers;
@@ -147,17 +149,29 @@ export class UserDataManipulation {
         return false;
     }
 
+    public static hasEmail(email: string): boolean {
+        let s: any = localStorage.getItem("users");
+        let obj: Object[] = JSON.parse(s);
+        for(let i=0; i<obj.length; i++) {
+            let user: any = obj[i];
+            if ( user.email === email )
+                return true;            
+        }
+        return false;
+    }
+
     public static registerNewUser(
         name: string,
         surname: string,
         contact: string,
         address: string,
+        email: string,
         username: string,
         password: string
     ): Promise<void> {
         return new Promise<void>((resolve) => {
             setTimeout(() => {
-                const user: Buyer = new Buyer( name, surname, contact, address, username, password, "no-user.webp");
+                const user: Buyer = new Buyer( name, surname, contact, address, email, username, password, "no-user.webp");
                 let s: any = localStorage.getItem("users");
                 let obj: Object[] = JSON.parse(s);  
                 obj.push(user);

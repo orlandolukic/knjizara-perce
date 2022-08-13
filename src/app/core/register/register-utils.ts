@@ -1,4 +1,3 @@
-import { ElementRef } from "@angular/core";
 import { RegisterComponent } from "./register.component";
 
 export function checkRegisterRequest( component: RegisterComponent, field: HTMLInputElement ): boolean {    
@@ -7,7 +6,7 @@ export function checkRegisterRequest( component: RegisterComponent, field: HTMLI
     const name = field.name;
 
     // Reset errors for specific input field
-    resetErrorFor(name, component);
+    resetErrorFor(name, component);    
 
     switch( name ) {
         case "name":            
@@ -122,25 +121,28 @@ export function checkRegisterRequest( component: RegisterComponent, field: HTMLI
                 if ( !regexpCapitalLetter.test(value) ) {
                     component.errorPasswordCapitalLetter = true;
                     component.isErrorPassword = true;
+                    component.addUpError(); 
+                    return false;               
                 }
 
                 if ( !regexpNumber.test(value) ) {
                     component.errorPasswordNumber = true;
                     component.isErrorPassword = true;
+                    component.addUpError();
+                    return false;  
                 }
 
                 if ( !regexpSpecialChar.test(value) ) {
                     component.errorPasswordSpecialChar = true;
                     component.isErrorPassword = true;
+                    component.addUpError();
+                    return false;  
                 }
             }
             break; 
             
         case "passwordConfirm": 
-            // Check if password input is empty, so there should not be any error
-            if ( component.inputPassword.nativeElement.value.trim() === "" )           
-                return true;
-
+            console.log(value, component.inputPassword.nativeElement.value);
             if ( value !== component.inputPassword.nativeElement.value )
             {
                 component.errorPasswordConfirm = $localize `Lozinke se ne podudaraju`;
@@ -163,6 +165,9 @@ export function resetErrors( component: RegisterComponent ): void {
     component.isErrorPassword = false;
     component.isErrorPasswordConfirm = false;
     component.isErrorUsername = false;
+    component.errorPasswordCapitalLetter = false;
+    component.errorPasswordNumber = false;
+    component.errorPasswordSpecialChar = false;
 
     component.clearAllErrors();
 }
@@ -205,13 +210,26 @@ export function resetErrorFor( name: string, component: RegisterComponent ): voi
             component.isErrorUsername = false;               
             break;
 
-        case "password":
-            if ( component.isErrorPassword ) 
+        case "password":              
+
+            if ( component.errorPasswordCapitalLetter )
                 component.removeDownError();
-            component.isErrorPassword = false;   
             component.errorPasswordCapitalLetter = false;
+            
+            if ( component.errorPasswordNumber )
+                component.removeDownError();
             component.errorPasswordNumber = false;
-            component.errorPasswordSpecialChar = false;     
+
+            if ( component.errorPasswordSpecialChar )
+                component.removeDownError();
+            component.errorPasswordSpecialChar = false;    
+            
+            if ( !component.errorPasswordCapitalLetter && !component.errorPasswordNumber && !component.errorPasswordSpecialChar ) {
+                if ( component.isErrorPassword )
+                    component.removeDownError();              
+            } 
+            component.isErrorPassword = false;
+
             break;  
             
         case "passwordConfirm":
