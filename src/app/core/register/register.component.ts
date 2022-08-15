@@ -180,7 +180,6 @@ export class RegisterComponent extends RegisterTasks implements OnInit, AfterVie
     this.validate(this.inputPassword.nativeElement, true);
     this.validate(this.inputPasswordConfirm.nativeElement, true);   
 
-    console.log(this.errors);
     if ( this.errors > 0 )
       this.notifier.show({
         type: 'error',

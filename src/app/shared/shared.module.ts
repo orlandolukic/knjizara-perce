@@ -26,6 +26,7 @@ import { ChooseStarComponent } from './components/choose-star/choose-star.compon
 import { AngularEmojisModule } from 'angular-emojis';
 import { BasicFinalResolver } from './resolvers/basic-final.resolver';
 import { InfoMessageComponent } from './components/info-message/info-message.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 
 
@@ -48,7 +49,8 @@ import { InfoMessageComponent } from './components/info-message/info-message.com
     SearchBookComponent,
     BigInfoComponent,
     ChooseStarComponent,
-    InfoMessageComponent
+    InfoMessageComponent,
+    SettingsComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +73,8 @@ import { InfoMessageComponent } from './components/info-message/info-message.com
     SearchBookComponent,
     BigInfoComponent,
     ChooseStarComponent,
-    InfoMessageComponent
+    InfoMessageComponent,
+    SettingsComponent
   ],
   providers: [
     TitleService,    

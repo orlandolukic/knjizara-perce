@@ -142,8 +142,7 @@ export function checkRegisterRequest( component: RegisterComponent, field: HTMLI
             break; 
             
         case "passwordConfirm": 
-            console.log(value, component.inputPassword.nativeElement.value);
-            if ( value !== component.inputPassword.nativeElement.value )
+            if ( value.trim() === "" || component.inputPassword.nativeElement.value === "" || value !== component.inputPassword.nativeElement.value )
             {
                 component.errorPasswordConfirm = $localize `Lozinke se ne podudaraju`;
                 component.isErrorPasswordConfirm = true;
@@ -210,7 +209,13 @@ export function resetErrorFor( name: string, component: RegisterComponent ): voi
             component.isErrorUsername = false;               
             break;
 
-        case "password":              
+        case "password":  
+        
+            if ( !component.errorPasswordCapitalLetter && !component.errorPasswordNumber && !component.errorPasswordSpecialChar ) {
+                if ( component.isErrorPassword )
+                    component.removeDownError();              
+            } 
+            component.isErrorPassword = false;
 
             if ( component.errorPasswordCapitalLetter )
                 component.removeDownError();
@@ -223,12 +228,6 @@ export function resetErrorFor( name: string, component: RegisterComponent ): voi
             if ( component.errorPasswordSpecialChar )
                 component.removeDownError();
             component.errorPasswordSpecialChar = false;    
-            
-            if ( !component.errorPasswordCapitalLetter && !component.errorPasswordNumber && !component.errorPasswordSpecialChar ) {
-                if ( component.isErrorPassword )
-                    component.removeDownError();              
-            } 
-            component.isErrorPassword = false;
 
             break;  
             
