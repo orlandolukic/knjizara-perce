@@ -1,0 +1,40 @@
+
+.account-settings-container {
+    .profile-data {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        > div {
+            margin-right: 30px;           
+        }
+
+        .image {
+            img {
+                max-width: 80px;
+            }
+        }
+
+        .name {
+            font-size: 30px;            
+            font-weight: bold;
+        }
+    }
+
+    .basic-data {
+        .row {            
+            > div {
+                display: flex;
+                align-items: center;
+            }
+
+            &:nth-child(n+1) {
+                margin-top: 10px;
+            }
+            > div:nth-child(2) {
+                font-weight: bold;
+                font-size: 120%;
+            }
+        }
+    }
+}

@@ -92,7 +92,10 @@ export class UserDataManipulation {
                     name: user.name,
                     surname: user.surname,
                     image: user.image,
-                    username: user.username
+                    username: user.username,
+                    address: user.address,
+                    telephoneNo: user.telephoneNo,
+                    email: user.email
                 };
             }            
         }
@@ -134,7 +137,10 @@ export class UserDataManipulation {
             image: u.getImage(),
             name: u.getName(),
             surname: u.getSurname(),
-            username: u.getUsername()
+            username: u.getUsername(),
+            address: u.getAddress(),
+            telephoneNo: u.getTelephoneNo(),
+            email: u.getEmail()
         };
     }
 

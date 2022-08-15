@@ -1,1 +1,107 @@
-<p>account-settings works!</p>
+<div class="account-settings-container container mt-4 mb-4"
+    [@fadeInY]="{ value: 'start', params: { yStart: -20, yMiddle: -10, yEnd: 0, delay: '300ms' } }" 
+    >
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <h1 class="text-uppercase" i18n>Podešavanje naloga</h1>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12 col-md-12">
+            <div class="profile-data">
+                <div class="image">
+                    <img [src]="getUserPictureURL()">
+                </div>
+                <div class="name">
+                    {{getFullName()}}
+                </div>
+            </div>
+        </div>       
+    </div>
+    <div class="row mt-3">
+        <div class="col-12 col-md-6">
+            <h3 class="text-uppercase" i18n>Opšti podaci</h3>
+            <div class="basic-data">
+                <div class="row">
+                    <div class="col-3 col-md-3" i18n>
+                        Ime:
+                    </div>
+                    <div class="col-6 col-md-6">
+                        {{getName()}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3 col-md-3" i18n>
+                        Prezime:
+                    </div>
+                    <div class="col-6 col-md-6">
+                        {{getSurname()}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3 col-md-3" i18n>
+                        Adresa:
+                    </div>
+                    <div class="col-6 col-md-6">
+                        {{getAddress()}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3 col-md-3" i18n>
+                        Kontakt telefon:
+                    </div>
+                    <div class="col-6 col-md-6">
+                        {{getContact()}}
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <app-button
+                        [icon]="faEdit">
+                        <div text>Promena podataka</div>
+                    </app-button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <h3 class="text-uppercase" i18n>Podaci o nalogu</h3>
+            <div class="basic-data">
+                <div class="row">
+                    <div class="col-3 col-md-3" i18n>
+                        Korisničko ime:
+                    </div>
+                    <div class="col-6 col-md-6">
+                        {{getUsername()}}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3 col-md-3" i18n>
+                        E-mail:
+                    </div>
+                    <div class="col-6 col-md-6">
+                        {{getEmail()}}
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-5 col-md-5">
+                        <app-button
+                            [icon]="faEdit">
+                            <div text>Promena korisničkog imena</div>
+                        </app-button>
+                    </div>
+                    <div class="col-6 col-md-6">
+                        <app-button
+                            [icon]="faEdit">
+                            <div text>Promena lozinke</div>
+                        </app-button>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

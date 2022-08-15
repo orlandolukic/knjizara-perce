@@ -16,6 +16,7 @@ import { RecommendationsResolver } from './recommendations/recommendations-resol
 import { FinalResolver } from '../shared/utilities/final-resolver';
 import { AllBooksResolver } from './all-books/all-books-resolver';
 import { FindBookResolver } from './book/find-book-resolver';
+import { BasicFinalResolver } from '../shared/resolvers/basic-final.resolver';
 
 const routes: Routes = [
   {
@@ -76,7 +77,10 @@ const routes: Routes = [
                 path: 'change-password',
                 component: ChangePasswordComponent
               }
-            ]
+            ],
+            resolve: {
+              start: BasicFinalResolver
+            }  
           }
         ]
       }      
